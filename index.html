@@ -1,341 +1,283 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 
- <html>
+<html>
+  <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142201491-1"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          
+          gtag('config', 'UA-142201491-1');
+          </script>
+      
 
-    <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Vinicius Leal's GitHub Projects</title>
 
-        <meta charset="utf-8">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 
-        <!-- Description, Keywords and Author -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 
-        <meta name="description" content="">
-
-        <meta name="author" content="">
-
-        
-
-        <title>Lighthouse codes</title>
-
-		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/style.css">
 
 
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- Leave those next 4 lines if you care about users using IE8 -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
 
-        <!-- style -->
+		<script>
 
-        <link href="css/style.css" rel="stylesheet" type="text/css">
+		 if(location.hostname != "localhost") {
+		 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-42920430-17', 'auto'); ga('send', 'pageview');
+		 } else {
+		 	console.log('dev mode detected, don\'t track view')
+		 }
 
-        <!-- style -->
 
-        <!-- bootstrap -->
+		</script>
 
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-        <!-- responsive -->
-
-        <link href="css/responsive.css" rel="stylesheet" type="text/css">
-
-        <!-- font-awesome -->
-
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-        <!-- font-awesome -->
-
-        <link href="css/effects/set2.css" rel="stylesheet" type="text/css">
-
-        <link href="css/effects/normalize.css" rel="stylesheet" type="text/css">
-
-        <link href="css/effects/component.css"  rel="stylesheet" type="text/css" >
 
 	</head>
-
-
-
-    <body>
-
-    
-
-    	<!-- header -->
-
-        	<header role="header">
-
-            	<div class="container">
-
-                	<!-- logo -->
-
-                    	<h1>
-
-                        	<a href="index.html" title="Lighthouse codes"><img src="images/logo.png" title="Lighthouse codes" alt="Lighthouse codes"/></a>
-
-                        </h1>
-
-                    <!-- logo -->
-
-                    <!-- nav -->
- 
-                    <nav role="header-nav" class="navy">
-                        <ul>
-                            <li class="nav-active"><a href="index.html" title="Work">Work</a></li>
-
-                            <li><a href="about.html" title="About">About</a></li>
-
-                            <li><a href="contact.html" title="Contact">Contact</a></li>
-                        </ul>
-                    </nav>
-                    
-                    <div style="margin-right: 10px; margin-left: 5px; float: right;">
-                        <a href="index.html" class="main-color">EN</a> | <a href="pt-br/index-pt.html" class="main-color">PT </a>
-                    </div>
-              
-                    <!-- nav -->
-
-                </div>
-
-            </header>
-
-        <!-- header -->
-
-        <!-- main -->
-
-        <main role="main-home-wrapper" class="container">
-
-        	
-
-            <div class="row">
-
-            
-
-            	<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-
-                	<article role="pge-title-content">
-
-                    	<header>
-
-                        	<h2><span>lighthouse</span> You have an idea for an iOS app?</h2>
-
-                        </header>
-
-                        <p>We have the know-how to build a custom solution for you.</p>
-
-                    </article>
-
-                </section>
-
-                
-
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-
-                	<figure class="effect-oscar">
-
-                    	<img src="images/home-images/Group-JobCatcher.jpg" alt="" class="img-responsive"/>
-
-                        <figcaption>
-
-                        	<h2>JobCatcher<span> </span></h2>
-
-							<p>Catch the jobs around you!</p>
-
-							<a href="works-jobCatcher.html">View more</a>
-
-                        </figcaption>
-
-                    </figure>
-
-                </section>
-
-                
-
-                <div class="clearfix"></div>
-
-                
-
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-
-                	<ul class="grid-lod effect-2" id="grid">
-
-                    	<li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/Group-Blossom.jpg" alt="" class="img-responsive"/>
-
-                            <figcaption>
-
-                            	
-
-                                    <h2>Blossom Journey <span> </span></h2>
-
-                                    <p>Your vegan assistant</p>
-
-                                    <a href="works-blossom.html">View more</a>
-
-                                
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/Group-DeepBreath.jpg" alt="" class="img-responsive"/>
-
-                            <figcaption>
-
-                                <h2>DeepBreath <span> </span></h2>
-
-                                <p>Stress relief through breathing</p>
-
-                                <a href="works-deepBreath.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                    </ul>
-
-                </section>
-
-                
-
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-
-                	<ul class="grid-lod effect-2" id="grid">
-
-                    	<li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/Group-Apollo.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>Apollo Explorer <span> </span></h2>
-
-                                <p>A guide for Capodimonte Museum</p>
-
-                                <a href="works-apollo.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/Group-Rhitme.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>Rhitme <span> </span></h2>
-
-                                <p>Catch the beats with this game!</p>
-
-                                <a href="works-rhitme.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                    </ul>
-
-                </section>
-
-                <div class="clearfix"></div>
-
-            </div>
-
-        </main>
-
-    	<!-- main -->
-
-        <!-- footer -->
-
-        <footer role="footer">
-
-            <!-- logo -->
-
-                <h1>
-
-                    <a href="index.html" title="avana LLC"><img src="images/logo.png" title="avana LLC" alt="avana LLC"/></a>
-
-                </h1>
-
-            <!-- logo -->
-
-            <!-- nav -->
-
-            <nav role="footer-nav">
-
-            	<ul>
-
-                	<li><a href="index.html" title="Work">Work</a></li>
-
-                    <li><a href="about.html" title="About">About</a></li>
-
-                    <li><a href="contact.html" title="Contact">Contact</a></li>
-
-                </ul>
-
-            </nav>
-
-            <!-- nav -->
-
-            <ul role="social-icons">
-
-            	<li><a href="mailto: contact@lighthouse.codes"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-
-            </ul>
-
-            <p class="copy-right">&copy; 2019  Lighthouse.Codes. All rights Resved</p>
-
-        </footer>
-
-        <!-- footer -->
-
-    
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-        <script src="js/jquery.min.js" type="text/javascript"></script>
-
-        <!-- custom -->
-
-		<script src="js/nav.js" type="text/javascript"></script>
-
-        <script src="js/custom.js" type="text/javascript"></script>
-
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-
-        <script src="js/effects/masonry.pkgd.min.js"  type="text/javascript"></script>
-
-		<script src="js/effects/imagesloaded.js"  type="text/javascript"></script>
-
-		<script src="js/effects/classie.js"  type="text/javascript"></script>
-
-		<script src="js/effects/AnimOnScroll.js"  type="text/javascript"></script>
-
-        <script src="js/effects/modernizr.custom.js"></script>
-
-        <!-- jquery.countdown -->
-
-        <script src="js/html5shiv.js" type="text/javascript"></script>
-
-    </body>
-
+	<body>
+
+		<!--nav class="navbar navbar-default navbar-fixed-top animated slideInDown">
+		  <!div class="container-fluid">
+		    	<!p class="navbar-text navbar-right"><a href="http://chrisdermody.com/web-developer-portfolios-5-single-page-websites-to-land-you-your-next-development-job/?utm_source=github_portfolio&utm_medium=eng_mark&utm_campaign=free_webdev_templates" target="_blank" class="navbar-link">This portfolio template got me a job! I'm giving the code away for free here</a></p>
+		  <!/div>
+		<!/nav>-->
+
+
+
+		<div class="container-fluid">
+
+			<div class="text-center">
+				<img src="img/Viniprofiler-round2.png" width=200 class="profile-pic">
+				<h1>Vinicius Moreira Leal</h1>
+			  <h3>iOS Developer</h3>
+        <h5>UX/UI Enthusiast</h5>
+
+			  <div class="text-center" style="margin:20px">
+			  	<a href="https://www.linkedin.com/in/viniciusmleal/" class="" target="_blank">
+			  		My LinkedIn Profile
+			  	</a>
+			  </div>
+			</div>
+
+			<div class="row row-grey">
+			    <div class="col-sm-8 col-sm-offset-2">
+
+			    	<div class="row work-item-row">
+			    		<div class="col-lg-8">
+			    			<img src="img/ApolloExplorer.png" class="img-responsive center-block">
+			    		</div>
+			    		<div class="col-lg-4">
+			    			<h2><a href="https://apps.apple.com/it/app/apollo-explorer/id1465876840?l=en" target="blank">Apollo Explorer</a></h2>
+			    			<p>An iOS application that helps museum visitors to have an engaging and personalised experience by creating their own exploring paths and by connecting the paintings through mini stories.</p>
+			    			<h4>Technology</h4>
+			    			<p>Apollo Explorer is built using Swift, with a backend created with Vapor 3 framework for handling API requests, and runs on Heroku. The app uses Core ML to identify paintings scanned by users.</p>
+			    		</div>
+		    		</div>
+		    		<div class="row text-center">
+		    			<div class="col-xs-12">
+                            <img src="img/techlogos/CoreML.png" class="techlogo" width="50">
+                            <img src="img/techlogos/Swift.png" class="techlogo" width="100">
+		    				<img src="img/techlogos/Vapor.png" class="techlogo" width="100">
+		    				<img src="img/techlogos/heroku.png" class="techlogo" width="100">
+		    			</div>
+		    		</div>
+		    		<div class="row text-center" style="margin:20px;">
+		    				<a class="btn btn-launch" href="https://apps.apple.com/it/app/apollo-explorer/id1465876840?l=en" target="blank">App Store</a>
+	    			</div>
+					</div>
+			</div>
+
+
+			<div class="row row-white">
+			    <div class="col-sm-8 col-sm-offset-2">
+
+			    	<div class="row work-item-row">
+			    		<div class="col-lg-8 col-lg-push-4">
+			    			<img src="img/Blossom.png" class="img-responsive center-block">
+			    		</div>
+			    		<div class="col-lg-4 col-lg-pull-8">
+			    			<h2><a href="https://apps.apple.com/in/app/blossom-journey/id1462318945" target="blank">Blossom Journey</a></h2>
+			    			<p>An elegant app aimed to help vegan and vegetarian people calculate and keep track of their contributions to the environment.</p>
+			    			<h4>Technology</h4>
+			    			<p>Blossom Journey uses UIKit Framework, with UI animations for a smooth experience.</p>
+			    		</div>
+		    		</div>
+		    		<div class="row text-center">
+		    			<div class="col-xs-12">
+			    			<img src="img/techlogos/Swift.png" class="techlogo" width="100">
+		    			</div>
+		    		</div>
+		    		<div class="row text-center" style="margin:20px;">
+		    				<a class="btn btn-launch" href="https://apps.apple.com/in/app/blossom-journey/id1462318945" target="blank">App Store</a>
+	    			</div>
+					</div>
+			</div>
+
+
+			<div class="row row-grey">
+			    <div class="col-sm-8 col-sm-offset-2">
+
+			    	<div class="row work-item-row">
+                        <div class="col-lg-8">
+                            <!--img src="img/iPad-Bezel.png" class="img-responsive center-block"-->
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/JGUQ6giyeBw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			    		</div>
+			    		<div class="col-lg-4">
+			    			<h2><a href="https://github.com/viniciusml/Sammy-on-ice" target="blank">Sammy on Ice</a></h2>
+			    			<p>A fun Playground Book, with a ‘children’s book’ feel. It shows a baby emperor penguin telling a story. The book talks a little about their society's complexity, their resilience and family values.</p>
+			    			<h4>Technology</h4>
+                            <p>The Playground Book was developed using the SpriteKit framework and CoreMotion to move the sprite node through the scene, depending on the user’s device movement, in order to perform the tasks suggested in the contents text area.</p>
+			    		</div>
+		    		</div>
+		    		<div class="row text-center">
+		    			<div class="col-xs-12">
+		    				<img src="img/techlogos/SpriteKit.png" class="techlogo" width="50">
+		    			</div>
+		    		</div>
+		    		<div class="row text-center" style="margin:20px;">
+		    				<a class="btn btn-launch" href="https://github.com/viniciusml/Sammy-on-ice" target="blank">GitHub Repository</a>
+	    			</div>
+					</div>
+			</div>
+
+            <div class="row row-white">
+			    <div class="col-sm-8 col-sm-offset-2">
+
+			    	<div class="row work-item-row">
+			    		<div class="col-lg-8 col-lg-push-4">
+			    			<img src="img/iRecorder32.png" class="img-responsive center-block">
+			    		</div>
+			    		<div class="col-lg-4 col-lg-pull-8">
+			    			<h2><a href="https://github.com/viniciusml/iRecord" target="blank">iRecorder</a></h2>
+			    			<p>A simple app that records voice memos.</p>
+			    			<h4>Technology</h4>
+			    			<p>iRecorder uses UIKit Framework, AVFoundation, and Core Animations for a smooth experience.</p>
+			    		</div>
+		    		</div>
+		    		<div class="row text-center">
+		    			<div class="col-xs-12">
+			    			<img src="img/techlogos/Swift.png" class="techlogo" width="100">
+		    			</div>
+		    		</div>
+		    		<div class="row text-center" style="margin:20px;">
+		    				<a class="btn btn-launch" href="https://github.com/viniciusml/iRecord" target="blank">GitHub Repository</a>
+	    			</div>
+					</div>
+			</div>
+
+
+			<!--div class="row row-white">
+			    <div class="col-sm-8 col-sm-offset-2">
+			    	<div class="row work-item-row">
+			    		<div class="col-lg-8 col-lg-push-4">
+			    			<img src="img/vistoryscreen1.png" class="img-responsive center-block">
+			    		</div>
+			    		<div class="col-lg-4 col-lg-pull-8">
+			    			<h2><a href="http://vistoryapp.com" target="blank">Vistory</a></h2>
+			    			<h4>Mobile Car App</h4>
+			    			<p>An Android application for vehicle owners to quickly and easily log maintenance and parts costs for their cars.</p>
+			    			<h4>Technology</h4>
+			    			<p>Vistory is built on the Ionic platform that uses the Angular.js framework to build cross-platform mobile applications. On the backend Vistory uses an Express/Node.js app on Heroku to handle user accounts and authentication, while a remote noSQL database sits on Cloudant for backing up user data</p>
+			    		</div>
+			    	</div>
+		    		<div class="row text-center">
+		    			<div class="col-xs-12">
+		    				<img src="img/techlogos/ionic.png" class="techlogo" width="100">
+		    				<img src="img/techlogos/angular.png" class="techlogo" width="100">
+		    				<img src="img/techlogos/node.png" class="techlogo" width="100">
+		    				<img src="img/techlogos/heroku.png" class="techlogo" width="100">
+		    				<img src="img/techlogos/pouch-grey.png" class="techlogo" width="100">
+		    				<img src="img/techlogos/cloudant.png" class="techlogo" width="100">
+		    			</div>
+		    		</div>
+		    		<div class="row text-center" style="margin:20px;">
+		    				<a class="btn btn-launch" href="http://vistoryapp.com" target="blank">Open app site</a>
+	    			</div>
+					</div>
+			</div>
+
+			<div class="row row-grey">
+			    <div class="col-sm-8 col-sm-offset-2">
+			    	<div class="row work-item-row">
+			    		<div class="col-lg-8 col-lg-push-4 text-center">
+			    			<img src="img/techlogos/Slack.png" class="img-responsive center-block" width="300" style="margin: auto; margin-top:50px">
+			    		</div>
+			    		<div class="col-lg-4 col-lg-pull-8">
+			    			<h2><a href="https://github.com/Chippd/slackDomainChecker" target="blank">Slack Chat Bot</a></h2>
+			    			<p>A Slack chat bot built to quickly check domain name availability across the most popular TLD's. </p>
+			    			<h4>Technology</h4>
+			    			<p>The Slack bot interacts with a Node.js app living on Heroku, which requests information from a free domain-checking api, parses the response, and delivers a colour-coded response back to the client.</p>
+			    		</div>
+			    	</div>
+		    		<div class="row text-center">
+		    			<div class="col-xs-12">
+		    				<img src="img/techlogos/node.png" class="techlogo" width="100">
+		    				<img src="img/techlogos/heroku.png" class="techlogo" width="100">
+		    			</div>
+		    		</div>
+		    		<div class="row text-center" style="margin:20px;">
+		    				<a class="btn btn-launch" href="https://github.com/Chippd/slackDomainChecker" target="blank">View on Github</a>
+	    			</div>
+					</div>
+			</div>
+
+			<div class="row row-tools row-white">
+			    <div class="col-sm-12 text-center">
+
+			    	<h3>Tools I Use</h3>
+    				<img src="img/tool-logos/sketch.png" class="techlogo" width="150">
+    				<img src="img/tool-logos/git.png" class="techlogo" width="150">
+
+					</div>
+			</div-->
+
+			<div class="row row-footer text-center">
+				<div class="col">
+  				<div style="margin:50px;">
+  					<h3 style="margin:50px 0 15px">I'm available for work, get in touch</h3>
+				  	<a href="mailto:viniciusmoreiraleal@gmail.com?Subject=Hello" class="" target="_blank">
+				  		viniciusmoreiraleal@gmail.com
+				  	</a>
+				  </div>
+				</div>
+			</div>
+
+
+
+
+		</div>
+<!--
+		<div class="container-fluid">
+
+
+
+		</div> -->
+
+<!-- 		<div class="text-center">
+				<p style="margin-top:20px"">*Also love building other things, like VBA macros, mobile applications, chat bots, and the odd motorbike...</p>
+			</div> -->
+
+
+
+		<!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
+		<script src="js/jquery-3.1.0.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- <script src="js/myScripts.js"></script> -->
+
+	</body>
 </html>
+
