@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-04-26T19:02:42+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Swift Initializers</title><link href="https://vinileal.com/initialization/basics/swift-initializers/" rel="alternate" type="text/html" title="Swift Initializers" /><published>2020-03-20T00:00:00+01:00</published><updated>2020-03-20T00:00:00+01:00</updated><id>https://vinileal.com/initialization/basics/swift-initializers</id><content type="html" xml:base="https://vinileal.com/initialization/basics/swift-initializers/">&lt;p&gt;Have you ever stopped to think about why you do what you do? I think it happens with all of us, at different levels, of course. In iOS development it can happen too. You write some code, just for the sake of writing, and then ask yourself: &lt;strong&gt;why?&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-04-27T18:20:59+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Code Reviews</title><link href="https://vinileal.com/productivity/basics/code-reviews/" rel="alternate" type="text/html" title="Code Reviews" /><published>2020-03-27T00:00:00+01:00</published><updated>2020-03-27T00:00:00+01:00</updated><id>https://vinileal.com/productivity/basics/code-reviews</id><content type="html" xml:base="https://vinileal.com/productivity/basics/code-reviews/">&lt;p&gt;&lt;strong&gt;How can you improve your team’s productivity with code reviews?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There are quite a few things in life that you only truly see the importance after experiencing, and code reviews are definitely one of those. By talking to my colleagues who apply it frequently in their workflow I could see that it improves a lot the efficiency of the team, but at the same time, talking with the colleagues who had never used it before (including me) it’s hard to identify the value of this tool.&lt;/p&gt;
+
+&lt;p&gt;In a &lt;strong&gt;code review,&lt;/strong&gt; basically, after a developer finishes writing a new piece of code (it can be a new feature, a bug fix, anything), another developer checks the code and covers some questions that may vary according to the company’s standards. A few examples are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can the logic of the code be improved? Does it cover all cases proposed?&lt;/li&gt;
+  &lt;li&gt;Are all requirements implemented?&lt;/li&gt;
+  &lt;li&gt;Does the new code conform with the company’s guidelines?&lt;/li&gt;
+  &lt;li&gt;Are the tests enough for the new code or do they need to be modified?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Well, clearly there are benefits, and lots of them. So it might be good giving it a try and evaluate if it suits the team’s needs and if it fits their style style.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-begin&quot;&gt;How to begin&lt;/h2&gt;
+
+&lt;p&gt;The first step, in my opinion, should be proposing it to the team. In this moment, the benefits of this practice can be explained to the team, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It facilitates knowledge across everyone in the team, which means that all members know what’s going on with the code base.&lt;/li&gt;
+  &lt;li&gt;Helps to establish or reinforce coding standards.&lt;/li&gt;
+  &lt;li&gt;It’s a wonderful tool to onboard new developers. By having their code reviewed, new developers can learn quickly about the guidelines, and easily adapt in conversations regarding the code. Also, by reviewing veteran’s, new developers can contribute with a fresh pair of eyes, which often helps a team to tackle a problem in a different way.&lt;/li&gt;
+  &lt;li&gt;Code reviews produce software with fewer defects.&lt;/li&gt;
+  &lt;li&gt;Ensures that necessary documentation is being written.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-time-issue&quot;&gt;The time issue&lt;/h2&gt;
+
+&lt;p&gt;Some of the most popular counterargument used by developers new to code reviews are the time spent to do it. Indeed, it’s an additional step into the development process, which means it takes some time. But it’s not time wasted and there are some ways to make sure it’s optimised.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Review before merging. Sounds a bit obvious, but it can help discover mistakes and improve the code before it reaches the development branch.&lt;/li&gt;
+  &lt;li&gt;Set an appropriate timeframe to perform the reviews. Eg.: no more then one hour.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, when it comes to introducing this practice into the development process, there are is a key aspect that may help: &lt;strong&gt;starting slowly&lt;/strong&gt;. Sometimes, working in a fast paced environment, means thats one needs to be very thoughtful in this part, because the introduction of a new step might be slow in the beginning.&lt;/p&gt;
+
+&lt;p&gt;It can be useful to begin by implementing pull requests after small tasks were done, just to get the hang of it, and after some time evolve into reviewing bigger tasks until the point where the whole team is comfortable with it, in which reviews can be performed for every new code written for production.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-few-tips-to-take-the-most-out-of-code-reviews&quot;&gt;A few tips to take the most out of code reviews&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Begin the review with a fresh mind and without any expectations on what the code should be like.&lt;/li&gt;
+  &lt;li&gt;Review your own code before submitting it to review. It may sound as basic advice, but you may find some things to improve.&lt;/li&gt;
+  &lt;li&gt;If there are special places where you want feedback, make them explicit.&lt;/li&gt;
+  &lt;li&gt;In case there’s something not very clear, ask questions to the author.&lt;/li&gt;
+  &lt;li&gt;Explain why there’s room for improvement in the code reviewed and if possible, propose a solution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;veredict&quot;&gt;Veredict&lt;/h2&gt;
+
+&lt;p&gt;Code reviews are relatively simple to include in the workflow, and can greatly improve software quality.&lt;/p&gt;
+
+&lt;p&gt;Depending on your team, it can good fit, and although it may bring some changes in the process, the benefits for sure outweigh the cost of adaptation.&lt;/p&gt;
+
+&lt;p&gt;It is something that combines technical and non-technical skills, and, as most of things in life, the more you do it, the more you get better at it. It is super important to be open to feedback and being able to offer proper feedback as well.&lt;/p&gt;
+
+&lt;p&gt;What are your thoughts on this? Do you do code reviews in your team?&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="productivity" /><category term="basics" /><summary type="html">How can you improve your team’s productivity with code reviews?</summary></entry><entry><title type="html">Swift Initializers</title><link href="https://vinileal.com/initialization/basics/swift-initializers/" rel="alternate" type="text/html" title="Swift Initializers" /><published>2020-03-20T00:00:00+01:00</published><updated>2020-03-20T00:00:00+01:00</updated><id>https://vinileal.com/initialization/basics/swift-initializers</id><content type="html" xml:base="https://vinileal.com/initialization/basics/swift-initializers/">&lt;p&gt;Have you ever stopped to think about why you do what you do? I think it happens with all of us, at different levels, of course. In iOS development it can happen too. You write some code, just for the sake of writing, and then ask yourself: &lt;strong&gt;why?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;That’s what used to happen regarding &lt;em&gt;initializers&lt;/em&gt; for me. I would write only because I know I &lt;em&gt;had to&lt;/em&gt;, or because the compiler told me to do so. So I decided to do a bit of research, in order to understand a bit better about them. I will share my findings in this article.&lt;/p&gt;
 
@@ -81,4 +139,4 @@
 
 &lt;p&gt;&lt;a href=&quot;https://www.swiftbysundell.com/articles/initializers-in-swift/&quot; class=&quot;notice--info&quot;&gt;Initializers in Swift - Swift by Sundell&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.raywenderlich.com/1220-swift-tutorial-initialization-in-depth-part-1-2&quot; class=&quot;notice--info&quot;&gt;Swift Tutorial: Initialization In Depth, Part 1/2&lt;/a&gt;&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="intitializers" /><category term="basics" /><summary type="html">Have you ever stopped to think about why you do what you do? I think it happens with all of us, at different levels, of course. In iOS development it can happen too. You write some code, just for the sake of writing, and then ask yourself: why?</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://www.raywenderlich.com/1220-swift-tutorial-initialization-in-depth-part-1-2&quot; class=&quot;notice--info&quot;&gt;Swift Tutorial: Initialization In Depth, Part 1/2&lt;/a&gt;&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="intitializers" /><category term="basics" /><summary type="html">Initialization is the process of preparing an instance of a class, structure, or enumeration for use.</summary></entry></feed>

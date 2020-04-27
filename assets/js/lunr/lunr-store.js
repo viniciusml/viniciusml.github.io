@@ -28,4 +28,10 @@ var store = [{
         "tags": ["intitializers","basics"],
         "url": "https://vinileal.com/initialization/basics/swift-initializers/",
         "teaser": "https://vinileal.com/assets/images/initializers-header.png"
+      },{
+        "title": "Code Reviews",
+        "excerpt":"How can you improve your team’s productivity with code reviews? There are quite a few things in life that you only truly see the importance after experiencing, and code reviews are definitely one of those. By talking to my colleagues who apply it frequently in their workflow I could see...","categories": ["Productivity","Basics"],
+        "tags": ["productivity","basics"],
+        "url": "https://vinileal.com/productivity/basics/code-reviews/",
+        "teaser": "https://vinileal.com/assets/images/code-reviews-header.png"
       }]
