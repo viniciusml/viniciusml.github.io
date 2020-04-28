@@ -1,4 +1,228 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-04-27T18:20:59+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Code Reviews</title><link href="https://vinileal.com/productivity/basics/code-reviews/" rel="alternate" type="text/html" title="Code Reviews" /><published>2020-03-27T00:00:00+01:00</published><updated>2020-03-27T00:00:00+01:00</updated><id>https://vinileal.com/productivity/basics/code-reviews</id><content type="html" xml:base="https://vinileal.com/productivity/basics/code-reviews/">&lt;p&gt;&lt;strong&gt;How can you improve your team’s productivity with code reviews?&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-04-28T12:25:46+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Test Driving UIPageViewController implementation</title><link href="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/" rel="alternate" type="text/html" title="Test Driving UIPageViewController implementation" /><published>2020-04-04T00:00:00+02:00</published><updated>2020-04-04T00:00:00+02:00</updated><id>https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller</id><content type="html" xml:base="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/">&lt;p&gt;A UIPageViewController is a very popular element in iOS Projects. It’s commonly seen in onboarding screens, but it has a ton of other uses.&lt;/p&gt;
+
+&lt;p&gt;We are using one for the onboarding screen of our app Hira, and while I was developing the beautiful desgin made by my friend &lt;a href=&quot;https://www.linkedin.com/in/mauro-marques-89910913b/&quot;&gt;Mauro Marques&lt;/a&gt;, I decided to register the proccess of implementing an UIPageViewController using a Test Driven Development approach.&lt;/p&gt;
+
+&lt;p&gt;Just like the name suggests, the entire development is driven by tests. The cycle consists of four steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Write a test that is going to fail - (Red)&lt;/li&gt;
+  &lt;li&gt;Make the test pass - (Green)&lt;/li&gt;
+  &lt;li&gt;Refactor the code&lt;/li&gt;
+  &lt;li&gt;Repeat&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We’ll begin with an empty project, with an unit test target. I am not going to use storyboards, so I’ll just set the basic configuration to my project by deleting the storyboard. In case you need some help, there’s a quick video, in which Sean Allen demonstrates how to do it &lt;a href=&quot;https://www.youtube.com/watch?v=Htn4h51BQsk&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, off to our test driven development. The first and simplest assertion we can make is that the PageViewController is initialised with no controllers (pages).&lt;/p&gt;
+
+&lt;p&gt;Since &lt;strong&gt;UIPageViewController&lt;/strong&gt; has a &lt;code class=&quot;highlighter-rouge&quot;&gt;viewControllers: Array&amp;lt;UIViewController&amp;gt;&lt;/code&gt; property, we can assert that this property is empty.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/22294a14ce4913124f3beddabba00b6f.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Soon enough, the compiler warns us, because we still don’t have a PageViewController. This means we are in the red state (tests not passing or code not compiling), which means we can write production code.&lt;/p&gt;
+
+&lt;p&gt;Let’s satisfy the compiler by adding the simplest piece of code.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/3067b05ab3e314d0858a9caf1deaa8be.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The errors are gone, and when we run our tests they pass, because by default this property is empty.&lt;/p&gt;
+
+&lt;p&gt;Since we don’t have anything to refactor, let’s move on to the next test. According to my use case, I need the &lt;code class=&quot;highlighter-rouge&quot;&gt;.transitionStyle&lt;/code&gt; to be of .&lt;code class=&quot;highlighter-rouge&quot;&gt;scroll&lt;/code&gt; type. So, let’s test it. Add the following code to PageViewControllerTests.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b44e1f515abf431cf008cba3d8b2a74a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;If we run the tests now, they will not pass, because we still need to set this property. Add the following code to PageViewController.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/34e108a0f76435e209b5ec0aaaf18004.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;We are using the initialiser to set the property. If we run the tests they will pass.&lt;/p&gt;
+
+&lt;p&gt;Alright, moving on with the &lt;code class=&quot;highlighter-rouge&quot;&gt;.navigationOrientation&lt;/code&gt;. In this case I’ll need it &lt;code class=&quot;highlighter-rouge&quot;&gt;.horizontal&lt;/code&gt;. Add the following code to PageViewControllerTests.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/a373c29f7ba0e0ce8a23a072c7132743.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;If we run it now, it won’t pass, because in the initialiser we added previously was setting the property to &lt;code class=&quot;highlighter-rouge&quot;&gt;.vertical&lt;/code&gt;. So let’s change it to &lt;code class=&quot;highlighter-rouge&quot;&gt;.horizontal&lt;/code&gt;. Now the tests are passing.&lt;/p&gt;
+
+&lt;p&gt;As a refactoring measure, we can create a helper method in PageViewControllerTests in order to create the SUT, or the &lt;em&gt;system under test&lt;/em&gt;. By using a helper method, we concentrate the SUT generation to one single place, and if we need to change or add something in the future, we just need to do it in that single place.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/9fab826abdf8db3c38b940de0366c6db.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now, replace &lt;code class=&quot;highlighter-rouge&quot;&gt;PageViewController()&lt;/code&gt; by &lt;code class=&quot;highlighter-rouge&quot;&gt;makeSUT()&lt;/code&gt; in the previous tests.&lt;/p&gt;
+
+&lt;p&gt;Moving on, we need to assert that when the view loads, the method &lt;code class=&quot;highlighter-rouge&quot;&gt;setViewControllers(_:direction:animated:completion:)&lt;/code&gt; is set with the initial view controller. Add this code to PageViewControllerTests&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/ccb865bf41079d5f53776572a7d11269.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here we are testing that &lt;strong&gt;given&lt;/strong&gt; at least one controller, &lt;strong&gt;when&lt;/strong&gt; the view is loaded, the array of viewControllers is equal to the first item of this array.&lt;/p&gt;
+
+&lt;p&gt;The code will not compile because we need to make some changes to the &lt;code class=&quot;highlighter-rouge&quot;&gt;makeSUT()&lt;/code&gt; method. Replace the existing method by this following one:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/29a4769d69d4410e6efd25e1e4e8942b.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here we are passing the controllers to be used as pages into the PageViewController initialiser.&lt;/p&gt;
+
+&lt;p&gt;So, we also need to change the &lt;code class=&quot;highlighter-rouge&quot;&gt;init()&lt;/code&gt; in PageViewController to:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/bb74df4e68d284065e6d8b8965a22836.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Also, we need to declare the property:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/1cd0ec383bb5be11bfbfa41254159ab5.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now the code compiles, but the tests are not passing. And that is because we did not implement the method yet. So, add this code to PageViewController.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/0cbcd0d9fcdc041f0d98514303753f4e.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here, in &lt;code class=&quot;highlighter-rouge&quot;&gt;viewDidLoad()&lt;/code&gt; we check if there’s a first item in the pages array. If so, we call &lt;code class=&quot;highlighter-rouge&quot;&gt;setViewControllers(_:direction:animated:completion:)&lt;/code&gt; with it. Let’s run the tests, and they pass!&lt;/p&gt;
+
+&lt;p&gt;We can make some refactoring to make our code easier to read, so let’s do it. Replace the &lt;code class=&quot;highlighter-rouge&quot;&gt;init()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;requiredInit()&lt;/code&gt; by this code:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/fe8ef01445abaae85275debcb7a8df38.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;We simplified it a bit using a convenience &lt;a href=&quot;http://vinileal.com/initialization/basics/swift-initializers/&quot;&gt;initialiser&lt;/a&gt;. Now, moving on, let’s test the dataSource.&lt;/p&gt;
+
+&lt;p&gt;We need to make sure that when the user swipes right, the next view controller is called and presented. There is a &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewDataSource&lt;/code&gt; method that handles this, called &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s add the following test:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/90bdad7c7dc4688a86f9babe36c3dd54.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, given two controllers, when our pageViewController is swiped (which triggers the data source method), we expect that the controller resulting from the &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt; controller1 is the controller2.&lt;/p&gt;
+
+&lt;p&gt;The tests will not compile yet, because we didn’t implement the dataSource in our production side.&lt;/p&gt;
+
+&lt;p&gt;Let’s add the &lt;code class=&quot;highlighter-rouge&quot;&gt;dataSource = self&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;viewDidLoad()&lt;/code&gt; in PageViewController class.&lt;/p&gt;
+
+&lt;p&gt;Now we can make an extension to conform to the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewControllerDataSource&lt;/code&gt;, like so:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/9727c7f2bfac7d3ed836f1fd321ea2d9.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The simplest thing to make the tests pass is to return the second item in the array. But it won’t cover all cases, and let’s see why by adding the next test.&lt;/p&gt;
+
+&lt;p&gt;Add this to PageViewControllerTests:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b6a6a6462c81451e3d6b6623c28039b5.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So it’s basic the same setup, but this time we are adding one more controller, and making sure that when &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt; is triggered two times in a row, we get the third controller. The test fails because we hardcoded a value in our production side. Let’s fix this!&lt;/p&gt;
+
+&lt;p&gt;Add the following code to &lt;code class=&quot;highlighter-rouge&quot;&gt;PageViewController.pageViewController(_:viewControllerAfter:)&lt;/code&gt;:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/394718563e164eeb069f96bfc97f70ce.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here we are getting the index of current the view controller, adding one to it and return the controller for the new index. Cool, if we run the tests, they pass. Can you spot something to refactor?&lt;/p&gt;
+
+&lt;p&gt;Yes, let’s do it. We are going to add an &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewController&lt;/code&gt; extension to the same file as PageViewControllerTests, with the following code:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/28d673da52277f6cf6da495e9f105606.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;This way, replace occurrences of &lt;code class=&quot;highlighter-rouge&quot;&gt;sut.dataSource?.pageViewController(sut, viewControllerAfter: controller1)&lt;/code&gt; by &lt;code class=&quot;highlighter-rouge&quot;&gt;sut.controllerAfter(controller1)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Alright, we covered the situation of getting the next index, but we are still missing a scenario. When the maximum number of pages is reached, what should happen?&lt;/p&gt;
+
+&lt;p&gt;According to my use case, when the last controller is reached, if the user swipes right, nothing should happen, so let’s test it.&lt;/p&gt;
+
+&lt;p&gt;Add this to PageViewControllerTests class:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/c7b9e5a9ac0ad4964839f8fb6db87b75.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So we are asserting that when the maximum number of pages is reached, if an attempt to swipe is made, the method returns &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;, otherwise we could have a runtime &lt;em&gt;index out of range error.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;By running the tests, we see that this one doesn’t pass. But to make it pass its simple, we add the following code just before the return in &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt;:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/fb7a4f6fddb1d5c78678c5ee518c3b32.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Alright, tests are passing again. Moving on!&lt;/p&gt;
+
+&lt;p&gt;We are going to test the opposite scenario now, which is the swipe left in this case. We’ll start by adding this test:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/a5acebf87244fb9a7789a0bd5b2fab05.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;And let’s also add the extension for the controllerBefore helper method:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/aadb7f285a87f0c1e6ced28a046891e4.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, when the page controller is displaying the first page, if a left swipe is attempted, the method should return &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;. If we run, it passes, because of the hardcoded &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt; we returned when we implemented the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewControllerDataSource&lt;/code&gt; protocol.&lt;/p&gt;
+
+&lt;p&gt;Let’s move on to the next test.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/fd081fce83a95f784045d1966328f31d.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;It’s pretty much the same situation we tested with &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt;, but this time, we are expecting to have the previous controller. If we run the tests, this one fails, so let’s implement our code.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;PageViewController.pageViewController(_:viewControllerBefore:)&lt;/code&gt;, replace the return &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt; by the following:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/5b8692b1e8d32e9b329d3cb355b2f5ac.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Again, we get the index of current controller, subtract one, check if it’s not smaller then zero, and return the corresponding controller to the index. Let’s run the tests and see that they pass!&lt;/p&gt;
+
+&lt;p&gt;Now, just to make sure we have the correct behaviour, let’s add the following test:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/183dac213e14d8d026f2227267b646b9.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, if we are in the third controller, and perform swipe left twice, we should get the first controller, correct? Yes, and our tests are showing us that!&lt;/p&gt;
+
+&lt;p&gt;Now we tested the basic structure, we’ll move on to the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageControl&lt;/code&gt;. We need a page control, and we can get it for ‘free’.&lt;/p&gt;
+
+&lt;h3 id=&quot;apples-documentation-says&quot;&gt;Apple’s documentation says:&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If both of the methods in ‘Supporting a Page Indicator’ are implemented and the page view controller’s transition style is UIPageViewController.TransitionStyle.scroll, a page indicator is visible.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Right, our transition style is &lt;code class=&quot;highlighter-rouge&quot;&gt;.scroll&lt;/code&gt;, so we need to implement the methods:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;presentationCount(for:)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;presentationIndex(for:)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s test that we are setting the correct presentation count.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/76ce953b0e0d44d37bb08cbfa0abf8ef.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So when we initialise the PageViewController with a certain number of pages, we expect the &lt;code class=&quot;highlighter-rouge&quot;&gt;presentationCount&lt;/code&gt; to be equal to the number of pages. And we check that by calling a dataSource method &lt;code class=&quot;highlighter-rouge&quot;&gt;presentationCount(for:)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If we run it, it fails. Because we didn’t implement it yet. So let’s fix this by adding it to our &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewControllerDataSource&lt;/code&gt; extension:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/8dcc9009ebd0535fece594bdcba6ac1a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;We are returning the number of items in pages array, because we want the number of indicators in &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageControl&lt;/code&gt; to be the same as the number of pages. We run the tests, and they pass. Nice!&lt;/p&gt;
+
+&lt;p&gt;Now, the other required method for setting the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageControl&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;presentationIndex(for:)&lt;/code&gt;. Let’s add the following test:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/cdd0bb02ace23b92401b116e20e15e5d.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now we expect that when we initialise PageViewController, that &lt;code class=&quot;highlighter-rouge&quot;&gt;presentationIndex&lt;/code&gt; is set to zero, i.e. the first page. We run the tests and this one fails, because we don’t have that method yet. Add this to the dataSource extension:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/8a0b19c78eceb5f14ca251691d763894.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, when we run the tests, they pass. Great!&lt;/p&gt;
+
+&lt;p&gt;We added a hardcoded ‘0’ there, but it may be better to replace it by a variable, just in case we may need to use set a value in the future. Go on and declare the variable at the top of the file:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/a5e5bacde7ecf3eeab546234e42d7754.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;And replace the ‘0’ by &lt;code class=&quot;highlighter-rouge&quot;&gt;pageControlIndex&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Great, we implemented the tests, they are passing, now it’s time to see our pageViewController in action. Add the following method to your SceneDelegate class:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/f9988a9a47e74e59c36405aac9b1940a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;And add this to &lt;code class=&quot;highlighter-rouge&quot;&gt;scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions)&lt;/code&gt;:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/da3f717fdff81f0edd2bd3f45ef1b75d.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Since we are not using storyboards, this code prepares the window, and set’s a &lt;code class=&quot;highlighter-rouge&quot;&gt;rootViewController&lt;/code&gt; to it. Our &lt;code class=&quot;highlighter-rouge&quot;&gt;rootViewController&lt;/code&gt;, in this case, is our PageViewController, with 6 pages, each one with a different background color.&lt;/p&gt;
+
+&lt;p&gt;Hit &lt;strong&gt;command + R&lt;/strong&gt; and let’s see it in action!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/uipagecontroller-example.gif&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Very nice, isn’t it? Now that the behaviour is covered, it’s just a matter of setting a nice UI and some cool animations and deliver a nice page control.&lt;/p&gt;
+
+&lt;p&gt;This was a glimpse of TDD. It’s a really powerful methodology to write maintainable and reliable code.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading, if you have any questions leave it in the comments below!&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="unit tests" /><category term="tdd" /><summary type="html">In this article, I'll show you a way to implement an UIPageViewController using a Test Driven Development approach.</summary></entry><entry><title type="html">Code Reviews</title><link href="https://vinileal.com/productivity/basics/code-reviews/" rel="alternate" type="text/html" title="Code Reviews" /><published>2020-03-27T00:00:00+01:00</published><updated>2020-03-27T00:00:00+01:00</updated><id>https://vinileal.com/productivity/basics/code-reviews</id><content type="html" xml:base="https://vinileal.com/productivity/basics/code-reviews/">&lt;p&gt;&lt;strong&gt;How can you improve your team’s productivity with code reviews?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;There are quite a few things in life that you only truly see the importance after experiencing, and code reviews are definitely one of those. By talking to my colleagues who apply it frequently in their workflow I could see that it improves a lot the efficiency of the team, but at the same time, talking with the colleagues who had never used it before (including me) it’s hard to identify the value of this tool.&lt;/p&gt;
 
