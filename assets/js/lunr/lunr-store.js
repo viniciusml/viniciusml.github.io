@@ -36,8 +36,8 @@ var store = [{
         "teaser": "https://vinileal.com/assets/images/code-reviews-header.png"
       },{
         "title": "Test Driving UIPageViewController implementation",
-        "excerpt":"A UIPageViewController is a very popular element in iOS Projects. It’s commonly seen in onboarding screens, but it has a ton of other uses. We are using one for the onboarding screen of our app Hira, and while I was developing the beautiful desgin made by my friend Mauro Marques,...","categories": ["Tutorial","TDD"],
-        "tags": ["unit tests","tdd"],
+        "excerpt":"A UIPageViewController is a very popular element in iOS Projects. It’s commonly seen in onboarding screens, but it has a ton of other uses. Me and my friend Mauro Marques are using one for the onboarding screen of our app Hira, and while I was developing the beautiful screens desgined...","categories": ["Tutorial","TDD"],
+        "tags": ["unit tests","tdd","UIPageViewController","UIKit"],
         "url": "https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/",
         "teaser": "https://vinileal.com/assets/images/uipagecontroller-header.png"
       }]
