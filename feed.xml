@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-04-28T18:30:03+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Test Driving UIPageViewController implementation</title><link href="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/" rel="alternate" type="text/html" title="Test Driving UIPageViewController implementation" /><published>2020-04-04T00:00:00+02:00</published><updated>2020-04-04T00:00:00+02:00</updated><id>https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller</id><content type="html" xml:base="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/">&lt;p&gt;A UIPageViewController is a very popular element in iOS Projects. It’s commonly seen in onboarding screens, but it has a ton of other uses.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-05-02T11:33:39+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Microinteractions in SwiftUI - Menu Button Animation</title><link href="https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/" rel="alternate" type="text/html" title="Microinteractions in SwiftUI - Menu Button Animation" /><published>2020-04-12T00:00:00+02:00</published><updated>2020-04-12T00:00:00+02:00</updated><id>https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui</id><content type="html" xml:base="https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/">&lt;p&gt;Microinteractions have become increasingly important in a world with a dizzying number of digital platforms and an ocean of content. While microinteractions used to be considered an interesting resource in the early days of digital design, in today’s hypercompetitive digital space they have become a crucial element in the overall user experience.&lt;/p&gt;
+
+&lt;p&gt;Basically, microinteraction is a particular moment of a user’s interaction with a product in order to complete a specific task. For example, when someone presses a “Like” button (whatever it looks like) and sees that their action produced a feedback - the number has changed, the color of the button has changed or it has become inactive, the text on the button reported that the action was done and so on - this is a case of microinteraction.&lt;/p&gt;
+
+&lt;p&gt;In this article, I will show you how I implemented a menu button microinteraction in SwiftUI.&lt;/p&gt;
+
+&lt;p&gt;The idea is to present a menu button with 4 horizontal lines, and, when the user taps on the button, it animates into an ‘x’ shape, to represent the option of closing the menu.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/menu-swiftui-example.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I began with an empty project, enabling SwiftUI. Then I created a file with two views, like this:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/448223728ad085697b88209e3b928a4a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;I defined a fixed frame for it, and for my purposes it can be a square shaped button. There’s a state property &lt;code class=&quot;highlighter-rouge&quot;&gt;isAnimating&lt;/code&gt;, that the animations will respond to.&lt;/p&gt;
+
+&lt;p&gt;For the button body the action is simply to toggle the &lt;code class=&quot;highlighter-rouge&quot;&gt;isAnimating&lt;/code&gt; property, and its label closure calls the &lt;code class=&quot;highlighter-rouge&quot;&gt;createMenu&lt;/code&gt; method. Let’s take a look at it.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/ea730fbf13027ce00b0eb4581c82023b.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;There’s a lot going on here, but I’ll break it down. First, the method returns a type eraser view &lt;code class=&quot;highlighter-rouge&quot;&gt;AnyView&lt;/code&gt;, and contains two properties, the &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt;, which is the number of rows for the button, and the configuration of the menu.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;menu&lt;/code&gt; the geometry reader is used, so that we can access the width and height we have available, and, therefore, calculate the properties we need. So, 4 views are grouped, and we calculate &lt;code class=&quot;highlighter-rouge&quot;&gt;availableHeight&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;spacing&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;height&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;width&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/menu-swiftui-example-variables.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, the rectangles are created with the height and width, and we can finally configure them. Each rectangle is overlapping the other ones, so we’ll use the &lt;code class=&quot;highlighter-rouge&quot;&gt;offset&lt;/code&gt; modifier and multiply the index by the available height. This way they get positioned correctly along the y axis.&lt;/p&gt;
+
+&lt;p&gt;Then I configured the animations, which are custom modifiers. I’ll get to them in a second. Finally I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;animation&lt;/code&gt; modifier, with a small delay and the &lt;code class=&quot;highlighter-rouge&quot;&gt;easeInOut&lt;/code&gt; option, and return the menu.&lt;/p&gt;
+
+&lt;h3 id=&quot;configuring-the-animations&quot;&gt;Configuring the Animations&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;MiddleMenuRect&lt;/code&gt; is a custom modifier that handles the second and third rectangles (index ‘1’ and ‘2’). Both of them need to rotate, on opposite directions.&lt;/p&gt;
+
+&lt;p&gt;Here’s how the code look like:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/7e3185319cc82116f46334a195601ae6.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;In the body function, two modifiers are being called: &lt;code class=&quot;highlighter-rouge&quot;&gt;rotate&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;offset&lt;/code&gt;. That’s because when the rect is rotated there’s a slight difference in position, so they need to me adjusted in order to form the ‘x’.&lt;/p&gt;
+
+&lt;p&gt;The modifiers return a value based on a condition of being the middle indexes and the &lt;code class=&quot;highlighter-rouge&quot;&gt;isAnimating&lt;/code&gt; boolean.&lt;/p&gt;
+
+&lt;p&gt;For the &lt;code class=&quot;highlighter-rouge&quot;&gt;MarginMenuRect&lt;/code&gt; the setup is very similar, but this time, the first and last indexes are placed as conditions and the modifiers &lt;code class=&quot;highlighter-rouge&quot;&gt;opacity&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;offset&lt;/code&gt; are applied. While the rectangles are moved through the ‘x’ axis in different directions, the opacity is reduced, giving the idea that they were ‘removed’. Check out the code:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/45f914bd1e607146d040d4249a52aa7b.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;For better readability, the &lt;code class=&quot;highlighter-rouge&quot;&gt;MiddleMenuRect&lt;/code&gt; and the &lt;code class=&quot;highlighter-rouge&quot;&gt;MarginMenuRect&lt;/code&gt; view modifiers were added to an extension:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/388fec5b42caaaceedf4bec447197fa9.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;That’s it! We have a nice menu button, that when tapped turns into an ‘x’. Here’s how it looks in action:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/menu-swiftui-result.gif&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nice, isn’t it?&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Utilising microinteractions can enrich usability. The features of an app attract a user to the product, but  the details more then often make a huge difference. This was an example of how a microinteraction can be implemented in SwiftUI and give a nice touch to your apps.&lt;/p&gt;
+
+&lt;p&gt;Developing it was fun, and it was pleasant to see the animation in place. If you want to see the full code, here’s the &lt;a href=&quot;https://gist.github.com/viniciusml/16c14939828521091aabc855dbf69875&quot;&gt;gist&lt;/a&gt;. Thanks for reading!&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="SwiftUI" /><summary type="html">In this article, I will show you how I implemented a menu button microinteraction in SwiftUI.</summary></entry><entry><title type="html">Test Driving UIPageViewController implementation</title><link href="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/" rel="alternate" type="text/html" title="Test Driving UIPageViewController implementation" /><published>2020-04-04T00:00:00+02:00</published><updated>2020-04-04T00:00:00+02:00</updated><id>https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller</id><content type="html" xml:base="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/">&lt;p&gt;A UIPageViewController is a very popular element in iOS Projects. It’s commonly seen in onboarding screens, but it has a ton of other uses.&lt;/p&gt;
 
 &lt;p&gt;Me and my friend &lt;a href=&quot;https://www.linkedin.com/in/mauro-marques-89910913b/&quot;&gt;Mauro Marques&lt;/a&gt; are using one for the onboarding screen of our app Hira, and while I was developing the beautiful screens desgined by him, I decided to register the proccess of implementing it using a &lt;strong&gt;Test Driven Development&lt;/strong&gt; approach.&lt;/p&gt;
 

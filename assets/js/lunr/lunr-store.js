@@ -40,4 +40,10 @@ var store = [{
         "tags": ["unit tests","tdd","UIPageViewController","UIKit"],
         "url": "https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/",
         "teaser": "https://vinileal.com/assets/images/uipagecontroller-header.png"
+      },{
+        "title": "Microinteractions in SwiftUI - Menu Button Animation",
+        "excerpt":"Microinteractions have become increasingly important in a world with a dizzying number of digital platforms and an ocean of content. While microinteractions used to be considered an interesting resource in the early days of digital design, in today’s hypercompetitive digital space they have become a crucial element in the overall...","categories": ["Tutorial","SwiftUI","Microinteraction","Animation"],
+        "tags": ["SwiftUI"],
+        "url": "https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/",
+        "teaser": "https://vinileal.com/assets/images/microinteractions-swiftui-header.png"
       }]
