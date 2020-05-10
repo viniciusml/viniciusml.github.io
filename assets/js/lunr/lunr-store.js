@@ -46,4 +46,10 @@ var store = [{
         "tags": ["SwiftUI"],
         "url": "https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/",
         "teaser": "https://vinileal.com/assets/images/microinteractions-swiftui-header.png"
+      },{
+        "title": "Continuous Integration (CI) - An Introduction",
+        "excerpt":"Continuous Integration (CI) - An Introduction A software development team can benefit from many methodologies that will save them time and repetitive work. As an example, there is continuous integration, continuous delivery and continuous deployment. Methods and techniques like these represent ways to accelerate the delivery of new versions of...","categories": ["Agile"],
+        "tags": ["continuous integration","CI","Agile"],
+        "url": "https://vinileal.com/agile/continuous-integration-intro/",
+        "teaser": "https://vinileal.com/assets/images/initializers-header.png"
       }]

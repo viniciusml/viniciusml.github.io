@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-05-02T11:33:39+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Microinteractions in SwiftUI - Menu Button Animation</title><link href="https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/" rel="alternate" type="text/html" title="Microinteractions in SwiftUI - Menu Button Animation" /><published>2020-04-12T00:00:00+02:00</published><updated>2020-04-12T00:00:00+02:00</updated><id>https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui</id><content type="html" xml:base="https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/">&lt;p&gt;Microinteractions have become increasingly important in a world with a dizzying number of digital platforms and an ocean of content. While microinteractions used to be considered an interesting resource in the early days of digital design, in today’s hypercompetitive digital space they have become a crucial element in the overall user experience.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-05-10T14:37:53+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Continuous Integration (CI) - An Introduction</title><link href="https://vinileal.com/agile/continuous-integration-intro/" rel="alternate" type="text/html" title="Continuous Integration (CI) - An Introduction" /><published>2020-04-20T00:00:00+02:00</published><updated>2020-04-20T00:00:00+02:00</updated><id>https://vinileal.com/agile/continuous-integration-intro</id><content type="html" xml:base="https://vinileal.com/agile/continuous-integration-intro/">&lt;h1 id=&quot;continuous-integration-ci---an-introduction&quot;&gt;Continuous Integration (CI) - An Introduction&lt;/h1&gt;
+
+&lt;p&gt;A software development team can benefit from many methodologies that will save them time and repetitive work. As an example, there is continuous integration, continuous delivery and continuous deployment.  Methods and techniques like these represent ways to accelerate the delivery of new versions of the application, and are aligned with the &lt;strong&gt;agile methodologies&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Continuous integration (CI) is a software development practice that aims to make code integration more efficient, through automated builds and tests.&lt;/p&gt;
+
+&lt;p&gt;In agile methodology, one of the proposals is that the software development process should be carried out with more frequent deliveries.&lt;/p&gt;
+
+&lt;p&gt;As a consequence, the work required to gather, integrate and test all the code developed by the team in a central repository has also to become more frequent.&lt;/p&gt;
+
+&lt;p&gt;In the words of &lt;a href=&quot;https://martinfowler.com/articles/continuousIntegration.html&quot;&gt;Martin Fowler&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this context, Continuous Integration helps to reduce the manual work required in the code integration process. In addition, with test automation, bug fixing work is made easier, ensuring that the software is working after each change.&lt;/p&gt;
+
+&lt;p&gt;To adopt Continuous Integration, it is essential to use version control tools, such as Gitlab or Github.&lt;/p&gt;
+
+&lt;p&gt;The process of integrating software continuously is, first of all, a matter of communication, and for that everything must be adequate, with automated tests and automated builds.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The one prerequisite for a developer committing to the mainline is that they can correctly build their code. This, of course, includes passing the build tests. As with any commit cycle the developer first updates their working copy to match the mainline, resolves any conflicts with the mainline, then builds on their local machine. If the build passes, then they are free to commit to the mainline. - Martin Fowler&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;tools-for-continuous-integration&quot;&gt;Tools for Continuous Integration&lt;/h1&gt;
+
+&lt;p&gt;With the mentioned steps already implemented, it is time to implement a continuous integration tool. There are several of them, such as Jenkins, TravisCI, CircleCI, Bitrise, etc. Some of them are cloud-based, and others are server-based.&lt;/p&gt;
+
+&lt;p&gt;Many of them are free for open source projects and easy to configure. Of course, each team must choose the one that better fit their needs. The key to good integration, as seen earlier, is a version control environment, a well-defined workflow, automated builds and tests.&lt;/p&gt;
+
+&lt;p&gt;The tools for continuous integration come in to make the process simpler, and allows the configuration a wide set of requirements, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The development environment&lt;/li&gt;
+  &lt;li&gt;The automated build system&lt;/li&gt;
+  &lt;li&gt;The automated code formatting&lt;/li&gt;
+  &lt;li&gt;Integration with the version control repository&lt;/li&gt;
+  &lt;li&gt;Notification emails (in case of errors)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;benefits&quot;&gt;&lt;strong&gt;Benefits&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;For the development team, the integration, delivery and continuous deployment practices allow minimized work, reducing errors and making the software available in shorter cycles.&lt;/p&gt;
+
+&lt;p&gt;For the business, the main benefit of using these approaches is to decrease the time required to release product updates.&lt;/p&gt;
+
+&lt;p&gt;In competitive markets, this represents a major advantage for companies that want to quickly meet the demands of their users.&lt;/p&gt;
+
+&lt;p&gt;In addition, by making new * features * available to users more often, the company has the possibility to make its upgrading cycle more efficient.&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;Continuous integration with automated tools has several benefits, as we have seen. First is that teamwork generates fewer errors, which reduces risks, because as the system is integrated continuously and quickly, errors are also detected at the same speed.&lt;/p&gt;
+
+&lt;p&gt;The bugs, in this format, do not accumulate, not creating a general problem in the system, because instead of taking a day or a week, the error is detected in hours. Because even if the code is tested, errors can arise upon integration and the sooner the errors are detected, the sooner they will be corrected.&lt;/p&gt;
+
+&lt;p&gt;If you want more Information on this subject, I recommend the very comprehensive article written by &lt;a href=&quot;https://martinfowler.com/articles/continuousIntegration.html&quot;&gt;Martin Fowler&lt;/a&gt;.&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="continuous integration" /><category term="CI" /><category term="Agile" /><summary type="html">Continuous integration (CI) is a software development practice that aims to make code integration more efficient, through automated builds and tests.</summary></entry><entry><title type="html">Microinteractions in SwiftUI - Menu Button Animation</title><link href="https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/" rel="alternate" type="text/html" title="Microinteractions in SwiftUI - Menu Button Animation" /><published>2020-04-12T00:00:00+02:00</published><updated>2020-04-12T00:00:00+02:00</updated><id>https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui</id><content type="html" xml:base="https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/">&lt;p&gt;Microinteractions have become increasingly important in a world with a dizzying number of digital platforms and an ocean of content. While microinteractions used to be considered an interesting resource in the early days of digital design, in today’s hypercompetitive digital space they have become a crucial element in the overall user experience.&lt;/p&gt;
 
 &lt;p&gt;Basically, microinteraction is a particular moment of a user’s interaction with a product in order to complete a specific task. For example, when someone presses a “Like” button (whatever it looks like) and sees that their action produced a feedback - the number has changed, the color of the button has changed or it has become inactive, the text on the button reported that the action was done and so on - this is a case of microinteraction.&lt;/p&gt;
 
