@@ -51,5 +51,5 @@ var store = [{
         "excerpt":"A software development team can benefit from many methodologies that will save them time and repetitive work. As an example, there is continuous integration, continuous delivery and continuous deployment. Methods and techniques like these represent ways to accelerate the delivery of new versions of the application, and are aligned with...","categories": ["Agile"],
         "tags": ["continuous integration","CI","Agile"],
         "url": "https://vinileal.com/agile/continuous-integration-intro/",
-        "teaser": "https://vinileal.com/assets/images/initializers-header.png"
+        "teaser": "https://vinileal.com/assets/images/ci-header.png"
       }]
