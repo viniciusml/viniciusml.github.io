@@ -1,4 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-05-10T15:08:00+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Continuous Integration (CI) - An Introduction</title><link href="https://vinileal.com/agile/continuous-integration-intro/" rel="alternate" type="text/html" title="Continuous Integration (CI) - An Introduction" /><published>2020-04-20T00:00:00+02:00</published><updated>2020-04-20T00:00:00+02:00</updated><id>https://vinileal.com/agile/continuous-integration-intro</id><content type="html" xml:base="https://vinileal.com/agile/continuous-integration-intro/">&lt;p&gt;A software development team can benefit from many methodologies that will save them time and repetitive work. As an example, there is continuous integration, continuous delivery and continuous deployment.  Methods and techniques like these represent ways to accelerate the delivery of new versions of the application, and are aligned with the &lt;strong&gt;agile methodologies&lt;/strong&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-05-24T00:56:47+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Design Patterns in Swift - Template Method</title><link href="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/" rel="alternate" type="text/html" title="Design Patterns in Swift - Template Method" /><published>2020-05-23T00:00:00+02:00</published><updated>2020-05-23T00:00:00+02:00</updated><id>https://vinileal.com/design%20patterns/design-patterns-swift-template-method</id><content type="html" xml:base="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/">&lt;p&gt;When we think about the software development routine, we can quickly identify that many times, the solution to a specific problem has identical characteristics, if not equal to that found in a previously developed project but the solution and the problem had not been documented. So, you are facing a similar problem, that was solved in the past, but there’s no record of &lt;em&gt;how&lt;/em&gt; it was solved, making it extremely hard to reuse ideas and solutions. In this way, the occurrence of identical problems that are repeated in other contexts, consume more time and resources then they should, since the solutions were already explored before.&lt;/p&gt;
+
+&lt;p&gt;In this way, Design Pattern are great allies. A Design Pattern can be described as the recurring solution to a problem in a context, even if in different projects and areas. The key terms here are: &lt;strong&gt;context&lt;/strong&gt;, &lt;strong&gt;problem&lt;/strong&gt; and &lt;strong&gt;solution&lt;/strong&gt;. One context concerns the environment, and the circumstances within which element exists. The problem is the undefined issue, something that needs to be investigated and resolved. It is usually tied to the context in which it occurs. Finally, the solution refers to the answer to the problem that helps to solve it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The design patterns are descriptions of communicating objects and classes that are customized to solve a general design problem in a particular context. 
+― Gamma Erich, Helm Richard, Johnson Ralph, Vlissides John. Design Patterns: Elements of Reusable Object-Oriented Software&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this article, I would like to discuss about the Template Method, a Behavioral Pattern.&lt;/p&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+&lt;p&gt;Behavior patterns focus on algorithms and assignment of responsibilities between objects. They describe not only patterns of objects or classes, but also patterns of communication between objects.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;template-method&quot;&gt;Template Method&lt;/h2&gt;
+
+&lt;p&gt;A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses. In this way, the template method protects the algorithm, the order of execution and provides abstract methods that can be implemented by concrete types.&lt;/p&gt;
+
+&lt;h3 id=&quot;purpose&quot;&gt;Purpose&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Define an algorithm framework in the form of a method, allowing some steps to be implemented by specific concrete classes.&lt;/li&gt;
+  &lt;li&gt;Sub-classes can redefine certain steps of an algorithm without changing its general structure.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;applicability&quot;&gt;Applicability&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The Template Method can be used to implement parts of an algorithm once and leave it up to the concrete classes to implement the behavior according to their needs.&lt;/li&gt;
+  &lt;li&gt;It can be used when code reusability is desired without losing control of the algorithm.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/design-patterns-template-method-example.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It presents an abstract class with primitive operations that subclasses define to implement steps of an algorithm.&lt;/li&gt;
+  &lt;li&gt;The abstract class implements a template method defining the skeleton of the algorithm&lt;/li&gt;
+  &lt;li&gt;The concrete classes implement the primitive operations to be executed in the template method.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+&lt;p&gt;It's worth enforcing that `templateMethod()` should be final, and therefore should not be overridden.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;consequences&quot;&gt;Consequences&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Template Method uses inheritance to vary parts of an algorithm. It may become a problem in the future.&lt;/li&gt;
+  &lt;li&gt;It can be an important ally in the development of applications, as it provides a way to separate the variable behavior from the invariable behavior of an application.&lt;/li&gt;
+  &lt;li&gt;It also contributes to the implementation of the dependency inversion principle.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;practical-example-in-swift&quot;&gt;Practical Example in Swift&lt;/h2&gt;
+
+&lt;p&gt;When creating the UI of a project programatically, i.e. setting up the interface without storyboards or XIBs, we need to perform a few basic steps, such as:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add the sub view to the view.&lt;/li&gt;
+  &lt;li&gt;Setup the constraints.&lt;/li&gt;
+  &lt;li&gt;Setup additional configuration.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So far, pretty simple. But these steps need to be implemented in the correct order. In case you try to run a piece of code that sets constraints to a view that has not been added yet, the application crashes, because there’s no view to apply those constraints to.&lt;/p&gt;
+
+&lt;p&gt;This seems like a good use case for Template Method. So, let’s see how it goes.&lt;/p&gt;
+
+&lt;h3 id=&quot;abstraction&quot;&gt;Abstraction&lt;/h3&gt;
+
+&lt;p&gt;In Swift, we can create an abstract type to hold a blueprint of methods, and make our classes conform to it. This way we favor composition over inheritance, minimising one of the downsides of this pattern. So, we do that by declaring a Protocol.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/3dcea7d4f21a236a420883b6cb5140ce.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Our protocol holds the three basic steps to configure views programmatically, and a fourth method &lt;code class=&quot;highlighter-rouge&quot;&gt;setupView()&lt;/code&gt; that’s going to be out template.&lt;/p&gt;
+
+&lt;p&gt;So we have the basic structure, but we don’t have our algorithm yet. In order to implement it, we are going to use Protocol Extensions.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Protocols can be extended to provide method, initializer, subscript, and computed property implementations to conforming types. This allows you to define behavior on protocols themselves, rather than in each type’s individual conformance or in a global function. - Apple documentation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is how our extension will look like:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/2ce685489df73730a00e6003813d02c1.js&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;Now we created our algorithm, in the classes that implement this protocol, &lt;code class=&quot;highlighter-rouge&quot;&gt;setupView()&lt;/code&gt; is the only method that needs to be called. The other ones will hold the implementation of the algorithm steps, for example:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b80ccfb245d35dabebaab9ac831b0117.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The class conforms to the protocol, and configures the steps for the algorithm. And the only method called is our template method.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;So, as we could see, the Template Method allows us to approach a common task that needs to be done routinely, and create an abstraction that reinforces the steps to be executed, as well as the order of execution. Besides that, it becomes a standard in the codebase, facilitating the communication with the team and with new developers.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Design Patterns - Elements of Reusable Object-Oriented Software was written by Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides (also known as the Gang of Four, or GoF)&lt;/p&gt;
+
+&lt;p&gt;iOS Course: View code module (in Portuguese) -  &lt;a href=&quot;https://medium.com/@tpLioy/curso-ios-m%C3%B3dulo-sobre-view-code-af0f6188297b&quot;&gt;Article&lt;/a&gt;&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="template method" /><category term="design patterns" /><summary type="html">A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses.</summary></entry><entry><title type="html">Continuous Integration (CI) - An Introduction</title><link href="https://vinileal.com/agile/continuous-integration-intro/" rel="alternate" type="text/html" title="Continuous Integration (CI) - An Introduction" /><published>2020-04-20T00:00:00+02:00</published><updated>2020-04-20T00:00:00+02:00</updated><id>https://vinileal.com/agile/continuous-integration-intro</id><content type="html" xml:base="https://vinileal.com/agile/continuous-integration-intro/">&lt;p&gt;A software development team can benefit from many methodologies that will save them time and repetitive work. As an example, there is continuous integration, continuous delivery and continuous deployment.  Methods and techniques like these represent ways to accelerate the delivery of new versions of the application, and are aligned with the &lt;strong&gt;agile methodologies&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Continuous integration (CI) is a software development practice that aims to make code integration more efficient, through automated builds and tests.&lt;/p&gt;
 

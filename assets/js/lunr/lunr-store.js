@@ -52,4 +52,10 @@ var store = [{
         "tags": ["continuous integration","CI","Agile"],
         "url": "https://vinileal.com/agile/continuous-integration-intro/",
         "teaser": "https://vinileal.com/assets/images/ci-header.png"
+      },{
+        "title": "Design Patterns in Swift - Template Method",
+        "excerpt":"When we think about the software development routine, we can quickly identify that many times, the solution to a specific problem has identical characteristics, if not equal to that found in a previously developed project but the solution and the problem had not been documented. So, you are facing a...","categories": ["Design Patterns"],
+        "tags": ["template method","design patterns"],
+        "url": "https://vinileal.com/design%20patterns/design-patterns-swift-template-method/",
+        "teaser": "https://vinileal.com/assets/images/design-patterns-template-method-header.png"
       }]

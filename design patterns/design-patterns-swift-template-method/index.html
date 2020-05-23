@@ -1,0 +1,634 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Design Patterns in Swift - Template Method | Vini Leal</title>
+<meta name="description" content="A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses. ">
+
+
+  <meta name="author" content="Vini Leal">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Vini Leal">
+<meta property="og:title" content="Design Patterns in Swift - Template Method">
+<meta property="og:url" content="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/">
+
+
+  <meta property="og:description" content="A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses. ">
+
+
+
+  <meta property="og:image" content="https://vinileal.com/assets/images/design-patterns-template-method-header.png">
+
+
+
+  <meta name="twitter:site" content="@Vini__leal">
+  <meta name="twitter:title" content="Design Patterns in Swift - Template Method">
+  <meta name="twitter:description" content="A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses. ">
+  <meta name="twitter:url" content="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://vinileal.com/assets/images/design-patterns-template-method-header.png">
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-05-23T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Vini Leal",
+      "url": "https://vinileal.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Vini Leal Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Vini Leal
+          <span class="site-subtitle">iOS Dev</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" background-image: url('');"
+>
+  
+    <img src="/assets/images/design-patterns-template-method-header.png" alt="Design Patterns in Swift - Template Method" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/vini-avatar.png" alt="Vini Leal" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Vini Leal</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Milan - IT</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:viniciusmoreiraleal+blog@gmail.com">
+            <meta itemprop="email" content="viniciusmoreiraleal+blog@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Design Patterns in Swift - Template Method">
+    <meta itemprop="description" content="A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses.">
+    <meta itemprop="datePublished" content="2020-05-23T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Design Patterns in Swift - Template Method
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>When we think about the software development routine, we can quickly identify that many times, the solution to a specific problem has identical characteristics, if not equal to that found in a previously developed project but the solution and the problem had not been documented. So, you are facing a similar problem, that was solved in the past, but there’s no record of <em>how</em> it was solved, making it extremely hard to reuse ideas and solutions. In this way, the occurrence of identical problems that are repeated in other contexts, consume more time and resources then they should, since the solutions were already explored before.</p>
+
+<p>In this way, Design Pattern are great allies. A Design Pattern can be described as the recurring solution to a problem in a context, even if in different projects and areas. The key terms here are: <strong>context</strong>, <strong>problem</strong> and <strong>solution</strong>. One context concerns the environment, and the circumstances within which element exists. The problem is the undefined issue, something that needs to be investigated and resolved. It is usually tied to the context in which it occurs. Finally, the solution refers to the answer to the problem that helps to solve it.</p>
+
+<blockquote>
+  <p>The design patterns are descriptions of communicating objects and classes that are customized to solve a general design problem in a particular context. 
+― Gamma Erich, Helm Richard, Johnson Ralph, Vlissides John. Design Patterns: Elements of Reusable Object-Oriented Software</p>
+</blockquote>
+
+<p>In this article, I would like to discuss about the Template Method, a Behavioral Pattern.</p>
+
+<div class="notice--info">
+<p>Behavior patterns focus on algorithms and assignment of responsibilities between objects. They describe not only patterns of objects or classes, but also patterns of communication between objects.</p>
+</div>
+
+<h2 id="template-method">Template Method</h2>
+
+<p>A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses. In this way, the template method protects the algorithm, the order of execution and provides abstract methods that can be implemented by concrete types.</p>
+
+<h3 id="purpose">Purpose</h3>
+
+<ul>
+  <li>Define an algorithm framework in the form of a method, allowing some steps to be implemented by specific concrete classes.</li>
+  <li>Sub-classes can redefine certain steps of an algorithm without changing its general structure.</li>
+</ul>
+
+<h3 id="applicability">Applicability</h3>
+
+<ul>
+  <li>The Template Method can be used to implement parts of an algorithm once and leave it up to the concrete classes to implement the behavior according to their needs.</li>
+  <li>It can be used when code reusability is desired without losing control of the algorithm.</li>
+</ul>
+
+<h3 id="structure">Structure</h3>
+
+<p><img src="/assets/images/design-patterns-template-method-example.png" alt="" class="full" /></p>
+
+<ul>
+  <li>It presents an abstract class with primitive operations that subclasses define to implement steps of an algorithm.</li>
+  <li>The abstract class implements a template method defining the skeleton of the algorithm</li>
+  <li>The concrete classes implement the primitive operations to be executed in the template method.</li>
+</ul>
+
+<div class="notice--info">
+<p>It's worth enforcing that `templateMethod()` should be final, and therefore should not be overridden.</p>
+</div>
+
+<h3 id="consequences">Consequences</h3>
+
+<ul>
+  <li>Template Method uses inheritance to vary parts of an algorithm. It may become a problem in the future.</li>
+  <li>It can be an important ally in the development of applications, as it provides a way to separate the variable behavior from the invariable behavior of an application.</li>
+  <li>It also contributes to the implementation of the dependency inversion principle.</li>
+</ul>
+
+<h2 id="practical-example-in-swift">Practical Example in Swift</h2>
+
+<p>When creating the UI of a project programatically, i.e. setting up the interface without storyboards or XIBs, we need to perform a few basic steps, such as:</p>
+
+<ol>
+  <li>Add the sub view to the view.</li>
+  <li>Setup the constraints.</li>
+  <li>Setup additional configuration.</li>
+</ol>
+
+<p>So far, pretty simple. But these steps need to be implemented in the correct order. In case you try to run a piece of code that sets constraints to a view that has not been added yet, the application crashes, because there’s no view to apply those constraints to.</p>
+
+<p>This seems like a good use case for Template Method. So, let’s see how it goes.</p>
+
+<h3 id="abstraction">Abstraction</h3>
+
+<p>In Swift, we can create an abstract type to hold a blueprint of methods, and make our classes conform to it. This way we favor composition over inheritance, minimising one of the downsides of this pattern. So, we do that by declaring a Protocol.</p>
+
+<script src="https://gist.github.com/viniciusml/3dcea7d4f21a236a420883b6cb5140ce.js"></script>
+
+<p>Our protocol holds the three basic steps to configure views programmatically, and a fourth method <code class="highlighter-rouge">setupView()</code> that’s going to be out template.</p>
+
+<p>So we have the basic structure, but we don’t have our algorithm yet. In order to implement it, we are going to use Protocol Extensions.</p>
+
+<blockquote>
+  <p>Protocols can be extended to provide method, initializer, subscript, and computed property implementations to conforming types. This allows you to define behavior on protocols themselves, rather than in each type’s individual conformance or in a global function. - Apple documentation.</p>
+</blockquote>
+
+<p>This is how our extension will look like:</p>
+
+<script src="https://gist.github.com/viniciusml/2ce685489df73730a00e6003813d02c1.js"></script>
+
+<h3 id="implementation">Implementation</h3>
+
+<p>Now we created our algorithm, in the classes that implement this protocol, <code class="highlighter-rouge">setupView()</code> is the only method that needs to be called. The other ones will hold the implementation of the algorithm steps, for example:</p>
+
+<script src="https://gist.github.com/viniciusml/b80ccfb245d35dabebaab9ac831b0117.js"></script>
+
+<p>The class conforms to the protocol, and configures the steps for the algorithm. And the only method called is our template method.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>So, as we could see, the Template Method allows us to approach a common task that needs to be done routinely, and create an abstraction that reinforces the steps to be executed, as well as the order of execution. Besides that, it becomes a standard in the codebase, facilitating the communication with the team and with new developers.</p>
+
+<h2 id="references">References</h2>
+
+<p>Design Patterns - Elements of Reusable Object-Oriented Software was written by Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides (also known as the Gang of Four, or GoF)</p>
+
+<p>iOS Course: View code module (in Portuguese) -  <a href="https://medium.com/@tpLioy/curso-ios-m%C3%B3dulo-sobre-view-code-af0f6188297b">Article</a></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#design-patterns" class="page__taxonomy-item" rel="tag">design patterns</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#template-method" class="page__taxonomy-item" rel="tag">template method</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#design-patterns" class="page__taxonomy-item" rel="tag">Design Patterns</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-23T00:00:00+02:00">May 23, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=Vini__leal&text=Design+Patterns+in+Swift+-+Template+Method%20https%3A%2F%2Fvinileal.com%2Fdesign%2520patterns%2Fdesign-patterns-swift-template-method%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvinileal.com%2Fdesign%2520patterns%2Fdesign-patterns-swift-template-method%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvinileal.com%2Fdesign%2520patterns%2Fdesign-patterns-swift-template-method%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/agile/continuous-integration-intro/" class="pagination--pager" title="Continuous Integration (CI) - An Introduction
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Vini Leal. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142201491-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142201491-1', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
