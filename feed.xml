@@ -1,4 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-05-24T00:56:47+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Design Patterns in Swift - Template Method</title><link href="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/" rel="alternate" type="text/html" title="Design Patterns in Swift - Template Method" /><published>2020-05-23T00:00:00+02:00</published><updated>2020-05-23T00:00:00+02:00</updated><id>https://vinileal.com/design%20patterns/design-patterns-swift-template-method</id><content type="html" xml:base="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/">&lt;p&gt;When we think about the software development routine, we can quickly identify that many times, the solution to a specific problem has identical characteristics, if not equal to that found in a previously developed project but the solution and the problem had not been documented. So, you are facing a similar problem, that was solved in the past, but there’s no record of &lt;em&gt;how&lt;/em&gt; it was solved, making it extremely hard to reuse ideas and solutions. In this way, the occurrence of identical problems that are repeated in other contexts, consume more time and resources then they should, since the solutions were already explored before.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2020-06-13T00:10:53+02:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Common Git Workflows</title><link href="https://vinileal.com/git/common-git-workflows/" rel="alternate" type="text/html" title="Common Git Workflows" /><published>2020-06-12T00:00:00+02:00</published><updated>2020-06-12T00:00:00+02:00</updated><id>https://vinileal.com/git/common-git-workflows</id><content type="html" xml:base="https://vinileal.com/git/common-git-workflows/">&lt;p&gt;This article aims to expose a few of the approaches on  how to work using workflows with git.&lt;/p&gt;
+
+&lt;p&gt;If you already work with git as the main version control tool, you may have seen several approaches on how to use and control branches in a production or personal setting.&lt;/p&gt;
+
+&lt;p&gt;And if you’re new to git, getting to know a bit about flows will help you become more familiar with how companies and open source projects often structure their workflows.&lt;/p&gt;
+
+&lt;p&gt;Git-flow is a model, a strategy that helps groups in versioning a project. Workflows make the maintenance of corrections and introduction of new features more organized and secure.&lt;/p&gt;
+
+&lt;p&gt;It is nothing more than a strategy created to improve the coordination of branches in a repository. This provides more fluidity to the process of adding new features and new releases.&lt;/p&gt;
+
+&lt;p&gt;The strategy is relatively recent. It was released to the world in 2010 by Vincent Driessen. Git is a code versioning model, where branches can be compared to other branches. That is, it is possible to see the model as something like a tree and its (literal) branches. If you have already used this versioning system, you have probably noticed that, in general, there is an origin branch, which will be referred as the  &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch in this article, and it is the one that usually bridges the repository with the production server.&lt;/p&gt;
+
+&lt;p&gt;It is very common to see people using only one branch to commit to personal projects. This is not wrong, since it is very easy to control everything in a branch when developing alone, but the scenario changes a lot when we have to interact with more contributors, whether in an open source or private project.&lt;/p&gt;
+
+&lt;p&gt;As a way to prevent complications with the main branch, Git-flow brought a more robust solution, mainly for projects that grow in size and which are constantly changing, and also because of the number of people interacting with the repository.&lt;/p&gt;
+
+&lt;p&gt;In a project, for example, involving approximately 30 programmers, what would the project look like if everyone made their commits to the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;? This might even be a valid strategy, but in conjunction with other strategies so that the team does not fall into the trap of putting something into production that is not fully tested.&lt;/p&gt;
+
+&lt;p&gt;At these times, it is extremely important to have total control of what is being produced by your team, since that, at the same time bugs are corrected, new features are being implemented and this whole process should not prevent production code to be fully delivered to the customer or the stakeholders.&lt;/p&gt;
+
+&lt;p&gt;In a more generic approach, it is common to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; as the main branch of the repository, and whenever it is necessary to create a new feature or correct something, a new branch is created for each case. After the task is completed, the branch is merged with the corrections / new features, with the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch.&lt;/p&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+&lt;p&gt;The branch would, in this case, be a pointer to the specific commit.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;git-flow&quot;&gt;Git-flow&lt;/h2&gt;
+
+&lt;p&gt;In Git-flow, something similar happens, but with a slightly more complex structure, which can help a lot in the organization and productivity of a team.&lt;/p&gt;
+
+&lt;p&gt;We can separate Git-flow into 2 types of branches:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The main branches, which are the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Support branches, which are the &lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For each branch there are some rules and recommendations to be followed.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch continues to bridge the release commits to production.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; branch contains all the stable features that will later be merged into a &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt; branch.&lt;/li&gt;
+  &lt;li&gt;It is only from the &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; branches that feature branches are created. For each feature, a new branch is created.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+&lt;p&gt;The nomenclature for new branches has been standardized over time. For new features, for example, you may want to name: 'feature/feature-name'.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt; branch will always be created from &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt;, and returned via merge to this one. Once incorporated, it can be removed.&lt;/li&gt;
+  &lt;li&gt;After incorporating the new feature, it must be prepared to go into production. For this, another support branch is used, the &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt;. It serves as a support to create a point where it should reflect what is expected from a next project release. In other words, it may occur that only after creating a set of new features, the team has a release ready. Once all the necessary features are ready in &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; it will be possible to merge them into a &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt; branch.&lt;/li&gt;
+  &lt;li&gt;With the &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt; ready to go to the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, it is time to create a tag, that is an indication where it will contain a new version of the project. This is done in the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch, right after the merge.&lt;/li&gt;
+  &lt;li&gt;Each merge done in the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; must be done in the &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; as well, to reflect the new tagged release. So, the branch Release can be removed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/git-flow.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a standard Git-flow. However, all projects are subject to unexpected production problems, or bugs. It is in this case that another support branch, the &lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;, appears. These have a very similar operation to the Release, with the difference that in this case, it is used for a more critical action. For this reason, when the hotfix is finished, the branch will be merged directly into the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch. It also receives a tag in the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, after the merge, and the same must be done in the &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; branch.&lt;/p&gt;
+
+&lt;p&gt;This way it is possible to keep developers working on their features, while hotfixes are created. Then the branch containing the hotfix can be removed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/hotfix.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a summary of how Git-flow works. The approach may seem a little far-fetched at first. But with a little practice, the team adjusts to it and the benefits appear.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-approaches&quot;&gt;Other Approaches&lt;/h2&gt;
+
+&lt;p&gt;There are many other branch management approaches, which can fit perfectly into what you and your team need. Proposed by Github in 2011, for example, Github Flow has the advantage of easy understanding and simplicity in use. The motivation behind this approach is the speed in the deployment phase. As the original Git-flow is focused on releases, there are a series of steps to be followed until deployment. In the case of Github Flow, the application is integrated several times a day, in the form of small implementations.&lt;/p&gt;
+
+&lt;p&gt;A few characteristics of the Github Flow:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Anything in the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch is deployable&lt;/li&gt;
+  &lt;li&gt;To work on something new, create a descriptively named branch off of &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; (such as: &lt;code class=&quot;highlighter-rouge&quot;&gt;new-feature&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Commit to that branch locally and regularly push your work to the same named branch on the server&lt;/li&gt;
+  &lt;li&gt;When you need feedback or help, or you think the branch is ready for merging, open a pull request&lt;/li&gt;
+  &lt;li&gt;After someone else has reviewed and approved the feature, you can merge it into main branch&lt;/li&gt;
+  &lt;li&gt;Once it is merged and pushed to &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, you can and &lt;em&gt;should&lt;/em&gt; deploy immediately&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another strategy, released in 2014, is Gitlab Flow. Also a simplified version of the Git-flow proposed by Vincent, in the Gitlab Flow:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;All features and fixes first go to &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;It allows for &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;stable&lt;/code&gt; branches&lt;/li&gt;
+  &lt;li&gt;Bug fixes/hot fix patches are cherry-picked from main branch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In short, we learned how to control our branches by separating their responsibilities, without impacting on the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, which is where our stable code remains, and are identified with tags to version our releases and have a much more flexible control.&lt;/p&gt;
+
+&lt;p&gt;If you are interested in learning more about how to use Git-flow, I recommend reading Vincent’s original &lt;a href=&quot;https://nvie.com/posts/a-successful-git-branching-model/&quot;&gt;article&lt;/a&gt;. There is also an &lt;a href=&quot;https://github.com/nvie/gitflow&quot;&gt;extension&lt;/a&gt;) created by git itself, to facilitate the process and thus simplify some steps.&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="git workflows" /><category term="git" /><summary type="html">A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses.</summary></entry><entry><title type="html">Design Patterns in Swift - Template Method</title><link href="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/" rel="alternate" type="text/html" title="Design Patterns in Swift - Template Method" /><published>2020-05-23T00:00:00+02:00</published><updated>2020-05-23T00:00:00+02:00</updated><id>https://vinileal.com/design%20patterns/design-patterns-swift-template-method</id><content type="html" xml:base="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/">&lt;p&gt;When we think about the software development routine, we can quickly identify that many times, the solution to a specific problem has identical characteristics, if not equal to that found in a previously developed project but the solution and the problem had not been documented. So, you are facing a similar problem, that was solved in the past, but there’s no record of &lt;em&gt;how&lt;/em&gt; it was solved, making it extremely hard to reuse ideas and solutions. In this way, the occurrence of identical problems that are repeated in other contexts, consume more time and resources then they should, since the solutions were already explored before.&lt;/p&gt;
 
 &lt;p&gt;In this way, Design Pattern are great allies. A Design Pattern can be described as the recurring solution to a problem in a context, even if in different projects and areas. The key terms here are: &lt;strong&gt;context&lt;/strong&gt;, &lt;strong&gt;problem&lt;/strong&gt; and &lt;strong&gt;solution&lt;/strong&gt;. One context concerns the environment, and the circumstances within which element exists. The problem is the undefined issue, something that needs to be investigated and resolved. It is usually tied to the context in which it occurs. Finally, the solution refers to the answer to the problem that helps to solve it.&lt;/p&gt;
 

@@ -2,19 +2,19 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://vinileal.com/portfolio/AAA-02-apollo-explorer-identity/</loc>
-<lastmod>2020-05-24T00:56:47+02:00</lastmod>
+<lastmod>2020-06-13T00:10:53+02:00</lastmod>
 </url>
 <url>
 <loc>https://vinileal.com/portfolio/AAA-03-blossom-journey-identity/</loc>
-<lastmod>2020-05-24T00:56:47+02:00</lastmod>
+<lastmod>2020-06-13T00:10:53+02:00</lastmod>
 </url>
 <url>
 <loc>https://vinileal.com/portfolio/AAA-04-sammy-on-ice-identity/</loc>
-<lastmod>2020-05-24T00:56:47+02:00</lastmod>
+<lastmod>2020-06-13T00:10:53+02:00</lastmod>
 </url>
 <url>
 <loc>https://vinileal.com/portfolio/CCC-01-i-recorder-identity/</loc>
-<lastmod>2020-05-24T00:56:47+02:00</lastmod>
+<lastmod>2020-06-13T00:10:53+02:00</lastmod>
 </url>
 <url>
 <loc>https://vinileal.com/initialization/basics/swift-initializers/</loc>
@@ -41,6 +41,10 @@
 <lastmod>2020-05-23T00:00:00+02:00</lastmod>
 </url>
 <url>
+<loc>https://vinileal.com/git/common-git-workflows/</loc>
+<lastmod>2020-06-12T00:00:00+02:00</lastmod>
+</url>
+<url>
 <loc>https://vinileal.com/about/</loc>
 </url>
 <url>
@@ -48,5 +52,8 @@
 </url>
 <url>
 <loc>https://vinileal.com/portfolio/</loc>
+</url>
+<url>
+<loc>https://vinileal.com/page2/</loc>
 </url>
 </urlset>

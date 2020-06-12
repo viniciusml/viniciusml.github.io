@@ -58,4 +58,10 @@ var store = [{
         "tags": ["template method","design patterns"],
         "url": "https://vinileal.com/design%20patterns/design-patterns-swift-template-method/",
         "teaser": "https://vinileal.com/assets/images/design-patterns-template-method-header.png"
+      },{
+        "title": "Common Git Workflows",
+        "excerpt":"This article aims to expose a few of the approaches on how to work using workflows with git. If you already work with git as the main version control tool, you may have seen several approaches on how to use and control branches in a production or personal setting. And...","categories": ["Git"],
+        "tags": ["git workflows","git"],
+        "url": "https://vinileal.com/git/common-git-workflows/",
+        "teaser": "https://vinileal.com/assets/images/git-flow-header.png"
       }]
