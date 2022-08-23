@@ -1,0 +1,645 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>What is Open Sorce and How to Start Contributing | Vini Leal</title>
+<meta name="description" content="A brief explanation of what is open souce software, its history and what are the first steps to start contributing. ">
+
+
+  <meta name="author" content="Vini Leal">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Vini Leal">
+<meta property="og:title" content="What is Open Sorce and How to Start Contributing">
+<meta property="og:url" content="https://vinileal.com/open%20source/open-source-how-to-contribute/">
+
+
+  <meta property="og:description" content="A brief explanation of what is open souce software, its history and what are the first steps to start contributing. ">
+
+
+
+  <meta property="og:image" content="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=3450&amp;q=80">
+
+
+
+  <meta name="twitter:site" content="@Vini__leal">
+  <meta name="twitter:title" content="What is Open Sorce and How to Start Contributing">
+  <meta name="twitter:description" content="A brief explanation of what is open souce software, its history and what are the first steps to start contributing. ">
+  <meta name="twitter:url" content="https://vinileal.com/open%20source/open-source-how-to-contribute/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=3450&amp;q=80">
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-09-30T00:00:00+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://vinileal.com/open%20source/open-source-how-to-contribute/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Vini Leal",
+      "url": "https://vinileal.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Vini Leal Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Vini Leal
+          <span class="site-subtitle">iOS Dev</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" background-image: url('');"
+>
+  
+    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80" alt="What is Open Sorce and How to Start Contributing" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/vini-avatar.png" alt="Vini Leal" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Vini Leal</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Brighton - UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:viniciusmoreiraleal+blog@gmail.com">
+            <meta itemprop="email" content="viniciusmoreiraleal+blog@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="What is Open Sorce and How to Start Contributing">
+    <meta itemprop="description" content="A brief explanation of what is open souce software, its history and what are the first steps to start contributing.">
+    <meta itemprop="datePublished" content="2020-09-30T00:00:00+01:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">What is Open Sorce and How to Start Contributing
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>The world today is more democratic for those who want or need to use computers, more precisely those who need to make use of computer programs. But this was not always the case, and in part what made access to the computer world something a little simpler or less expensive was open source or open source software. But what exactly is it?</p>
+
+<p>An open source project is, in short, a project created and maintained by the people who use it.</p>
+
+<p>Let’s say you have an open source football field close to your home: one person will help you mow the lawn, another person will help paint the markings, another person will help you water, someone else will bring the ball and everyone can play! It is a collaborative software growth system.</p>
+
+<p>Contributing to open source can be a rewarding way to learn, teach and build experience on just about any skill you can imagine.</p>
+
+<p>In addition, you can interact with real professionals in the market and consult them to answer your questions, do code analysis and give tips for you to improve.</p>
+
+<h2 id="a-bit-of-history">A bit of history</h2>
+
+<p>We can understand a bit more about this concept and its associated benefits by telling the story of the most popular example of open source software.</p>
+
+<p>In the early 1990s, at the University of Helsinki, Finland, Linus Torvald created the Linux operating system from Unix, under the “<a href="https://pt.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>”, that provides one of the many designations and parameters for software licenses, created by Richard Stallman of the <a href="https://www.fsf.org/pt-br">Free Software Foundation</a>].</p>
+
+<p>From this point, many people around the world downloaded Linux and started working with it. Among the many users, some were programmers, and because they had access to the source code, they analyzed it, learned about it and made modifications to improve it. For approximately three years Torvalds received all the changes and contributions and incorporated several of them into the original version, then released version 1.0 of Linux in 1994.</p>
+
+<p>The GPL, or GNU General Public License, is the type of license predominantly used in open source projects. Among the various aspects contained in the license, the terms state that if any modification to an open source program occurs, the distribution of the changed program must also distribute the source code that has been changed. That is, no one can use open source to produce proprietary code from it.</p>
+
+<p>But the most interesting aspect related to Open Source, is the collaborative performance that is normally associated and that we saw happen in the “birth” of Linux and that lasts until today.</p>
+
+<h2 id="advantages-of-open-source">Advantages of Open Source</h2>
+
+<p>Although some are controversial and questioned, particularly by those on the opposite pole, that is, those who produce proprietary code, there are some advantages and they end up being almost fundamentals of those who develop open source:</p>
+
+<p><strong>Transparency</strong> - to the extent that I have access to the programming behind each program executed, I have the possibility to know exactly everything it does, as well as the guarantee that nothing is happening that I would not allow or would like, for example, collection of personal data, which guarantee my secrecy and privacy.</p>
+
+<p><strong>Information</strong> - the technologies and the way things happen in terms of programming, are no longer exclusive to those who programmed and thus knowledge is shared.</p>
+
+<p><strong>Security</strong> - due to the fact that the code is public, anyone with the necessary knowledge can contribute to improve and even correct problems and flaws associated with security, which can only be done by the original programmers when they have proprietary code.</p>
+
+<p><strong>Maintenance</strong> - keeping the software up to date, as well as providing improvements, are not situations that depend only on the program provider, but possibilities available to many.</p>
+
+<p><strong>Cost</strong> - although free of charge is not guaranteed in 100% of cases, the number of programs in this condition is very close to that, which is a favorable point for computer democratization.</p>
+
+<h2 id="contributing-to-open-source-software">Contributing to Open Source Software</h2>
+
+<p>Contributing to open source projects is the gateway for you to code on large projects while working with some of the best developers in the world. There are infinite reasons to contribute, such as:</p>
+
+<h3 id="helping">Helping</h3>
+
+<p>This is can be a rewarding point. You can help developing new features for an application that you use, fix bugs for it and really experience those improvements on a day-to-day basis. Also, as you help other developers, you might get some insights of how to solve problems you’re facing or once you experience a similar problem in the future, you know where to look for information.</p>
+
+<h3 id="learning">Learning</h3>
+
+<p>If you love to develop, just like me, you will realize this is one of the most fantastic points of contributing to an open source project. Because you are seeing other people’s code and you will need to not only understand, but interact with it. Often the code can be quite old and you have to refactor or change something to get better with what you are doing. And by doing so, you can learn a great deal.</p>
+
+<h3 id="networking">Networking</h3>
+
+<p>An open source project community can be a wonderful way to meet devs with more experience and baggage than you. This is where you will have the opportunity to experience what it is like to work with the toughest guys on the market, and be able to gather different perspectives to solve common issues.</p>
+
+<h3 id="visibility">Visibility</h3>
+
+<p>When you start to contribute to the community you are more seen and consequently you stand out, but I would not advise to contribute thinking about this point, it is just a consequence.</p>
+
+<h3 id="portfolio">Portfolio</h3>
+
+<p>This is especially true for beginners who, in addition to not having much experience, do not have many projects to show. Nothing better than contributing so that you can have real projects in your portfolio and combine the experience of having worked with great names in the field.</p>
+
+<hr />
+
+<p>There many reasons to contribute, but now the question remains: how to contribute? To make it easier I gathered some steps to start contributing.</p>
+
+<h2 id="find-a-project">Find a project</h2>
+
+<p>Certainly you already bumped into many open source projects, these are the cases of programming languages such as PHP, Javascript, Python, Ruby and frameworks such as AngularJS, React, Django, Rails that you have probably used or heard of, besides these there is a wide range of tools and libraries.</p>
+
+<p>There are basically two ways to learn about projects. The first way is to use it. With that, you be motivated to contribute, to help improve the project you have been using. This seems one of the most interesting ways, because by using the project you will get a clear visualization of features and bugs.</p>
+
+<p>The second way is for you to search for projects on the web to contribute. By not having prior knowledge of the use of the project, this can avoid some biases acquired when using it. If you choose this way I, there are some tools you can use to find these projects, such as:</p>
+
+<ul>
+  <li><a href="https://www.codetriage.com">CodeTriage</a> - here will find open source projects, you will be able to filter by languages and select projects to receive issue newsletters.</li>
+  <li><a href="http://yourfirstpr.github.io">YourFirstPR</a> - where you can start contributing to Open Source by finding great starter issues on GitHub and elsewhere.</li>
+  <li><a href="https://github.com/mungell/awesome-for-beginners">Awesome First PR Opportunities</a> - A curated list of awesome beginner-friendly projects.</li>
+  <li><a href="https://up-for-grabs.net/#/">Up For Grabs</a> - A list of projects which have curated tasks specifically for new contributors. These are a great way to get started with a project, or to help share the load of working on open source projects.</li>
+  <li><a href="http://issuehub.io">IssueHub</a> - Allows you to search for open issues on projects by selecting specific tags.</li>
+  <li><a href="https://hacktoberfest.digitalocean.com">Hacktoberfest</a> - an open event, happening on October, that encourages the growth of open source and contributions to the community. All backgrounds and skill levels are encouraged to join the challenge.</li>
+</ul>
+
+<h2 id="see-the-projects-guidelines-for-contributors">See the project’s guidelines for contributors</h2>
+
+<p>Most open source projects are on GitHub and when you access the repository, in addition to the project’s source code you will find the project’s README, which usually provides information on how to contribute in the contributing section. Each project has its own particularities and it is common to everyone to need to fork the project to start working on the code.</p>
+
+<p>Other projects contain a CONTRIBUTING file where relevant information on how to contribute to the project and how to keep it concise. In these cases, the README targets consumers of the project.</p>
+
+<p>The contributing file can also contain guidelines on how to open and claim issues. Also, how to announce a PR is ready for review.</p>
+
+<p>Many projects also provide a channel for communication. So if that’s the case, it is helpful to join it and discuss ideas, or simply to ask questions about a broad topic that does not fit directly on the repo’s issue.</p>
+
+<h2 id="check-the-projects-needs">Check the project’s needs</h2>
+
+<p>At this point, you found a project that you want to contribute to, and checked the rules to do so. But what needs to be done on the project, or what can be improved? The place where these information is usually present is issues section, which lists features and bugs that other users or the maintainers have detected and are asking for help. In some projects, there are labels identifying issues for those who want to start contributing. After choosing an issue, all you need to do is get your hands dirty.</p>
+
+<h2 id="write-some-code-and-open-a-pr">Write some code and open a PR</h2>
+
+<p>Aka. the best part!! At this point, you can perform the task you chose, check if the style of the code you wrote matches the project stile and guidelines, and make sure everything is working fine (at least for the parts you worked on).</p>
+
+<p>When finished, you need to open a PR from your fork / branch to the main repository of the project, to the branch defined in the rules. After opening the PR there may be interactions between the project’s contributors and you to adjust some things. After being approved, it is completed and will probably be available in the next release of the project.</p>
+
+<hr />
+
+<p>Participating in Open Source projects is one of the best ways to evolve as a professional, create relationships with the community and prove your skills in any job applications.
+If you are looking to learn more about open source software, I recommend that you check the <a href="https://opensource.guide/en">Open Source Guides</a> website.</p>
+
+<p>And as a fun curiosity, in the <a href="[https://firstpr.me](https://firstpr.me/)">First PR</a> website you can check the first pull request made by any GitHub user. How cool is that?</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#git" class="page__taxonomy-item" rel="tag">git</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#hacktoberfest" class="page__taxonomy-item" rel="tag">hacktoberfest</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#open-source" class="page__taxonomy-item" rel="tag">open source</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#pull-request" class="page__taxonomy-item" rel="tag">pull request</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#open-source" class="page__taxonomy-item" rel="tag">Open Source</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-09-30T00:00:00+01:00">September 30, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=Vini__leal&text=What+is+Open+Sorce+and+How+to+Start+Contributing%20https%3A%2F%2Fvinileal.com%2Fopen%2520source%2Fopen-source-how-to-contribute%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvinileal.com%2Fopen%2520source%2Fopen-source-how-to-contribute%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvinileal.com%2Fopen%2520source%2Fopen-source-how-to-contribute%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/git/common-git-workflows/" class="pagination--pager" title="Common Git Workflows
+">Previous</a>
+    
+    
+      <a href="/tutorial/unit%20test/unit-test-apple-pay/" class="pagination--pager" title="Improving the Testability of Apple Pay With Dependency Injection
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Vini Leal. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142201491-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142201491-1', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

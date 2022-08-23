@@ -1,0 +1,1072 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://vinileal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://vinileal.com/" rel="alternate" type="text/html" /><updated>2022-08-23T21:12:41+01:00</updated><id>https://vinileal.com/feed.xml</id><title type="html">Vini Leal</title><subtitle>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</subtitle><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><entry><title type="html">Tech Debt</title><link href="https://vinileal.com/agile/tech-debt/" rel="alternate" type="text/html" title="Tech Debt" /><published>2022-08-22T00:00:00+01:00</published><updated>2022-08-22T00:00:00+01:00</updated><id>https://vinileal.com/agile/tech-debt</id><content type="html" xml:base="https://vinileal.com/agile/tech-debt/">&lt;p&gt;It is a well known fact that time is a driving force in multiple industries. For software development, it is a constant challenge, to be able to reconcile the fulfilment of stipulated deadlines with other needs of the project (or product).&lt;/p&gt;
+
+&lt;p&gt;In this battle against time, often we are faced with the tough decision on making sacrifices in order to meet the deadlines. Sacrifices such as taking small shortcuts, implementing suboptimal solutions, and others.&lt;/p&gt;
+
+&lt;p&gt;Although it is natural to think of quick solutions that are not always ideal, it bears to the developer (or team) to ponder and understand the boundaries between speed and quality. We need to take a pragmatic look at how we manage the quality of the project so that we don’t lose speed in the long run, after all, if we always take shortcuts, the code tends to become increasingly difficult to maintain over time, which, in consequence, slows down the team.&lt;/p&gt;
+
+&lt;p&gt;In this article, I’ll discuss about the theory and application of the technical debt: a technique created so that software development teams can have this pragmatic strategy of managing the quality of the code.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-technical-debt&quot;&gt;What is technical debt&lt;/h2&gt;
+
+&lt;p&gt;Tech debt is a software development concept that represents the implicit cost of an implementation or solution that is suitable for the present moment, not considering an approach that might take more time but could be more sustainable for the project.&lt;/p&gt;
+
+&lt;p&gt;This concept can be compared to a financial debt (hence the name), which, by not being cleared, generates interest over time, making it harder to be paid.&lt;/p&gt;
+
+&lt;p&gt;Besides that, on a software level, this debt generates difficulties to maintain the code and to add new functionalities, leading to delays and possible alterations on the final product.&lt;/p&gt;
+
+&lt;p&gt;So in practical terms, let’s illustrate a scenario where a developer makes a decision to go with an approach that solves the problem, but it’s not &lt;em&gt;optimal&lt;/em&gt;. Therefore, they are left with an obligation to repay it sometime in the future (coming back to that piece of code and fixing it). It’s a conscious decision made with the awareness of the need to come back to it.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;why-does-tech-debt-happen&quot;&gt;Why does tech debt happen&lt;/h2&gt;
+
+&lt;p&gt;There are different &lt;em&gt;types&lt;/em&gt; of tech debt, and a wide range of reasons behind their occurrence.&lt;/p&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+💡 Sometimes the expression &lt;b&gt;Tech Debt&lt;/b&gt; is used to reference &lt;i&gt;lousy code&lt;/i&gt;. For example: code badly written or with no test coverage. But it is much more than that.
+
+&lt;/div&gt;
+
+&lt;p&gt;Classifying the different kinds of tech debt is helpful to address the identified problems, come up with solutions for them, and to communicate these thoughts. Also, having them well defined is very handy for communicating to non-technical people. According to Martin Fowler, these are the types of tech debt one can encounter when developing software:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Inadvertent - Prudent:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;A wrong choice regarding technology was made or there was a lack of iterative development methodology.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Inadvertent - Reckless:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;There is a lack of technical knowledge to perform a given task or design a project.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Deliberate - Prudent:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;There was not enough time to consider a proper approach to solve a problem, and the developers are aware of the need to deal with consequences.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Deliberate - Reckless:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;There was a lack of time and a choice to ignore proper design choices was made.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;how-to-eliminate-tech-debt&quot;&gt;How to eliminate tech debt&lt;/h2&gt;
+
+&lt;p&gt;Believe it or not, eliminating tech debt &lt;em&gt;completely&lt;/em&gt; is just not possible. Tech debt is unavoidable, which means it will always exist, but it does not mean it cannot be managed. It is up to us to control it and make sure it doesn’t grow.&lt;/p&gt;
+
+&lt;p&gt;It is so unavoidable that even if you can make the perfect decision on a project today, down the road, eventually the code will become suboptimal. There will be changes to the operating system, or the framework, for example. So your perfect decision may last for a while, but eventually there will be some work required to make sure these choices continue to work, or to add a new feature to this project.&lt;/p&gt;
+
+&lt;p&gt;Eventually, the time to address the tech debt accumulated over time comes, and then, the developer either has to fix the old code before adding new code, or they have to fix it because a feature stops working due to system/framework/language changes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You &lt;strong&gt;owe&lt;/strong&gt; the software you’ve written in the past a little bit of attention.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Software development is, among many other things, making trade-offs between choices. Tech debt, will come in the future, and it is directly based on the choices made today. And these choices can be anything from frameworks you chose, to UI design choices, to architectural choices.&lt;/p&gt;
+
+&lt;p&gt;Since there’s no ultimate way to eliminate it completely (as far as I know), let’s think about minimising it. There are a few tips to help:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Don’t write spaghetti code&lt;/li&gt;
+  &lt;li&gt;Well defined architecture&lt;/li&gt;
+  &lt;li&gt;Take some time to evaluate/fix current code&lt;/li&gt;
+  &lt;li&gt;DRY, clean coding&lt;/li&gt;
+  &lt;li&gt;Have someone else look at your code (code reviews)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;identifying-tech-debt&quot;&gt;Identifying tech debt&lt;/h3&gt;
+
+&lt;p&gt;Tech debt presents itself in multiple shapes and sizes. It could be a poorly designed architecture, or just a method or class that does too much, for example. Due to its broad scope, sometimes, identifying tech debt might be a bit subjective, but by no means impossible.&lt;/p&gt;
+
+&lt;p&gt;One important thing to have in mind is that shortcuts can lead to tech debt, so it is important to take note of why the decision to take this shortcut is being made and register somewhere that this needs to be addressed in a future moment.&lt;/p&gt;
+
+&lt;p&gt;At other moments, tech debt might appear in response to a lack of technical knowledge on the developer side. In these scenarios, a more adequate decision could be made by asking the colleagues in the team what approach they would recommend.&lt;/p&gt;
+
+&lt;p&gt;Apart from these mentioned ways, there are other cases where the code is already written. Then, identifying tech debt can be done by observing some traces. Those traces are often called &lt;em&gt;code smells&lt;/em&gt;, and they symbolise how a piece of code could ‘smell bad’, because it is hard to understand or modify, for example.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A code smell is a surface indication that usually corresponds to a deeper problem in the system. — Martin Fowler&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here are some examples of tech debt in iOS Development:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Massive View Controller&lt;/li&gt;
+  &lt;li&gt;Pyramid of doom&lt;/li&gt;
+  &lt;li&gt;Chain of calls&lt;/li&gt;
+  &lt;li&gt;Untested components&lt;/li&gt;
+  &lt;li&gt;Global mutable state&lt;/li&gt;
+  &lt;li&gt;Methods with many parameters&lt;/li&gt;
+  &lt;li&gt;Long methods or methods that do too much&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;why-should-you-care-about-it&quot;&gt;Why should you care about it&lt;/h2&gt;
+
+&lt;p&gt;Even if we recognise tech debt as unavoidable and not inherently bad, it is hard for us to ignore the disadvantages it could bring to a product or a team, especially if neglected. This is because choosing the easier option, going for the quick fix leads to weaker software. And a weak software might not be able to support the business as it should, and, in a worse scenario, harm the business.&lt;/p&gt;
+
+&lt;p&gt;In the words of Ward Cunningham, who popularised the metaphor:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The danger occurs when the debt is not repaid. Every minute spent on not-quite-right code counts as interest on that debt. Entire engineering organisations can be brought to a stand-still under the debt load of an unconsolidated implementation, object-oriented or otherwise.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;A well known example of the impact of technical debt is the Y2K crisis. The decision to define years only by their last two digits (e.g., 1998 as “98”) was a remarkable space-saver in the early decades of computer processing when the price of digital storage was still astronomical. But when the world reached the new century, programs were still unable to distinguish between 1948 and 2048. Over $300 billion was spent worldwide to fix the problem before it was too late. By many estimates, that cost would have been significantly lower if the software had been updated over time. There was ample opportunity, as a man named Bob Bemer first called attention to the problem back in the ’50s.&lt;/p&gt;
+
+&lt;p&gt;If not handled, tech debt can bring other undesired consequences to the business, apart from the financial consequences such as the example cited above. It could cause low team moral, because dealing with a messy code base can be really stressful and frustrating. Also, tech debt can accumulate in such a drastic way that it reaches a point where a rework is necessary in some parts of the code, or even a complete rewrite of the whole software.&lt;/p&gt;
+
+&lt;h2 id=&quot;wrapping-it-up&quot;&gt;Wrapping it up&lt;/h2&gt;
+
+&lt;p&gt;As we discussed, there’s no escape from it. From the very first line of code written, tech debt can appear. What will make a difference, however, is how it is managed. Accepting it is the first step, and recognising that eventually it will need to be settled, is equally important.&lt;/p&gt;
+
+&lt;p&gt;For this, it is essential to discuss with the team and the management, quantify and prioritise it, and draw a plan to deal with it.&lt;/p&gt;
+
+&lt;p&gt;From then on, we can be more demanding in terms of the quality of our code, set standards, write even more tests, and do our best to guarantee a high level of code quality.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/29pbPv0fLZA&quot;&gt;Tech Debt: Low short-term risk with High long-term rewards - iOS Lead Essentials Podcast #008&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.firesideswift.com/episodes/2020/2/27/ep-119-thats-aggressive&quot;&gt;Fireside Swift - That’s aggressive - Tech debt&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://martinfowler.com/bliki/TechnicalDebtQuadrant.html&quot;&gt;Martin Fowler - Technical Debt Quadrant&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://martinfowler.com/bliki/CodeSmell.html&quot;&gt;Martin Fowler - Code Smells&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://praxent.com/blog/brief-history-technical-debt&quot;&gt;What is Technical Debt? A Definition and Brief History&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://c2.com/doc/oopsla92.html&quot;&gt;The WyCash Portfolio Management System&lt;/a&gt;&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="tech debt" /><summary type="html">Sometimes the expression Tech Debt is used to reference lousy code. For example: code badly written or with no test coverage. But it is much more than that.</summary></entry><entry><title type="html">Design Patterns in Swift - Decorator</title><link href="https://vinileal.com/design%20patterns/design-patterns-swift-decorator/" rel="alternate" type="text/html" title="Design Patterns in Swift - Decorator" /><published>2020-11-08T00:00:00+00:00</published><updated>2020-11-08T00:00:00+00:00</updated><id>https://vinileal.com/design%20patterns/design-patterns-swift-decorator</id><content type="html" xml:base="https://vinileal.com/design%20patterns/design-patterns-swift-decorator/">&lt;p&gt;As I mentioned in the first article of this series, Design patterns are solutions to problems that someone once had and solved by applying a model that has been documented and that you can adapt entirely or according to the need for your solution.&lt;/p&gt;
+
+&lt;p&gt;The original idea of Design Patterns came up with Christopher Alexander when he proposed the creation of pattern catalogs for architecture. Christopher himself defined the patterns in this way:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“A pattern describes a problem that occurs numerous times in a given context, and it also describes the solution to that problem, so that this solution can be used systematically in different situations”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The main purpose of design patterns is to help developers to structure their applications in more flexible ways, easier to understand and maintain.&lt;/p&gt;
+
+&lt;p&gt;In this article, I would like to share some thoughts about the Decorator, a Structural Pattern.&lt;/p&gt;
+
+&lt;p&gt;Structural patterns focus on how classes and objects are composed to form larger structures, maintaining its flexibility and efficiency. The flexibility of object composition comes from the ability to change the composition at runtime.&lt;/p&gt;
+
+&lt;h2 id=&quot;decorator&quot;&gt;Decorator&lt;/h2&gt;
+
+&lt;p&gt;The decorator pattern (also known as Wrapper) is used to extend or alter the functionality of objects at runtime by wrapping them in an object of a &lt;em&gt;decorator&lt;/em&gt; class. This provides a flexible alternative to using inheritance to modify behavior.&lt;/p&gt;
+
+&lt;h3 id=&quot;purpose&quot;&gt;Purpose&lt;/h3&gt;
+
+&lt;p&gt;Decorators offer a flexible way to add responsibility to individual objects. Unlike inheritance, decorated objects are not limited by their parent classes. Putting in other terms, a client has control over how and when to decorate the component.&lt;/p&gt;
+
+&lt;h3 id=&quot;applicability&quot;&gt;Applicability&lt;/h3&gt;
+
+&lt;p&gt;We can use the decorator to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Append responsibilities to individual objects dynamically and transparently, without affecting other objects.&lt;/li&gt;
+  &lt;li&gt;For traits or responsibilities that can be withdrawn.&lt;/li&gt;
+  &lt;li&gt;When subclassing is impractical.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;consequences&quot;&gt;Consequences&lt;/h3&gt;
+
+&lt;p&gt;In general, this pattern is presented with a few particular elements. The first one would be an abstract representation of the component, that in swift can be a &lt;code class=&quot;highlighter-rouge&quot;&gt;protocol&lt;/code&gt;. This is followed by a concrete implementation of this component, an abstract definition of a &lt;em&gt;decorator&lt;/em&gt; for this component and one or more concrete implementations for this component’s &lt;em&gt;decorator&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A few of the characteristics of the Decorator Pattern are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The decorators have the same super-type or &lt;em&gt;conformance&lt;/em&gt; as the object they decorate.&lt;/li&gt;
+  &lt;li&gt;More than one decorator can be used to comprise an object.&lt;/li&gt;
+  &lt;li&gt;Once the decorator has the same super-type or &lt;em&gt;conformance&lt;/em&gt; as its decorated object (&lt;em&gt;decoratee),&lt;/em&gt; it is possible to pass a decorated object in place of the original object.&lt;/li&gt;
+  &lt;li&gt;The decorator adds its own behavior before or after delegating the &lt;em&gt;decoratee&lt;/em&gt; its work.&lt;/li&gt;
+  &lt;li&gt;The objects can be decorated at any moment, which makes it possible to decorate them dynamically at run-time, with as many decorators as needed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;practical-example-in-swift&quot;&gt;Practical Example in Swift&lt;/h2&gt;
+
+&lt;p&gt;There are many use cases for a decorator, but to keep things simple for this article, let’s make a salary calculator.&lt;/p&gt;
+
+&lt;p&gt;In order to calculate the salary, we’ll input an hourly base rate, that the calculator needs to convert to a weekly value. With our weekly value, it will first discount the taxes and then discount the healthcare.&lt;/p&gt;
+
+&lt;h3 id=&quot;abstraction&quot;&gt;Abstraction&lt;/h3&gt;
+
+&lt;p&gt;So we begin with an abstraction &lt;code class=&quot;highlighter-rouge&quot;&gt;SalaryCalculator&lt;/code&gt;, with the component’s definition.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b8c7e9b65f7fd3c001804aa9ff3e93f2.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now we create a class that’s going to conform to the protocol, and implement the method.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/6bc1b88a4dc0e1099e51caab9a86c8ef.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;After that we can create our &lt;code class=&quot;highlighter-rouge&quot;&gt;TaxDiscountSalaryDecorator&lt;/code&gt;, that, in our case, will apply the first discount we want.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/5667b3ece34014e769385d064f01be4a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;As you can see, it takes as parameter an object (our &lt;em&gt;decoratee&lt;/em&gt;) conforming to &lt;code class=&quot;highlighter-rouge&quot;&gt;SalaryCalculator&lt;/code&gt; and also implements &lt;code class=&quot;highlighter-rouge&quot;&gt;SalaryCalculator&lt;/code&gt;. This means that when the method is called, we can apply the discount, and forward the message.&lt;/p&gt;
+
+&lt;p&gt;Next, the &lt;code class=&quot;highlighter-rouge&quot;&gt;HealthCareDiscountSalaryDecorator&lt;/code&gt;. It follows the same principles as &lt;code class=&quot;highlighter-rouge&quot;&gt;TaxDiscountSalaryDecorator&lt;/code&gt;, but this time, it applies a different discount.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/dc2b1cf5d1dabc524f84eff374a02e0d.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now we have all elements we need to accomplish our goal. So let’s see how our calculator works, with the discounts.&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;In order to use our calculator with the discounts, we need to compose it with our decorators, like so:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/425bed89d8cc4aa348de8a0885a13fba.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;This way, we apply the discounts we need without modifying our original &lt;code class=&quot;highlighter-rouge&quot;&gt;ExampleSalaryCalculator&lt;/code&gt; class. We’re extending it’s behavior without modifying it.&lt;/p&gt;
+
+&lt;h2 id=&quot;pros&quot;&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The use of a pattern provides the project with a universal style, which can make the code more comprehensible.&lt;/li&gt;
+  &lt;li&gt;The client’s code does not need to be modified in order to add new functionalities.&lt;/li&gt;
+  &lt;li&gt;The expansion of functionalities happen dynamically, which offers more flexibility to the codebase.&lt;/li&gt;
+  &lt;li&gt;It allows the components to be as simple as possible, delegating the addition of new functionalities to the decorators.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cons&quot;&gt;Cons&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bigger number of classes utilized in the project, when compared to a version containing attributes and methods in a base class and implementation of specific functionalities in subclasses.&lt;/li&gt;
+  &lt;li&gt;It may become hard to read and understand the project, in case of overuse.&lt;/li&gt;
+  &lt;li&gt;It could decrease the project’s efficiency in case many decorators are used for an object with multiple public methods (that would require the decorator to offer the same public interface as the objects they decorate).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;As we could observe, the Decorator Pattern makes usage of conformance to be able to encompass the decorated objects. This way, when a decorator is composed with it’s component, a new functionality can be added, but not &lt;em&gt;inherited&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This small difference offers a huge amount of flexibly to create objects as needed without modifications to the existing components. As in all decisions, there are no silver bullets. The advantages of this pattern can be tremendous. So all in all, teams could take advantage of this pattern to solve a specific problem, observe the decision’s consequences, it’s impact in performance, and the evolution in the codebase as a whole.&lt;/p&gt;
+
+&lt;p&gt;And, of course, there are some downsides to that, as we could notice. Therefore, it bears to the developers the evaluation of the project’s needs and the tradeoffs that decorators would bring.&lt;/p&gt;
+
+&lt;p&gt;If you’re looking for more examples of how we can use decorators, I highly recommended these videos: &lt;a href=&quot;https://youtu.be/y5SRUqDXYz4&quot;&gt;Decoupling analytics from MVVM components&lt;/a&gt; and &lt;a href=&quot;https://youtu.be/jH7Zfi7TQt8&quot;&gt;Testing code that uses DispatchQueue.main.async&lt;/a&gt;. They explain some really good use cases, using Swift.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Design Patterns - Elements of Reusable Object-Oriented Software - Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://gabrielschade.github.io/2018/08/13/gof-decorator.html&quot;&gt;Design Patterns - Decorator&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://refactoring.guru/design-patterns/decorator&quot;&gt;Refactoring Guru - Decorator&lt;/a&gt;&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="decorator" /><category term="design patterns" /><summary type="html">A decorator is used to extend or alter the functionality of objects at runtime by wrapping them in an object of a *decorator* class.</summary></entry><entry><title type="html">Improving the Testability of Apple Pay With Dependency Injection</title><link href="https://vinileal.com/tutorial/unit%20test/unit-test-apple-pay/" rel="alternate" type="text/html" title="Improving the Testability of Apple Pay With Dependency Injection" /><published>2020-10-17T00:00:00+01:00</published><updated>2020-10-17T00:00:00+01:00</updated><id>https://vinileal.com/tutorial/unit%20test/unit-test-apple-pay</id><content type="html" xml:base="https://vinileal.com/tutorial/unit%20test/unit-test-apple-pay/">&lt;p&gt;We all know the importance of writing unit tests. But we also have seen many people who say that they take time to write, some things do not need to be tested, and all sorts of things that divide developer’s opinions as much as the endless debate ‘storyboards vs. programmatic views’.&lt;/p&gt;
+
+&lt;p&gt;But leaving personal preferences aside, I believe people develop some resistance to determined things because they might not understand or take time to understand those things. And it happens with me regarding automated testing.&lt;/p&gt;
+
+&lt;p&gt;The tests are useful to get fast confirmation that the code written works as expected and that when adding new features, nothing has been broken. Also, when working in a team, many different people might modify the project. So, once again, tests ensure the project’s integrity is maintained.&lt;/p&gt;
+
+&lt;p&gt;In the matter of unit tests, I am always intrigued, by testing the implementation of my code that makes use of third party dependencies. That’s the case of integrating Apple Pay, for example. That’s what I would like to talk about today.&lt;/p&gt;
+
+&lt;p&gt;The use cases for Apple Pay are pretty obvious. They very often involve the purchase of a product or service. And a wide range of apps are supporting it nowadays.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;In order to make a payment using Apple Pay, there are some requirements. One of them is the creation of a &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentRequest&lt;/code&gt; (part of &lt;code class=&quot;highlighter-rouge&quot;&gt;PassKit&lt;/code&gt; framework), and the presentation of either a &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationController&lt;/code&gt; or a &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationViewController&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;As &lt;a href=&quot;https://developer.apple.com/documentation/passkit/pkpaymentauthorizationcontroller&quot;&gt;Apple docs&lt;/a&gt; state:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationController&lt;/code&gt; class performs the same role as the &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationViewController&lt;/code&gt; class, but it does not depend on the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIKit&lt;/code&gt; framework. This means that the authorization controller can be used in places where a view controller cannot (for example, in &lt;code class=&quot;highlighter-rouge&quot;&gt;watchOS&lt;/code&gt; apps or in &lt;code class=&quot;highlighter-rouge&quot;&gt;SiriKit&lt;/code&gt; extensions).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this example I’ll use &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationViewController&lt;/code&gt;, since the project will only use it with &lt;code class=&quot;highlighter-rouge&quot;&gt;UIKit&lt;/code&gt; for now. In the case of the example, the app will present the authorization view controller only if the user can make payments with one of the specified networks, provided by the method &lt;code class=&quot;highlighter-rouge&quot;&gt;class func canMakePayments(usingNetworks: [PKPaymentNetwork]) -&amp;gt; Bool&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Following this idea, we can then create a &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentAuthorizationHandler&lt;/code&gt; class, that creates the payment request, and completes with failure in case the networks are not supported. Like so:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b424529a91d065448c87e03086bb66cd.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;When I try to unit test this behavior, I stumble upon the class function, which could be a barrier in the tests.&lt;/p&gt;
+
+&lt;h2 id=&quot;dependency-injection-to-the-rescue&quot;&gt;Dependency injection to the rescue&lt;/h2&gt;
+
+&lt;p&gt;One way overcome this limitation, is to use dependency injection to determine the possibility to make the payments that the specific test needs. I could either:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use constructor injection and set it in the initializer.&lt;/li&gt;
+  &lt;li&gt;Use property injection.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When possible, I prefer to use constructor injection. So this is how this is how the &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentAuthorizationHandler&lt;/code&gt; would be:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/d2e6a50291e37f7945214d85bc2eb64e.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The typealias is nothing more than a closure representing  the &lt;code class=&quot;highlighter-rouge&quot;&gt;class func canMakePayments(usingNetworks:)&lt;/code&gt; signature. But with this change, it’s possible to pass, in production, the real method, and for test use, the value required for the test case can be provided by injecting it during the test setup. This also makes the test deterministic.&lt;/p&gt;
+
+&lt;p&gt;A test is deterministic, or repeatable, if it produces the very same output when given the same input no matter how many times it is run.&lt;/p&gt;
+
+&lt;p&gt;Now, in the test, the &lt;strong&gt;SUT&lt;/strong&gt; (System Under Test) will have the value injected upon creation. This is how the test for the failure scenario looks like:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b6c8f54a114893fb2c79fe8ac50748e0.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Breaking it down:&lt;/p&gt;
+
+&lt;p&gt;1 - The test needs to simulate a scenario where networks are not supported, so the &lt;code class=&quot;highlighter-rouge&quot;&gt;sut&lt;/code&gt; is injected with a closure that returns &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;2 - An optional error is declared, so it can be captured in the &lt;code class=&quot;highlighter-rouge&quot;&gt;requestAuthorization&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;3 - The &lt;code class=&quot;highlighter-rouge&quot;&gt;receivedError&lt;/code&gt; is captured. In case an unexpected success message is received, the test simply fails with a message.&lt;/p&gt;
+
+&lt;p&gt;The next scenario to be covered is the case when the networks are supported, but the &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationViewController&lt;/code&gt; fails to be initialized.&lt;/p&gt;
+
+&lt;p&gt;The same approach will be used, but this time with the view controller initializer being injected via constructor injection. In case the initialization succeeds, the &lt;code class=&quot;highlighter-rouge&quot;&gt;requestAuthorization&lt;/code&gt; completes with success. This is the finished &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentAuthorizationHandler&lt;/code&gt;:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/7eac0ca781eba52ff251dfaaeda46030.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now, the following is happening:&lt;/p&gt;
+
+&lt;p&gt;1 - The initializer signature is extracted into the typealias &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplePayControllerFactory&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;2 - An error case is declared to identify the cause of failure.&lt;/p&gt;
+
+&lt;p&gt;3 - The initializer now accepts a new parameter, which is the &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplePayControllerFactory&lt;/code&gt;. In the case of production code, &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationViewController.init&lt;/code&gt; is used as default value.&lt;/p&gt;
+
+&lt;p&gt;4 - &lt;code class=&quot;highlighter-rouge&quot;&gt;requestAuthorization&lt;/code&gt; completes with the new error case failure, when the controller fails to be initialized.&lt;/p&gt;
+
+&lt;p&gt;5 - Finally the success case, the method completes with the initialized &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationViewController&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;And the tests follow the same style of the first one. Except that this time, to trigger an initialization failure, an empty (invalid) instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;PKRequest&lt;/code&gt; was injected, rather than a valid request, that was injected for the success case test.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/fbf11b2627156e7e0c407af628edfa66.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, let’s break it down.&lt;/p&gt;
+
+&lt;p&gt;1 - An invalid request is passed to the authorization controller.&lt;/p&gt;
+
+&lt;p&gt;2 - The request can be processed by the networks, by passing a closure that returns &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;3 - There’s the assertion that when these conditions are presented, the failure output is &lt;code class=&quot;highlighter-rouge&quot;&gt;.unableToInitialize&lt;/code&gt; error.&lt;/p&gt;
+
+&lt;p&gt;4 - In the success scenario, a valid request is passed.&lt;/p&gt;
+
+&lt;p&gt;5 - The request can be processed by the networks, by passing a closure that returns &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;6 - The test asserts that the receivedController is not &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;, as expected by the success case in the Result declared in &lt;code class=&quot;highlighter-rouge&quot;&gt;PaymentAuthorizationHandler&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplePayCompletionHandler&lt;/code&gt; typealias.&lt;/p&gt;
+
+&lt;p&gt;There it goes. This is a small example of how it is possible to manipulate the input for the tests, for implementing Apple Pay. Of course, there’s much more to it. There’s the display of &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentButton&lt;/code&gt;,&lt;/p&gt;
+
+&lt;p&gt;the received messages from &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationViewControllerDelegate&lt;/code&gt;, the communication with a &lt;a href=&quot;https://developer.apple.com/apple-pay/payment-platforms/&quot;&gt;payment provider&lt;/a&gt;, and other specifications, depending on the use case.&lt;/p&gt;
+
+&lt;p&gt;And of course, there must be countless ways of achieving similar results, but this was the one I got to, and wanted to share. If you have seen something different, or thought of a different approach, you are welcome to share with me on &lt;a href=&quot;https://twitter.com/Vini__leal&quot;&gt;twitter&lt;/a&gt;. 😄&lt;/p&gt;
+
+&lt;p&gt;The full project, with a sample UIViewController, displaying the button and performing the &lt;code class=&quot;highlighter-rouge&quot;&gt;PKPaymentAuthorizationViewController&lt;/code&gt; can be found on &lt;a href=&quot;https://github.com/viniciusml/Articles-Vinileal.com&quot;&gt;this repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/apple-pay/payment-platforms/&quot;&gt;Payment Service Provider - Apple&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.raywenderlich.com/2113-apple-pay-tutorial-getting-started&quot;&gt;Apple Pay Tutorial - Getting Started - Ray Wenderlich&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/documentation/passkit/apple_pay/offering_apple_pay_in_your_app&quot;&gt;Offering Apple Pay in Your App - Apple&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://martinfowler.com/articles/nonDeterminism.html&quot;&gt;Eradicating Non-Determinism in Tests - Martin Fowler&lt;/a&gt;&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="unit tests" /><category term="tdd" /><category term="Apple Pay" /><category term="PassKit" /><summary type="html">In this article, I'll share an introduction on how to perform unit tests on Apple Pay implementation.</summary></entry><entry><title type="html">What is Open Sorce and How to Start Contributing</title><link href="https://vinileal.com/open%20source/open-source-how-to-contribute/" rel="alternate" type="text/html" title="What is Open Sorce and How to Start Contributing" /><published>2020-09-30T00:00:00+01:00</published><updated>2020-09-30T00:00:00+01:00</updated><id>https://vinileal.com/open%20source/open-source-how-to-contribute</id><content type="html" xml:base="https://vinileal.com/open%20source/open-source-how-to-contribute/">&lt;p&gt;The world today is more democratic for those who want or need to use computers, more precisely those who need to make use of computer programs. But this was not always the case, and in part what made access to the computer world something a little simpler or less expensive was open source or open source software. But what exactly is it?&lt;/p&gt;
+
+&lt;p&gt;An open source project is, in short, a project created and maintained by the people who use it.&lt;/p&gt;
+
+&lt;p&gt;Let’s say you have an open source football field close to your home: one person will help you mow the lawn, another person will help paint the markings, another person will help you water, someone else will bring the ball and everyone can play! It is a collaborative software growth system.&lt;/p&gt;
+
+&lt;p&gt;Contributing to open source can be a rewarding way to learn, teach and build experience on just about any skill you can imagine.&lt;/p&gt;
+
+&lt;p&gt;In addition, you can interact with real professionals in the market and consult them to answer your questions, do code analysis and give tips for you to improve.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-bit-of-history&quot;&gt;A bit of history&lt;/h2&gt;
+
+&lt;p&gt;We can understand a bit more about this concept and its associated benefits by telling the story of the most popular example of open source software.&lt;/p&gt;
+
+&lt;p&gt;In the early 1990s, at the University of Helsinki, Finland, Linus Torvald created the Linux operating system from Unix, under the “&lt;a href=&quot;https://pt.wikipedia.org/wiki/GNU_General_Public_License&quot;&gt;GNU General Public License&lt;/a&gt;”, that provides one of the many designations and parameters for software licenses, created by Richard Stallman of the &lt;a href=&quot;https://www.fsf.org/pt-br&quot;&gt;Free Software Foundation&lt;/a&gt;].&lt;/p&gt;
+
+&lt;p&gt;From this point, many people around the world downloaded Linux and started working with it. Among the many users, some were programmers, and because they had access to the source code, they analyzed it, learned about it and made modifications to improve it. For approximately three years Torvalds received all the changes and contributions and incorporated several of them into the original version, then released version 1.0 of Linux in 1994.&lt;/p&gt;
+
+&lt;p&gt;The GPL, or GNU General Public License, is the type of license predominantly used in open source projects. Among the various aspects contained in the license, the terms state that if any modification to an open source program occurs, the distribution of the changed program must also distribute the source code that has been changed. That is, no one can use open source to produce proprietary code from it.&lt;/p&gt;
+
+&lt;p&gt;But the most interesting aspect related to Open Source, is the collaborative performance that is normally associated and that we saw happen in the “birth” of Linux and that lasts until today.&lt;/p&gt;
+
+&lt;h2 id=&quot;advantages-of-open-source&quot;&gt;Advantages of Open Source&lt;/h2&gt;
+
+&lt;p&gt;Although some are controversial and questioned, particularly by those on the opposite pole, that is, those who produce proprietary code, there are some advantages and they end up being almost fundamentals of those who develop open source:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Transparency&lt;/strong&gt; - to the extent that I have access to the programming behind each program executed, I have the possibility to know exactly everything it does, as well as the guarantee that nothing is happening that I would not allow or would like, for example, collection of personal data, which guarantee my secrecy and privacy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Information&lt;/strong&gt; - the technologies and the way things happen in terms of programming, are no longer exclusive to those who programmed and thus knowledge is shared.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Security&lt;/strong&gt; - due to the fact that the code is public, anyone with the necessary knowledge can contribute to improve and even correct problems and flaws associated with security, which can only be done by the original programmers when they have proprietary code.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Maintenance&lt;/strong&gt; - keeping the software up to date, as well as providing improvements, are not situations that depend only on the program provider, but possibilities available to many.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cost&lt;/strong&gt; - although free of charge is not guaranteed in 100% of cases, the number of programs in this condition is very close to that, which is a favorable point for computer democratization.&lt;/p&gt;
+
+&lt;h2 id=&quot;contributing-to-open-source-software&quot;&gt;Contributing to Open Source Software&lt;/h2&gt;
+
+&lt;p&gt;Contributing to open source projects is the gateway for you to code on large projects while working with some of the best developers in the world. There are infinite reasons to contribute, such as:&lt;/p&gt;
+
+&lt;h3 id=&quot;helping&quot;&gt;Helping&lt;/h3&gt;
+
+&lt;p&gt;This is can be a rewarding point. You can help developing new features for an application that you use, fix bugs for it and really experience those improvements on a day-to-day basis. Also, as you help other developers, you might get some insights of how to solve problems you’re facing or once you experience a similar problem in the future, you know where to look for information.&lt;/p&gt;
+
+&lt;h3 id=&quot;learning&quot;&gt;Learning&lt;/h3&gt;
+
+&lt;p&gt;If you love to develop, just like me, you will realize this is one of the most fantastic points of contributing to an open source project. Because you are seeing other people’s code and you will need to not only understand, but interact with it. Often the code can be quite old and you have to refactor or change something to get better with what you are doing. And by doing so, you can learn a great deal.&lt;/p&gt;
+
+&lt;h3 id=&quot;networking&quot;&gt;Networking&lt;/h3&gt;
+
+&lt;p&gt;An open source project community can be a wonderful way to meet devs with more experience and baggage than you. This is where you will have the opportunity to experience what it is like to work with the toughest guys on the market, and be able to gather different perspectives to solve common issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;visibility&quot;&gt;Visibility&lt;/h3&gt;
+
+&lt;p&gt;When you start to contribute to the community you are more seen and consequently you stand out, but I would not advise to contribute thinking about this point, it is just a consequence.&lt;/p&gt;
+
+&lt;h3 id=&quot;portfolio&quot;&gt;Portfolio&lt;/h3&gt;
+
+&lt;p&gt;This is especially true for beginners who, in addition to not having much experience, do not have many projects to show. Nothing better than contributing so that you can have real projects in your portfolio and combine the experience of having worked with great names in the field.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;There many reasons to contribute, but now the question remains: how to contribute? To make it easier I gathered some steps to start contributing.&lt;/p&gt;
+
+&lt;h2 id=&quot;find-a-project&quot;&gt;Find a project&lt;/h2&gt;
+
+&lt;p&gt;Certainly you already bumped into many open source projects, these are the cases of programming languages such as PHP, Javascript, Python, Ruby and frameworks such as AngularJS, React, Django, Rails that you have probably used or heard of, besides these there is a wide range of tools and libraries.&lt;/p&gt;
+
+&lt;p&gt;There are basically two ways to learn about projects. The first way is to use it. With that, you be motivated to contribute, to help improve the project you have been using. This seems one of the most interesting ways, because by using the project you will get a clear visualization of features and bugs.&lt;/p&gt;
+
+&lt;p&gt;The second way is for you to search for projects on the web to contribute. By not having prior knowledge of the use of the project, this can avoid some biases acquired when using it. If you choose this way I, there are some tools you can use to find these projects, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.codetriage.com&quot;&gt;CodeTriage&lt;/a&gt; - here will find open source projects, you will be able to filter by languages and select projects to receive issue newsletters.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://yourfirstpr.github.io&quot;&gt;YourFirstPR&lt;/a&gt; - where you can start contributing to Open Source by finding great starter issues on GitHub and elsewhere.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mungell/awesome-for-beginners&quot;&gt;Awesome First PR Opportunities&lt;/a&gt; - A curated list of awesome beginner-friendly projects.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://up-for-grabs.net/#/&quot;&gt;Up For Grabs&lt;/a&gt; - A list of projects which have curated tasks specifically for new contributors. These are a great way to get started with a project, or to help share the load of working on open source projects.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://issuehub.io&quot;&gt;IssueHub&lt;/a&gt; - Allows you to search for open issues on projects by selecting specific tags.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hacktoberfest.digitalocean.com&quot;&gt;Hacktoberfest&lt;/a&gt; - an open event, happening on October, that encourages the growth of open source and contributions to the community. All backgrounds and skill levels are encouraged to join the challenge.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;see-the-projects-guidelines-for-contributors&quot;&gt;See the project’s guidelines for contributors&lt;/h2&gt;
+
+&lt;p&gt;Most open source projects are on GitHub and when you access the repository, in addition to the project’s source code you will find the project’s README, which usually provides information on how to contribute in the contributing section. Each project has its own particularities and it is common to everyone to need to fork the project to start working on the code.&lt;/p&gt;
+
+&lt;p&gt;Other projects contain a CONTRIBUTING file where relevant information on how to contribute to the project and how to keep it concise. In these cases, the README targets consumers of the project.&lt;/p&gt;
+
+&lt;p&gt;The contributing file can also contain guidelines on how to open and claim issues. Also, how to announce a PR is ready for review.&lt;/p&gt;
+
+&lt;p&gt;Many projects also provide a channel for communication. So if that’s the case, it is helpful to join it and discuss ideas, or simply to ask questions about a broad topic that does not fit directly on the repo’s issue.&lt;/p&gt;
+
+&lt;h2 id=&quot;check-the-projects-needs&quot;&gt;Check the project’s needs&lt;/h2&gt;
+
+&lt;p&gt;At this point, you found a project that you want to contribute to, and checked the rules to do so. But what needs to be done on the project, or what can be improved? The place where these information is usually present is issues section, which lists features and bugs that other users or the maintainers have detected and are asking for help. In some projects, there are labels identifying issues for those who want to start contributing. After choosing an issue, all you need to do is get your hands dirty.&lt;/p&gt;
+
+&lt;h2 id=&quot;write-some-code-and-open-a-pr&quot;&gt;Write some code and open a PR&lt;/h2&gt;
+
+&lt;p&gt;Aka. the best part!! At this point, you can perform the task you chose, check if the style of the code you wrote matches the project stile and guidelines, and make sure everything is working fine (at least for the parts you worked on).&lt;/p&gt;
+
+&lt;p&gt;When finished, you need to open a PR from your fork / branch to the main repository of the project, to the branch defined in the rules. After opening the PR there may be interactions between the project’s contributors and you to adjust some things. After being approved, it is completed and will probably be available in the next release of the project.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Participating in Open Source projects is one of the best ways to evolve as a professional, create relationships with the community and prove your skills in any job applications.
+If you are looking to learn more about open source software, I recommend that you check the &lt;a href=&quot;https://opensource.guide/en&quot;&gt;Open Source Guides&lt;/a&gt; website.&lt;/p&gt;
+
+&lt;p&gt;And as a fun curiosity, in the &lt;a href=&quot;[https://firstpr.me](https://firstpr.me/)&quot;&gt;First PR&lt;/a&gt; website you can check the first pull request made by any GitHub user. How cool is that?&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="open source" /><category term="pull request" /><category term="git" /><category term="hacktoberfest" /><summary type="html">A brief explanation of what is open souce software, its history and what are the first steps to start contributing.</summary></entry><entry><title type="html">Common Git Workflows</title><link href="https://vinileal.com/git/common-git-workflows/" rel="alternate" type="text/html" title="Common Git Workflows" /><published>2020-06-12T00:00:00+01:00</published><updated>2020-06-12T00:00:00+01:00</updated><id>https://vinileal.com/git/common-git-workflows</id><content type="html" xml:base="https://vinileal.com/git/common-git-workflows/">&lt;p&gt;This article aims to expose a few of the approaches on  how to work using workflows with git.&lt;/p&gt;
+
+&lt;p&gt;If you already work with git as the main version control tool, you may have seen several approaches on how to use and control branches in a production or personal setting.&lt;/p&gt;
+
+&lt;p&gt;And if you’re new to git, getting to know a bit about flows will help you become more familiar with how companies and open source projects often structure their workflows.&lt;/p&gt;
+
+&lt;p&gt;Git-flow is a model, a strategy that helps groups in versioning a project. Workflows make the maintenance of corrections and introduction of new features more organized and secure.&lt;/p&gt;
+
+&lt;p&gt;It is nothing more than a strategy created to improve the coordination of branches in a repository. This provides more fluidity to the process of adding new features and new releases.&lt;/p&gt;
+
+&lt;p&gt;The strategy is relatively recent. It was released to the world in 2010 by Vincent Driessen. Git is a code versioning model, where branches can be compared to other branches. That is, it is possible to see the model as something like a tree and its (literal) branches. If you have already used this versioning system, you have probably noticed that, in general, there is an origin branch, which will be referred as the  &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch in this article, and it is the one that usually bridges the repository with the production server.&lt;/p&gt;
+
+&lt;p&gt;It is very common to see people using only one branch to commit to personal projects. This is not wrong, since it is very easy to control everything in a branch when developing alone, but the scenario changes a lot when we have to interact with more contributors, whether in an open source or private project.&lt;/p&gt;
+
+&lt;p&gt;As a way to prevent complications with the main branch, Git-flow brought a more robust solution, mainly for projects that grow in size and which are constantly changing, and also because of the number of people interacting with the repository.&lt;/p&gt;
+
+&lt;p&gt;In a project, for example, involving approximately 30 programmers, what would the project look like if everyone made their commits to the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;? This might even be a valid strategy, but in conjunction with other strategies so that the team does not fall into the trap of putting something into production that is not fully tested.&lt;/p&gt;
+
+&lt;p&gt;At these times, it is extremely important to have total control of what is being produced by your team, since that, at the same time bugs are corrected, new features are being implemented and this whole process should not prevent production code to be fully delivered to the customer or the stakeholders.&lt;/p&gt;
+
+&lt;p&gt;In a more generic approach, it is common to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; as the main branch of the repository, and whenever it is necessary to create a new feature or correct something, a new branch is created for each case. After the task is completed, the branch is merged with the corrections / new features, with the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch.&lt;/p&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+&lt;p&gt;The branch would, in this case, be a pointer to the specific commit.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;git-flow&quot;&gt;Git-flow&lt;/h2&gt;
+
+&lt;p&gt;In Git-flow, something similar happens, but with a slightly more complex structure, which can help a lot in the organization and productivity of a team.&lt;/p&gt;
+
+&lt;p&gt;We can separate Git-flow into 2 types of branches:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The main branches, which are the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Support branches, which are the &lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For each branch there are some rules and recommendations to be followed.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch continues to bridge the release commits to production.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; branch contains all the stable features that will later be merged into a &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt; branch.&lt;/li&gt;
+  &lt;li&gt;It is only from the &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; branches that feature branches are created. For each feature, a new branch is created.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+&lt;p&gt;The nomenclature for new branches has been standardized over time. For new features, for example, you may want to name: 'feature/feature-name'.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt; branch will always be created from &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt;, and returned via merge to this one. Once incorporated, it can be removed.&lt;/li&gt;
+  &lt;li&gt;After incorporating the new feature, it must be prepared to go into production. For this, another support branch is used, the &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt;. It serves as a support to create a point where it should reflect what is expected from a next project release. In other words, it may occur that only after creating a set of new features, the team has a release ready. Once all the necessary features are ready in &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; it will be possible to merge them into a &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt; branch.&lt;/li&gt;
+  &lt;li&gt;With the &lt;code class=&quot;highlighter-rouge&quot;&gt;release&lt;/code&gt; ready to go to the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, it is time to create a tag, that is an indication where it will contain a new version of the project. This is done in the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch, right after the merge.&lt;/li&gt;
+  &lt;li&gt;Each merge done in the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; must be done in the &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; as well, to reflect the new tagged release. So, the branch Release can be removed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/git-flow.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a standard Git-flow. However, all projects are subject to unexpected production problems, or bugs. It is in this case that another support branch, the &lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;, appears. These have a very similar operation to the Release, with the difference that in this case, it is used for a more critical action. For this reason, when the hotfix is finished, the branch will be merged directly into the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch. It also receives a tag in the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, after the merge, and the same must be done in the &lt;code class=&quot;highlighter-rouge&quot;&gt;develop&lt;/code&gt; branch.&lt;/p&gt;
+
+&lt;p&gt;This way it is possible to keep developers working on their features, while hotfixes are created. Then the branch containing the hotfix can be removed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/hotfix.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a summary of how Git-flow works. The approach may seem a little far-fetched at first. But with a little practice, the team adjusts to it and the benefits appear.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-approaches&quot;&gt;Other Approaches&lt;/h2&gt;
+
+&lt;p&gt;There are many other branch management approaches, which can fit perfectly into what you and your team need. Proposed by Github in 2011, for example, Github Flow has the advantage of easy understanding and simplicity in use. The motivation behind this approach is the speed in the deployment phase. As the original Git-flow is focused on releases, there are a series of steps to be followed until deployment. In the case of Github Flow, the application is integrated several times a day, in the form of small implementations.&lt;/p&gt;
+
+&lt;p&gt;A few characteristics of the Github Flow:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Anything in the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; branch is deployable&lt;/li&gt;
+  &lt;li&gt;To work on something new, create a descriptively named branch off of &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt; (such as: &lt;code class=&quot;highlighter-rouge&quot;&gt;new-feature&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Commit to that branch locally and regularly push your work to the same named branch on the server&lt;/li&gt;
+  &lt;li&gt;When you need feedback or help, or you think the branch is ready for merging, open a pull request&lt;/li&gt;
+  &lt;li&gt;After someone else has reviewed and approved the feature, you can merge it into main branch&lt;/li&gt;
+  &lt;li&gt;Once it is merged and pushed to &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, you can and &lt;em&gt;should&lt;/em&gt; deploy immediately&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another strategy, released in 2014, is Gitlab Flow. Also a simplified version of the Git-flow proposed by Vincent, in the Gitlab Flow:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;All features and fixes first go to &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;It allows for &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;stable&lt;/code&gt; branches&lt;/li&gt;
+  &lt;li&gt;Bug fixes/hot fix patches are cherry-picked from main branch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In short, we learned how to control our branches by separating their responsibilities, without impacting on the &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, which is where our stable code remains, and are identified with tags to version our releases and have a much more flexible control.&lt;/p&gt;
+
+&lt;p&gt;If you are interested in learning more about how to use Git-flow, I recommend reading Vincent’s original &lt;a href=&quot;https://nvie.com/posts/a-successful-git-branching-model/&quot;&gt;article&lt;/a&gt;. There is also an &lt;a href=&quot;https://github.com/nvie/gitflow&quot;&gt;extension&lt;/a&gt;) created by git itself, to facilitate the process and thus simplify some steps.&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="git workflows" /><category term="git" /><summary type="html">A few of the approaches on how to work using workflows with git.</summary></entry><entry><title type="html">Design Patterns in Swift - Template Method</title><link href="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/" rel="alternate" type="text/html" title="Design Patterns in Swift - Template Method" /><published>2020-05-23T00:00:00+01:00</published><updated>2020-05-23T00:00:00+01:00</updated><id>https://vinileal.com/design%20patterns/design-patterns-swift-template-method</id><content type="html" xml:base="https://vinileal.com/design%20patterns/design-patterns-swift-template-method/">&lt;p&gt;When we think about the software development routine, we can quickly identify that many times, the solution to a specific problem has identical characteristics, if not equal to that found in a previously developed project but the solution and the problem had not been documented. So, you are facing a similar problem, that was solved in the past, but there’s no record of &lt;em&gt;how&lt;/em&gt; it was solved, making it extremely hard to reuse ideas and solutions. In this way, the occurrence of identical problems that are repeated in other contexts, consume more time and resources then they should, since the solutions were already explored before.&lt;/p&gt;
+
+&lt;p&gt;In this way, Design Pattern are great allies. A Design Pattern can be described as the recurring solution to a problem in a context, even if in different projects and areas. The key terms here are: &lt;strong&gt;context&lt;/strong&gt;, &lt;strong&gt;problem&lt;/strong&gt; and &lt;strong&gt;solution&lt;/strong&gt;. One context concerns the environment, and the circumstances within which element exists. The problem is the undefined issue, something that needs to be investigated and resolved. It is usually tied to the context in which it occurs. Finally, the solution refers to the answer to the problem that helps to solve it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The design patterns are descriptions of communicating objects and classes that are customized to solve a general design problem in a particular context. 
+― Gamma Erich, Helm Richard, Johnson Ralph, Vlissides John. Design Patterns: Elements of Reusable Object-Oriented Software&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this article, I would like to discuss about the Template Method, a Behavioral Pattern.&lt;/p&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+&lt;p&gt;Behavior patterns focus on algorithms and assignment of responsibilities between objects. They describe not only patterns of objects or classes, but also patterns of communication between objects.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;template-method&quot;&gt;Template Method&lt;/h2&gt;
+
+&lt;p&gt;A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses. In this way, the template method protects the algorithm, the order of execution and provides abstract methods that can be implemented by concrete types.&lt;/p&gt;
+
+&lt;h3 id=&quot;purpose&quot;&gt;Purpose&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Define an algorithm framework in the form of a method, allowing some steps to be implemented by specific concrete classes.&lt;/li&gt;
+  &lt;li&gt;Sub-classes can redefine certain steps of an algorithm without changing its general structure.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;applicability&quot;&gt;Applicability&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The Template Method can be used to implement parts of an algorithm once and leave it up to the concrete classes to implement the behavior according to their needs.&lt;/li&gt;
+  &lt;li&gt;It can be used when code reusability is desired without losing control of the algorithm.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/design-patterns-template-method-example.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It presents an abstract class with primitive operations that subclasses define to implement steps of an algorithm.&lt;/li&gt;
+  &lt;li&gt;The abstract class implements a template method defining the skeleton of the algorithm&lt;/li&gt;
+  &lt;li&gt;The concrete classes implement the primitive operations to be executed in the template method.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;notice--info&quot;&gt;
+&lt;p&gt;It's worth enforcing that `templateMethod()` should be final, and therefore should not be overridden.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;consequences&quot;&gt;Consequences&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Template Method uses inheritance to vary parts of an algorithm. It may become a problem in the future.&lt;/li&gt;
+  &lt;li&gt;It can be an important ally in the development of applications, as it provides a way to separate the variable behavior from the invariable behavior of an application.&lt;/li&gt;
+  &lt;li&gt;It also contributes to the implementation of the dependency inversion principle.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;practical-example-in-swift&quot;&gt;Practical Example in Swift&lt;/h2&gt;
+
+&lt;p&gt;When creating the UI of a project programatically, i.e. setting up the interface without storyboards or XIBs, we need to perform a few basic steps, such as:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add the sub view to the view.&lt;/li&gt;
+  &lt;li&gt;Setup the constraints.&lt;/li&gt;
+  &lt;li&gt;Setup additional configuration.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So far, pretty simple. But these steps need to be implemented in the correct order. In case you try to run a piece of code that sets constraints to a view that has not been added yet, the application crashes, because there’s no view to apply those constraints to.&lt;/p&gt;
+
+&lt;p&gt;This seems like a good use case for Template Method. So, let’s see how it goes.&lt;/p&gt;
+
+&lt;h3 id=&quot;abstraction&quot;&gt;Abstraction&lt;/h3&gt;
+
+&lt;p&gt;In Swift, we can create an abstract type to hold a blueprint of methods, and make our classes conform to it. This way we favor composition over inheritance, minimising one of the downsides of this pattern. So, we do that by declaring a Protocol.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/3dcea7d4f21a236a420883b6cb5140ce.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Our protocol holds the three basic steps to configure views programmatically, and a fourth method &lt;code class=&quot;highlighter-rouge&quot;&gt;setupView()&lt;/code&gt; that’s going to be out template.&lt;/p&gt;
+
+&lt;p&gt;So we have the basic structure, but we don’t have our algorithm yet. In order to implement it, we are going to use Protocol Extensions.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Protocols can be extended to provide method, initializer, subscript, and computed property implementations to conforming types. This allows you to define behavior on protocols themselves, rather than in each type’s individual conformance or in a global function. - Apple documentation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is how our extension will look like:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/2ce685489df73730a00e6003813d02c1.js&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;Now we created our algorithm, in the classes that implement this protocol, &lt;code class=&quot;highlighter-rouge&quot;&gt;setupView()&lt;/code&gt; is the only method that needs to be called. The other ones will hold the implementation of the algorithm steps, for example:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b80ccfb245d35dabebaab9ac831b0117.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The class conforms to the protocol, and configures the steps for the algorithm. And the only method called is our template method.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;So, as we could see, the Template Method allows us to approach a common task that needs to be done routinely, and create an abstraction that reinforces the steps to be executed, as well as the order of execution. Besides that, it becomes a standard in the codebase, facilitating the communication with the team and with new developers.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Design Patterns - Elements of Reusable Object-Oriented Software was written by Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides (also known as the Gang of Four, or GoF)&lt;/p&gt;
+
+&lt;p&gt;iOS Course: View code module (in Portuguese) -  &lt;a href=&quot;https://medium.com/@tpLioy/curso-ios-m%C3%B3dulo-sobre-view-code-af0f6188297b&quot;&gt;Article&lt;/a&gt;&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="template method" /><category term="design patterns" /><summary type="html">A template method defines the steps of an algorithm and allows the redefinition of one or more of these steps by subclasses.</summary></entry><entry><title type="html">Continuous Integration (CI) - An Introduction</title><link href="https://vinileal.com/agile/continuous-integration-intro/" rel="alternate" type="text/html" title="Continuous Integration (CI) - An Introduction" /><published>2020-04-20T00:00:00+01:00</published><updated>2020-04-20T00:00:00+01:00</updated><id>https://vinileal.com/agile/continuous-integration-intro</id><content type="html" xml:base="https://vinileal.com/agile/continuous-integration-intro/">&lt;p&gt;A software development team can benefit from many methodologies that will save them time and repetitive work. As an example, there is continuous integration, continuous delivery and continuous deployment.  Methods and techniques like these represent ways to accelerate the delivery of new versions of the application, and are aligned with the &lt;strong&gt;agile methodologies&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Continuous integration (CI) is a software development practice that aims to make code integration more efficient, through automated builds and tests.&lt;/p&gt;
+
+&lt;p&gt;In agile methodology, one of the proposals is that the software development process should be carried out with more frequent deliveries.&lt;/p&gt;
+
+&lt;p&gt;As a consequence, the work required to gather, integrate and test all the code developed by the team in a central repository has also to become more frequent.&lt;/p&gt;
+
+&lt;p&gt;In the words of &lt;a href=&quot;https://martinfowler.com/articles/continuousIntegration.html&quot;&gt;Martin Fowler&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this context, Continuous Integration helps to reduce the manual work required in the code integration process. In addition, with test automation, bug fixing work is made easier, ensuring that the software is working after each change.&lt;/p&gt;
+
+&lt;p&gt;To adopt Continuous Integration, it is essential to use version control tools, such as Gitlab or Github.&lt;/p&gt;
+
+&lt;p&gt;The process of integrating software continuously is, first of all, a matter of communication, and for that everything must be adequate, with automated tests and automated builds.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The one prerequisite for a developer committing to the mainline is that they can correctly build their code. This, of course, includes passing the build tests. As with any commit cycle the developer first updates their working copy to match the mainline, resolves any conflicts with the mainline, then builds on their local machine. If the build passes, then they are free to commit to the mainline. - Martin Fowler&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;tools-for-continuous-integration&quot;&gt;Tools for Continuous Integration&lt;/h1&gt;
+
+&lt;p&gt;With the mentioned steps already implemented, it is time to implement a continuous integration tool. There are several of them, such as Jenkins, TravisCI, CircleCI, Bitrise, etc. Some of them are cloud-based, and others are server-based.&lt;/p&gt;
+
+&lt;p&gt;Many of them are free for open source projects and easy to configure. Of course, each team must choose the one that better fit their needs. The key to good integration, as seen earlier, is a version control environment, a well-defined workflow, automated builds and tests.&lt;/p&gt;
+
+&lt;p&gt;The tools for continuous integration come in to make the process simpler, and allows the configuration a wide set of requirements, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The development environment&lt;/li&gt;
+  &lt;li&gt;The automated build system&lt;/li&gt;
+  &lt;li&gt;The automated code formatting&lt;/li&gt;
+  &lt;li&gt;Integration with the version control repository&lt;/li&gt;
+  &lt;li&gt;Notification emails (in case of errors)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;benefits&quot;&gt;&lt;strong&gt;Benefits&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;For the development team, the integration, delivery and continuous deployment practices allow minimized work, reducing errors and making the software available in shorter cycles.&lt;/p&gt;
+
+&lt;p&gt;For the business, the main benefit of using these approaches is to decrease the time required to release product updates.&lt;/p&gt;
+
+&lt;p&gt;In competitive markets, this represents a major advantage for companies that want to quickly meet the demands of their users.&lt;/p&gt;
+
+&lt;p&gt;In addition, by making new * features * available to users more often, the company has the possibility to make its upgrading cycle more efficient.&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;Continuous integration with automated tools has several benefits, as we have seen. First is that teamwork generates fewer errors, which reduces risks, because as the system is integrated continuously and quickly, errors are also detected at the same speed.&lt;/p&gt;
+
+&lt;p&gt;The bugs, in this format, do not accumulate, not creating a general problem in the system, because instead of taking a day or a week, the error is detected in hours. Because even if the code is tested, errors can arise upon integration and the sooner the errors are detected, the sooner they will be corrected.&lt;/p&gt;
+
+&lt;p&gt;If you want more Information on this subject, I recommend the very comprehensive article written by &lt;a href=&quot;https://martinfowler.com/articles/continuousIntegration.html&quot;&gt;Martin Fowler&lt;/a&gt;.&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="continuous integration" /><category term="CI" /><category term="Agile" /><summary type="html">Continuous integration (CI) is a software development practice that aims to make code integration more efficient, through automated builds and tests.</summary></entry><entry><title type="html">Microinteractions in SwiftUI - Menu Button Animation</title><link href="https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/" rel="alternate" type="text/html" title="Microinteractions in SwiftUI - Menu Button Animation" /><published>2020-04-12T00:00:00+01:00</published><updated>2020-04-12T00:00:00+01:00</updated><id>https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui</id><content type="html" xml:base="https://vinileal.com/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/">&lt;p&gt;Microinteractions have become increasingly important in a world with a dizzying number of digital platforms and an ocean of content. While microinteractions used to be considered an interesting resource in the early days of digital design, in today’s hypercompetitive digital space they have become a crucial element in the overall user experience.&lt;/p&gt;
+
+&lt;p&gt;Basically, microinteraction is a particular moment of a user’s interaction with a product in order to complete a specific task. For example, when someone presses a “Like” button (whatever it looks like) and sees that their action produced a feedback - the number has changed, the color of the button has changed or it has become inactive, the text on the button reported that the action was done and so on - this is a case of microinteraction.&lt;/p&gt;
+
+&lt;p&gt;In this article, I will show you how I implemented a menu button microinteraction in SwiftUI.&lt;/p&gt;
+
+&lt;p&gt;The idea is to present a menu button with 4 horizontal lines, and, when the user taps on the button, it animates into an ‘x’ shape, to represent the option of closing the menu.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/menu-swiftui-example.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I began with an empty project, enabling SwiftUI. Then I created a file with two views, like this:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/448223728ad085697b88209e3b928a4a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;I defined a fixed frame for it, and for my purposes it can be a square shaped button. There’s a state property &lt;code class=&quot;highlighter-rouge&quot;&gt;isAnimating&lt;/code&gt;, that the animations will respond to.&lt;/p&gt;
+
+&lt;p&gt;For the button body the action is simply to toggle the &lt;code class=&quot;highlighter-rouge&quot;&gt;isAnimating&lt;/code&gt; property, and its label closure calls the &lt;code class=&quot;highlighter-rouge&quot;&gt;createMenu&lt;/code&gt; method. Let’s take a look at it.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/ea730fbf13027ce00b0eb4581c82023b.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;There’s a lot going on here, but I’ll break it down. First, the method returns a type eraser view &lt;code class=&quot;highlighter-rouge&quot;&gt;AnyView&lt;/code&gt;, and contains two properties, the &lt;code class=&quot;highlighter-rouge&quot;&gt;count&lt;/code&gt;, which is the number of rows for the button, and the configuration of the menu.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;menu&lt;/code&gt; the geometry reader is used, so that we can access the width and height we have available, and, therefore, calculate the properties we need. So, 4 views are grouped, and we calculate &lt;code class=&quot;highlighter-rouge&quot;&gt;availableHeight&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;spacing&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;height&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;width&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/menu-swiftui-example-variables.png&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, the rectangles are created with the height and width, and we can finally configure them. Each rectangle is overlapping the other ones, so we’ll use the &lt;code class=&quot;highlighter-rouge&quot;&gt;offset&lt;/code&gt; modifier and multiply the index by the available height. This way they get positioned correctly along the y axis.&lt;/p&gt;
+
+&lt;p&gt;Then I configured the animations, which are custom modifiers. I’ll get to them in a second. Finally I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;animation&lt;/code&gt; modifier, with a small delay and the &lt;code class=&quot;highlighter-rouge&quot;&gt;easeInOut&lt;/code&gt; option, and return the menu.&lt;/p&gt;
+
+&lt;h3 id=&quot;configuring-the-animations&quot;&gt;Configuring the Animations&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;MiddleMenuRect&lt;/code&gt; is a custom modifier that handles the second and third rectangles (index ‘1’ and ‘2’). Both of them need to rotate, on opposite directions.&lt;/p&gt;
+
+&lt;p&gt;Here’s how the code look like:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/7e3185319cc82116f46334a195601ae6.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;In the body function, two modifiers are being called: &lt;code class=&quot;highlighter-rouge&quot;&gt;rotate&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;offset&lt;/code&gt;. That’s because when the rect is rotated there’s a slight difference in position, so they need to me adjusted in order to form the ‘x’.&lt;/p&gt;
+
+&lt;p&gt;The modifiers return a value based on a condition of being the middle indexes and the &lt;code class=&quot;highlighter-rouge&quot;&gt;isAnimating&lt;/code&gt; boolean.&lt;/p&gt;
+
+&lt;p&gt;For the &lt;code class=&quot;highlighter-rouge&quot;&gt;MarginMenuRect&lt;/code&gt; the setup is very similar, but this time, the first and last indexes are placed as conditions and the modifiers &lt;code class=&quot;highlighter-rouge&quot;&gt;opacity&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;offset&lt;/code&gt; are applied. While the rectangles are moved through the ‘x’ axis in different directions, the opacity is reduced, giving the idea that they were ‘removed’. Check out the code:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/45f914bd1e607146d040d4249a52aa7b.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;For better readability, the &lt;code class=&quot;highlighter-rouge&quot;&gt;MiddleMenuRect&lt;/code&gt; and the &lt;code class=&quot;highlighter-rouge&quot;&gt;MarginMenuRect&lt;/code&gt; view modifiers were added to an extension:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/388fec5b42caaaceedf4bec447197fa9.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;That’s it! We have a nice menu button, that when tapped turns into an ‘x’. Here’s how it looks in action:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/menu-swiftui-result.gif&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nice, isn’t it?&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Utilising microinteractions can enrich usability. The features of an app attract a user to the product, but  the details more then often make a huge difference. This was an example of how a microinteraction can be implemented in SwiftUI and give a nice touch to your apps.&lt;/p&gt;
+
+&lt;p&gt;Developing it was fun, and it was pleasant to see the animation in place. If you want to see the full code, here’s the &lt;a href=&quot;https://gist.github.com/viniciusml/16c14939828521091aabc855dbf69875&quot;&gt;gist&lt;/a&gt;. Thanks for reading!&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="SwiftUI" /><summary type="html">In this article, I will show you how I implemented a menu button microinteraction in SwiftUI.</summary></entry><entry><title type="html">Test Driving UIPageViewController implementation</title><link href="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/" rel="alternate" type="text/html" title="Test Driving UIPageViewController implementation" /><published>2020-04-04T00:00:00+01:00</published><updated>2020-04-04T00:00:00+01:00</updated><id>https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller</id><content type="html" xml:base="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/">&lt;p&gt;A UIPageViewController is a very popular element in iOS Projects. It’s commonly seen in onboarding screens, but it has a ton of other uses.&lt;/p&gt;
+
+&lt;p&gt;Me and my friend &lt;a href=&quot;https://www.linkedin.com/in/mauro-marques-89910913b/&quot;&gt;Mauro Marques&lt;/a&gt; are using one for the onboarding screen of our app Hira, and while I was developing the beautiful screens desgined by him, I decided to register the proccess of implementing it using a &lt;strong&gt;Test Driven Development&lt;/strong&gt; approach.&lt;/p&gt;
+
+&lt;p&gt;Just like the name suggests, the entire development is driven by tests. The cycle consists of four steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Write a test that is going to fail - (Red)&lt;/li&gt;
+  &lt;li&gt;Make the test pass - (Green)&lt;/li&gt;
+  &lt;li&gt;Refactor the code&lt;/li&gt;
+  &lt;li&gt;Repeat&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We’ll begin with an empty project, with an unit test target. I am not going to use storyboards, so I’ll just set the basic configuration to my project by deleting the storyboard. In case you need some help, there’s a quick video, in which Sean Allen demonstrates how to do it &lt;a href=&quot;https://www.youtube.com/watch?v=Htn4h51BQsk&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, off to our test driven development. The first and simplest assertion we can make is that the PageViewController is initialised with no controllers (pages).&lt;/p&gt;
+
+&lt;p&gt;Since &lt;strong&gt;UIPageViewController&lt;/strong&gt; has a &lt;code class=&quot;highlighter-rouge&quot;&gt;viewControllers: Array&amp;lt;UIViewController&amp;gt;&lt;/code&gt; property, we can assert that this property is empty.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/22294a14ce4913124f3beddabba00b6f.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Soon enough, the compiler warns us, because we still don’t have a PageViewController. This means we are in the red state (tests not passing or code not compiling), which means we can write production code.&lt;/p&gt;
+
+&lt;p&gt;Let’s satisfy the compiler by adding the simplest piece of code.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/3067b05ab3e314d0858a9caf1deaa8be.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The errors are gone, and when we run our tests they pass, because by default this property is empty.&lt;/p&gt;
+
+&lt;p&gt;Since we don’t have anything to refactor, let’s move on to the next test. According to my use case, I need the &lt;code class=&quot;highlighter-rouge&quot;&gt;.transitionStyle&lt;/code&gt; to be of .&lt;code class=&quot;highlighter-rouge&quot;&gt;scroll&lt;/code&gt; type. So, let’s test it. Add the following code to PageViewControllerTests.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b44e1f515abf431cf008cba3d8b2a74a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;If we run the tests now, they will not pass, because we still need to set this property. Add the following code to PageViewController.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/34e108a0f76435e209b5ec0aaaf18004.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;We are using the initialiser to set the property. If we run the tests they will pass.&lt;/p&gt;
+
+&lt;p&gt;Alright, moving on with the &lt;code class=&quot;highlighter-rouge&quot;&gt;.navigationOrientation&lt;/code&gt;. In this case I’ll need it &lt;code class=&quot;highlighter-rouge&quot;&gt;.horizontal&lt;/code&gt;. Add the following code to PageViewControllerTests.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/a373c29f7ba0e0ce8a23a072c7132743.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;If we run it now, it won’t pass, because in the initialiser we added previously was setting the property to &lt;code class=&quot;highlighter-rouge&quot;&gt;.vertical&lt;/code&gt;. So let’s change it to &lt;code class=&quot;highlighter-rouge&quot;&gt;.horizontal&lt;/code&gt;. Now the tests are passing.&lt;/p&gt;
+
+&lt;p&gt;As a refactoring measure, we can create a helper method in PageViewControllerTests in order to create the SUT, or the &lt;em&gt;system under test&lt;/em&gt;. By using a helper method, we concentrate the SUT generation to one single place, and if we need to change or add something in the future, we just need to do it in that single place.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/9fab826abdf8db3c38b940de0366c6db.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now, replace &lt;code class=&quot;highlighter-rouge&quot;&gt;PageViewController()&lt;/code&gt; by &lt;code class=&quot;highlighter-rouge&quot;&gt;makeSUT()&lt;/code&gt; in the previous tests.&lt;/p&gt;
+
+&lt;p&gt;Moving on, we need to assert that when the view loads, the method &lt;code class=&quot;highlighter-rouge&quot;&gt;setViewControllers(_:direction:animated:completion:)&lt;/code&gt; is set with the initial view controller. Add this code to PageViewControllerTests&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/ccb865bf41079d5f53776572a7d11269.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here we are testing that &lt;strong&gt;given&lt;/strong&gt; at least one controller, &lt;strong&gt;when&lt;/strong&gt; the view is loaded, the array of viewControllers is equal to the first item of this array.&lt;/p&gt;
+
+&lt;p&gt;The code will not compile because we need to make some changes to the &lt;code class=&quot;highlighter-rouge&quot;&gt;makeSUT()&lt;/code&gt; method. Replace the existing method by this following one:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/29a4769d69d4410e6efd25e1e4e8942b.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here we are passing the controllers to be used as pages into the PageViewController initialiser.&lt;/p&gt;
+
+&lt;p&gt;So, we also need to change the &lt;code class=&quot;highlighter-rouge&quot;&gt;init()&lt;/code&gt; in PageViewController to:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/bb74df4e68d284065e6d8b8965a22836.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Also, we need to declare the property:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/1cd0ec383bb5be11bfbfa41254159ab5.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now the code compiles, but the tests are not passing. And that is because we did not implement the method yet. So, add this code to PageViewController.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/0cbcd0d9fcdc041f0d98514303753f4e.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here, in &lt;code class=&quot;highlighter-rouge&quot;&gt;viewDidLoad()&lt;/code&gt; we check if there’s a first item in the pages array. If so, we call &lt;code class=&quot;highlighter-rouge&quot;&gt;setViewControllers(_:direction:animated:completion:)&lt;/code&gt; with it. Let’s run the tests, and they pass!&lt;/p&gt;
+
+&lt;p&gt;We can make some refactoring to make our code easier to read, so let’s do it. Replace the &lt;code class=&quot;highlighter-rouge&quot;&gt;init()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;requiredInit()&lt;/code&gt; by this code:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/fe8ef01445abaae85275debcb7a8df38.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;We simplified it a bit using a convenience &lt;a href=&quot;http://vinileal.com/initialization/basics/swift-initializers/&quot;&gt;initialiser&lt;/a&gt;. Now, moving on, let’s test the dataSource.&lt;/p&gt;
+
+&lt;p&gt;We need to make sure that when the user swipes right, the next view controller is called and presented. There is a &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewDataSource&lt;/code&gt; method that handles this, called &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s add the following test:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/90bdad7c7dc4688a86f9babe36c3dd54.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, given two controllers, when our pageViewController is swiped (which triggers the data source method), we expect that the controller resulting from the &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt; controller1 is the controller2.&lt;/p&gt;
+
+&lt;p&gt;The tests will not compile yet, because we didn’t implement the dataSource in our production side.&lt;/p&gt;
+
+&lt;p&gt;Let’s add the &lt;code class=&quot;highlighter-rouge&quot;&gt;dataSource = self&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;viewDidLoad()&lt;/code&gt; in PageViewController class.&lt;/p&gt;
+
+&lt;p&gt;Now we can make an extension to conform to the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewControllerDataSource&lt;/code&gt;, like so:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/9727c7f2bfac7d3ed836f1fd321ea2d9.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The simplest thing to make the tests pass is to return the second item in the array. But it won’t cover all cases, and let’s see why by adding the next test.&lt;/p&gt;
+
+&lt;p&gt;Add this to PageViewControllerTests:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/b6a6a6462c81451e3d6b6623c28039b5.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So it’s basic the same setup, but this time we are adding one more controller, and making sure that when &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt; is triggered two times in a row, we get the third controller. The test fails because we hardcoded a value in our production side. Let’s fix this!&lt;/p&gt;
+
+&lt;p&gt;Add the following code to &lt;code class=&quot;highlighter-rouge&quot;&gt;PageViewController.pageViewController(_:viewControllerAfter:)&lt;/code&gt;:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/394718563e164eeb069f96bfc97f70ce.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here we are getting the index of current the view controller, adding one to it and return the controller for the new index. Cool, if we run the tests, they pass. Can you spot something to refactor?&lt;/p&gt;
+
+&lt;p&gt;Yes, let’s do it. We are going to add an &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewController&lt;/code&gt; extension to the same file as PageViewControllerTests, with the following code:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/28d673da52277f6cf6da495e9f105606.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;This way, replace occurrences of &lt;code class=&quot;highlighter-rouge&quot;&gt;sut.dataSource?.pageViewController(sut, viewControllerAfter: controller1)&lt;/code&gt; by &lt;code class=&quot;highlighter-rouge&quot;&gt;sut.controllerAfter(controller1)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Alright, we covered the situation of getting the next index, but we are still missing a scenario. When the maximum number of pages is reached, what should happen?&lt;/p&gt;
+
+&lt;p&gt;According to my use case, when the last controller is reached, if the user swipes right, nothing should happen, so let’s test it.&lt;/p&gt;
+
+&lt;p&gt;Add this to PageViewControllerTests class:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/c7b9e5a9ac0ad4964839f8fb6db87b75.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So we are asserting that when the maximum number of pages is reached, if an attempt to swipe is made, the method returns &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;, otherwise we could have a runtime &lt;em&gt;index out of range error.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;By running the tests, we see that this one doesn’t pass. But to make it pass its simple, we add the following code just before the return in &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt;:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/fb7a4f6fddb1d5c78678c5ee518c3b32.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Alright, tests are passing again. Moving on!&lt;/p&gt;
+
+&lt;p&gt;We are going to test the opposite scenario now, which is the swipe left in this case. We’ll start by adding this test:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/a5acebf87244fb9a7789a0bd5b2fab05.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;And let’s also add the extension for the controllerBefore helper method:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/aadb7f285a87f0c1e6ced28a046891e4.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, when the page controller is displaying the first page, if a left swipe is attempted, the method should return &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;. If we run, it passes, because of the hardcoded &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt; we returned when we implemented the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewControllerDataSource&lt;/code&gt; protocol.&lt;/p&gt;
+
+&lt;p&gt;Let’s move on to the next test.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/fd081fce83a95f784045d1966328f31d.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;It’s pretty much the same situation we tested with &lt;code class=&quot;highlighter-rouge&quot;&gt;pageViewController(_:viewControllerAfter:)&lt;/code&gt;, but this time, we are expecting to have the previous controller. If we run the tests, this one fails, so let’s implement our code.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;PageViewController.pageViewController(_:viewControllerBefore:)&lt;/code&gt;, replace the return &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt; by the following:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/5b8692b1e8d32e9b329d3cb355b2f5ac.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Again, we get the index of current controller, subtract one, check if it’s not smaller then zero, and return the corresponding controller to the index. Let’s run the tests and see that they pass!&lt;/p&gt;
+
+&lt;p&gt;Now, just to make sure we have the correct behaviour, let’s add the following test:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/183dac213e14d8d026f2227267b646b9.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, if we are in the third controller, and perform swipe left twice, we should get the first controller, correct? Yes, and our tests are showing us that!&lt;/p&gt;
+
+&lt;p&gt;Now we tested the basic structure, we’ll move on to the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageControl&lt;/code&gt;. We need a page control, and we can get it for ‘free’.&lt;/p&gt;
+
+&lt;h3 id=&quot;apples-documentation-says&quot;&gt;Apple’s documentation says:&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If both of the methods in ‘Supporting a Page Indicator’ are implemented and the page view controller’s transition style is UIPageViewController.TransitionStyle.scroll, a page indicator is visible.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Right, our transition style is &lt;code class=&quot;highlighter-rouge&quot;&gt;.scroll&lt;/code&gt;, so we need to implement the methods:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;presentationCount(for:)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;presentationIndex(for:)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s test that we are setting the correct presentation count.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/76ce953b0e0d44d37bb08cbfa0abf8ef.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So when we initialise the PageViewController with a certain number of pages, we expect the &lt;code class=&quot;highlighter-rouge&quot;&gt;presentationCount&lt;/code&gt; to be equal to the number of pages. And we check that by calling a dataSource method &lt;code class=&quot;highlighter-rouge&quot;&gt;presentationCount(for:)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If we run it, it fails. Because we didn’t implement it yet. So let’s fix this by adding it to our &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageViewControllerDataSource&lt;/code&gt; extension:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/8dcc9009ebd0535fece594bdcba6ac1a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;We are returning the number of items in pages array, because we want the number of indicators in &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageControl&lt;/code&gt; to be the same as the number of pages. We run the tests, and they pass. Nice!&lt;/p&gt;
+
+&lt;p&gt;Now, the other required method for setting the &lt;code class=&quot;highlighter-rouge&quot;&gt;UIPageControl&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;presentationIndex(for:)&lt;/code&gt;. Let’s add the following test:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/cdd0bb02ace23b92401b116e20e15e5d.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now we expect that when we initialise PageViewController, that &lt;code class=&quot;highlighter-rouge&quot;&gt;presentationIndex&lt;/code&gt; is set to zero, i.e. the first page. We run the tests and this one fails, because we don’t have that method yet. Add this to the dataSource extension:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/8a0b19c78eceb5f14ca251691d763894.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;So, when we run the tests, they pass. Great!&lt;/p&gt;
+
+&lt;p&gt;We added a hardcoded ‘0’ there, but it may be better to replace it by a variable, just in case we may need to use set a value in the future. Go on and declare the variable at the top of the file:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/a5e5bacde7ecf3eeab546234e42d7754.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;And replace the ‘0’ by &lt;code class=&quot;highlighter-rouge&quot;&gt;pageControlIndex&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Great, we implemented the tests, they are passing, now it’s time to see our pageViewController in action. Add the following method to your SceneDelegate class:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/f9988a9a47e74e59c36405aac9b1940a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;And add this to &lt;code class=&quot;highlighter-rouge&quot;&gt;scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions)&lt;/code&gt;:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/viniciusml/da3f717fdff81f0edd2bd3f45ef1b75d.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Since we are not using storyboards, this code prepares the window, and set’s a &lt;code class=&quot;highlighter-rouge&quot;&gt;rootViewController&lt;/code&gt; to it. Our &lt;code class=&quot;highlighter-rouge&quot;&gt;rootViewController&lt;/code&gt;, in this case, is our PageViewController, with 6 pages, each one with a different background color.&lt;/p&gt;
+
+&lt;p&gt;Hit &lt;strong&gt;command + R&lt;/strong&gt; and let’s see it in action!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/uipagecontroller-example.gif&quot; alt=&quot;&quot; class=&quot;full&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Very nice, isn’t it? Now that the behaviour is covered, it’s just a matter of setting a nice UI and some cool animations and deliver a nice page control.&lt;/p&gt;
+
+&lt;p&gt;If you want you can check the full code &lt;a href=&quot;https://github.com/viniciusml/blog-Source.git&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This was a glimpse of TDD. It’s a really powerful methodology to write maintainable and reliable code.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading, if you have any questions leave it in the comments below!&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="unit tests" /><category term="tdd" /><category term="UIPageViewController" /><category term="UIKit" /><summary type="html">In this article, I'll show you a way to implement an UIPageViewController using a Test Driven Development approach.</summary></entry><entry><title type="html">Code Reviews</title><link href="https://vinileal.com/productivity/basics/code-reviews/" rel="alternate" type="text/html" title="Code Reviews" /><published>2020-03-27T00:00:00+00:00</published><updated>2020-03-27T00:00:00+00:00</updated><id>https://vinileal.com/productivity/basics/code-reviews</id><content type="html" xml:base="https://vinileal.com/productivity/basics/code-reviews/">&lt;p&gt;&lt;strong&gt;How can you improve your team’s productivity with code reviews?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There are quite a few things in life that you only truly see the importance after experiencing, and code reviews are definitely one of those. By talking to my colleagues who apply it frequently in their workflow I could see that it improves a lot the efficiency of the team, but at the same time, talking with the colleagues who had never used it before (including me) it’s hard to identify the value of this tool.&lt;/p&gt;
+
+&lt;p&gt;In a &lt;strong&gt;code review,&lt;/strong&gt; basically, after a developer finishes writing a new piece of code (it can be a new feature, a bug fix, anything), another developer checks the code and covers some questions that may vary according to the company’s standards. A few examples are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can the logic of the code be improved? Does it cover all cases proposed?&lt;/li&gt;
+  &lt;li&gt;Are all requirements implemented?&lt;/li&gt;
+  &lt;li&gt;Does the new code conform with the company’s guidelines?&lt;/li&gt;
+  &lt;li&gt;Are the tests enough for the new code or do they need to be modified?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Well, clearly there are benefits, and lots of them. So it might be good giving it a try and evaluate if it suits the team’s needs and if it fits their style style.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-begin&quot;&gt;How to begin&lt;/h2&gt;
+
+&lt;p&gt;The first step, in my opinion, should be proposing it to the team. In this moment, the benefits of this practice can be explained to the team, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It facilitates knowledge across everyone in the team, which means that all members know what’s going on with the code base.&lt;/li&gt;
+  &lt;li&gt;Helps to establish or reinforce coding standards.&lt;/li&gt;
+  &lt;li&gt;It’s a wonderful tool to onboard new developers. By having their code reviewed, new developers can learn quickly about the guidelines, and easily adapt in conversations regarding the code. Also, by reviewing veteran’s, new developers can contribute with a fresh pair of eyes, which often helps a team to tackle a problem in a different way.&lt;/li&gt;
+  &lt;li&gt;Code reviews produce software with fewer defects.&lt;/li&gt;
+  &lt;li&gt;Ensures that necessary documentation is being written.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-time-issue&quot;&gt;The time issue&lt;/h2&gt;
+
+&lt;p&gt;Some of the most popular counterargument used by developers new to code reviews are the time spent to do it. Indeed, it’s an additional step into the development process, which means it takes some time. But it’s not time wasted and there are some ways to make sure it’s optimised.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Review before merging. Sounds a bit obvious, but it can help discover mistakes and improve the code before it reaches the development branch.&lt;/li&gt;
+  &lt;li&gt;Set an appropriate timeframe to perform the reviews. Eg.: no more then one hour.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, when it comes to introducing this practice into the development process, there are is a key aspect that may help: &lt;strong&gt;starting slowly&lt;/strong&gt;. Sometimes, working in a fast paced environment, means thats one needs to be very thoughtful in this part, because the introduction of a new step might be slow in the beginning.&lt;/p&gt;
+
+&lt;p&gt;It can be useful to begin by implementing pull requests after small tasks were done, just to get the hang of it, and after some time evolve into reviewing bigger tasks until the point where the whole team is comfortable with it, in which reviews can be performed for every new code written for production.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-few-tips-to-take-the-most-out-of-code-reviews&quot;&gt;A few tips to take the most out of code reviews&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Begin the review with a fresh mind and without any expectations on what the code should be like.&lt;/li&gt;
+  &lt;li&gt;Review your own code before submitting it to review. It may sound as basic advice, but you may find some things to improve.&lt;/li&gt;
+  &lt;li&gt;If there are special places where you want feedback, make them explicit.&lt;/li&gt;
+  &lt;li&gt;In case there’s something not very clear, ask questions to the author.&lt;/li&gt;
+  &lt;li&gt;Explain why there’s room for improvement in the code reviewed and if possible, propose a solution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;veredict&quot;&gt;Veredict&lt;/h2&gt;
+
+&lt;p&gt;Code reviews are relatively simple to include in the workflow, and can greatly improve software quality.&lt;/p&gt;
+
+&lt;p&gt;Depending on your team, it can good fit, and although it may bring some changes in the process, the benefits for sure outweigh the cost of adaptation.&lt;/p&gt;
+
+&lt;p&gt;It is something that combines technical and non-technical skills, and, as most of things in life, the more you do it, the more you get better at it. It is super important to be open to feedback and being able to offer proper feedback as well.&lt;/p&gt;
+
+&lt;p&gt;What are your thoughts on this? Do you do code reviews in your team?&lt;/p&gt;</content><author><name>Vini Leal</name><email>viniciusmoreiraleal+blog@gmail.com</email></author><category term="productivity" /><category term="basics" /><summary type="html">How can you improve your team’s productivity with code reviews?</summary></entry></feed>

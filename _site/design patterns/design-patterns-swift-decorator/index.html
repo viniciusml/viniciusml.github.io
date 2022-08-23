@@ -1,0 +1,646 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Design Patterns in Swift - Decorator | Vini Leal</title>
+<meta name="description" content="A decorator is used to extend or alter the functionality of objects at runtime by wrapping them in an object of a decorator class. ">
+
+
+  <meta name="author" content="Vini Leal">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Vini Leal">
+<meta property="og:title" content="Design Patterns in Swift - Decorator">
+<meta property="og:url" content="https://vinileal.com/design%20patterns/design-patterns-swift-decorator/">
+
+
+  <meta property="og:description" content="A decorator is used to extend or alter the functionality of objects at runtime by wrapping them in an object of a decorator class. ">
+
+
+
+  <meta property="og:image" content="https://vinileal.com/assets/images/design-patterns-decorator-header.png">
+
+
+
+  <meta name="twitter:site" content="@Vini__leal">
+  <meta name="twitter:title" content="Design Patterns in Swift - Decorator">
+  <meta name="twitter:description" content="A decorator is used to extend or alter the functionality of objects at runtime by wrapping them in an object of a decorator class. ">
+  <meta name="twitter:url" content="https://vinileal.com/design%20patterns/design-patterns-swift-decorator/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://vinileal.com/assets/images/design-patterns-decorator-header.png">
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-11-08T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://vinileal.com/design%20patterns/design-patterns-swift-decorator/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Vini Leal",
+      "url": "https://vinileal.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Vini Leal Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Vini Leal
+          <span class="site-subtitle">iOS Dev</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" background-image: url('');"
+>
+  
+    <img src="/assets/images/design-patterns-decorator-header.png" alt="Design Patterns in Swift - Decorator" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/vini-avatar.png" alt="Vini Leal" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Vini Leal</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Brighton - UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:viniciusmoreiraleal+blog@gmail.com">
+            <meta itemprop="email" content="viniciusmoreiraleal+blog@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Design Patterns in Swift - Decorator">
+    <meta itemprop="description" content="A decorator is used to extend or alter the functionality of objects at runtime by wrapping them in an object of a decorator class.">
+    <meta itemprop="datePublished" content="2020-11-08T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Design Patterns in Swift - Decorator
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>As I mentioned in the first article of this series, Design patterns are solutions to problems that someone once had and solved by applying a model that has been documented and that you can adapt entirely or according to the need for your solution.</p>
+
+<p>The original idea of Design Patterns came up with Christopher Alexander when he proposed the creation of pattern catalogs for architecture. Christopher himself defined the patterns in this way:</p>
+
+<blockquote>
+  <p>“A pattern describes a problem that occurs numerous times in a given context, and it also describes the solution to that problem, so that this solution can be used systematically in different situations”.</p>
+</blockquote>
+
+<p>The main purpose of design patterns is to help developers to structure their applications in more flexible ways, easier to understand and maintain.</p>
+
+<p>In this article, I would like to share some thoughts about the Decorator, a Structural Pattern.</p>
+
+<p>Structural patterns focus on how classes and objects are composed to form larger structures, maintaining its flexibility and efficiency. The flexibility of object composition comes from the ability to change the composition at runtime.</p>
+
+<h2 id="decorator">Decorator</h2>
+
+<p>The decorator pattern (also known as Wrapper) is used to extend or alter the functionality of objects at runtime by wrapping them in an object of a <em>decorator</em> class. This provides a flexible alternative to using inheritance to modify behavior.</p>
+
+<h3 id="purpose">Purpose</h3>
+
+<p>Decorators offer a flexible way to add responsibility to individual objects. Unlike inheritance, decorated objects are not limited by their parent classes. Putting in other terms, a client has control over how and when to decorate the component.</p>
+
+<h3 id="applicability">Applicability</h3>
+
+<p>We can use the decorator to:</p>
+
+<ul>
+  <li>Append responsibilities to individual objects dynamically and transparently, without affecting other objects.</li>
+  <li>For traits or responsibilities that can be withdrawn.</li>
+  <li>When subclassing is impractical.</li>
+</ul>
+
+<h3 id="consequences">Consequences</h3>
+
+<p>In general, this pattern is presented with a few particular elements. The first one would be an abstract representation of the component, that in swift can be a <code class="highlighter-rouge">protocol</code>. This is followed by a concrete implementation of this component, an abstract definition of a <em>decorator</em> for this component and one or more concrete implementations for this component’s <em>decorator</em>.</p>
+
+<p>A few of the characteristics of the Decorator Pattern are:</p>
+
+<ul>
+  <li>The decorators have the same super-type or <em>conformance</em> as the object they decorate.</li>
+  <li>More than one decorator can be used to comprise an object.</li>
+  <li>Once the decorator has the same super-type or <em>conformance</em> as its decorated object (<em>decoratee),</em> it is possible to pass a decorated object in place of the original object.</li>
+  <li>The decorator adds its own behavior before or after delegating the <em>decoratee</em> its work.</li>
+  <li>The objects can be decorated at any moment, which makes it possible to decorate them dynamically at run-time, with as many decorators as needed.</li>
+</ul>
+
+<h2 id="practical-example-in-swift">Practical Example in Swift</h2>
+
+<p>There are many use cases for a decorator, but to keep things simple for this article, let’s make a salary calculator.</p>
+
+<p>In order to calculate the salary, we’ll input an hourly base rate, that the calculator needs to convert to a weekly value. With our weekly value, it will first discount the taxes and then discount the healthcare.</p>
+
+<h3 id="abstraction">Abstraction</h3>
+
+<p>So we begin with an abstraction <code class="highlighter-rouge">SalaryCalculator</code>, with the component’s definition.</p>
+
+<script src="https://gist.github.com/viniciusml/b8c7e9b65f7fd3c001804aa9ff3e93f2.js"></script>
+
+<p>Now we create a class that’s going to conform to the protocol, and implement the method.</p>
+
+<script src="https://gist.github.com/viniciusml/6bc1b88a4dc0e1099e51caab9a86c8ef.js"></script>
+
+<p>After that we can create our <code class="highlighter-rouge">TaxDiscountSalaryDecorator</code>, that, in our case, will apply the first discount we want.</p>
+
+<script src="https://gist.github.com/viniciusml/5667b3ece34014e769385d064f01be4a.js"></script>
+
+<p>As you can see, it takes as parameter an object (our <em>decoratee</em>) conforming to <code class="highlighter-rouge">SalaryCalculator</code> and also implements <code class="highlighter-rouge">SalaryCalculator</code>. This means that when the method is called, we can apply the discount, and forward the message.</p>
+
+<p>Next, the <code class="highlighter-rouge">HealthCareDiscountSalaryDecorator</code>. It follows the same principles as <code class="highlighter-rouge">TaxDiscountSalaryDecorator</code>, but this time, it applies a different discount.</p>
+
+<script src="https://gist.github.com/viniciusml/dc2b1cf5d1dabc524f84eff374a02e0d.js"></script>
+
+<p>Now we have all elements we need to accomplish our goal. So let’s see how our calculator works, with the discounts.</p>
+
+<h3 id="implementation">Implementation</h3>
+
+<p>In order to use our calculator with the discounts, we need to compose it with our decorators, like so:</p>
+
+<script src="https://gist.github.com/viniciusml/425bed89d8cc4aa348de8a0885a13fba.js"></script>
+
+<p>This way, we apply the discounts we need without modifying our original <code class="highlighter-rouge">ExampleSalaryCalculator</code> class. We’re extending it’s behavior without modifying it.</p>
+
+<h2 id="pros"><strong>Pros</strong></h2>
+
+<ul>
+  <li>The use of a pattern provides the project with a universal style, which can make the code more comprehensible.</li>
+  <li>The client’s code does not need to be modified in order to add new functionalities.</li>
+  <li>The expansion of functionalities happen dynamically, which offers more flexibility to the codebase.</li>
+  <li>It allows the components to be as simple as possible, delegating the addition of new functionalities to the decorators.</li>
+</ul>
+
+<h2 id="cons">Cons</h2>
+
+<ul>
+  <li>Bigger number of classes utilized in the project, when compared to a version containing attributes and methods in a base class and implementation of specific functionalities in subclasses.</li>
+  <li>It may become hard to read and understand the project, in case of overuse.</li>
+  <li>It could decrease the project’s efficiency in case many decorators are used for an object with multiple public methods (that would require the decorator to offer the same public interface as the objects they decorate).</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>As we could observe, the Decorator Pattern makes usage of conformance to be able to encompass the decorated objects. This way, when a decorator is composed with it’s component, a new functionality can be added, but not <em>inherited</em>.</p>
+
+<p>This small difference offers a huge amount of flexibly to create objects as needed without modifications to the existing components. As in all decisions, there are no silver bullets. The advantages of this pattern can be tremendous. So all in all, teams could take advantage of this pattern to solve a specific problem, observe the decision’s consequences, it’s impact in performance, and the evolution in the codebase as a whole.</p>
+
+<p>And, of course, there are some downsides to that, as we could notice. Therefore, it bears to the developers the evaluation of the project’s needs and the tradeoffs that decorators would bring.</p>
+
+<p>If you’re looking for more examples of how we can use decorators, I highly recommended these videos: <a href="https://youtu.be/y5SRUqDXYz4">Decoupling analytics from MVVM components</a> and <a href="https://youtu.be/jH7Zfi7TQt8">Testing code that uses DispatchQueue.main.async</a>. They explain some really good use cases, using Swift.</p>
+
+<h2 id="references">References</h2>
+
+<p>Design Patterns - Elements of Reusable Object-Oriented Software - Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides.</p>
+
+<p><a href="https://gabrielschade.github.io/2018/08/13/gof-decorator.html">Design Patterns - Decorator</a></p>
+
+<p><a href="https://refactoring.guru/design-patterns/decorator">Refactoring Guru - Decorator</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#decorator" class="page__taxonomy-item" rel="tag">decorator</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#design-patterns" class="page__taxonomy-item" rel="tag">design patterns</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#design-patterns" class="page__taxonomy-item" rel="tag">Design Patterns</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-11-08T00:00:00+00:00">November 8, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=Vini__leal&text=Design+Patterns+in+Swift+-+Decorator%20https%3A%2F%2Fvinileal.com%2Fdesign%2520patterns%2Fdesign-patterns-swift-decorator%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvinileal.com%2Fdesign%2520patterns%2Fdesign-patterns-swift-decorator%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvinileal.com%2Fdesign%2520patterns%2Fdesign-patterns-swift-decorator%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/tutorial/unit%20test/unit-test-apple-pay/" class="pagination--pager" title="Improving the Testability of Apple Pay With Dependency Injection
+">Previous</a>
+    
+    
+      <a href="/agile/tech-debt/" class="pagination--pager" title="Tech Debt
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Vini Leal. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142201491-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142201491-1', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,652 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Improving the Testability of Apple Pay With Dependency Injection | Vini Leal</title>
+<meta name="description" content="In this article, I’ll share an introduction on how to perform unit tests on Apple Pay implementation. ">
+
+
+  <meta name="author" content="Vini Leal">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Vini Leal">
+<meta property="og:title" content="Improving the Testability of Apple Pay With Dependency Injection">
+<meta property="og:url" content="https://vinileal.com/tutorial/unit%20test/unit-test-apple-pay/">
+
+
+  <meta property="og:description" content="In this article, I’ll share an introduction on how to perform unit tests on Apple Pay implementation. ">
+
+
+
+  <meta property="og:image" content="https://vinileal.com/assets/images/unit-test-apple-pay-header.png">
+
+
+
+  <meta name="twitter:site" content="@Vini__leal">
+  <meta name="twitter:title" content="Improving the Testability of Apple Pay With Dependency Injection">
+  <meta name="twitter:description" content="In this article, I’ll share an introduction on how to perform unit tests on Apple Pay implementation. ">
+  <meta name="twitter:url" content="https://vinileal.com/tutorial/unit%20test/unit-test-apple-pay/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://vinileal.com/assets/images/unit-test-apple-pay-header.png">
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-10-17T00:00:00+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://vinileal.com/tutorial/unit%20test/unit-test-apple-pay/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Vini Leal",
+      "url": "https://vinileal.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Vini Leal Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Vini Leal
+          <span class="site-subtitle">iOS Dev</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" background-image: url('');"
+>
+  
+    <img src="/assets/images/unit-test-apple-pay-header.png" alt="Improving the Testability of Apple Pay With Dependency Injection" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/vini-avatar.png" alt="Vini Leal" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Vini Leal</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Brighton - UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:viniciusmoreiraleal+blog@gmail.com">
+            <meta itemprop="email" content="viniciusmoreiraleal+blog@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Improving the Testability of Apple Pay With Dependency Injection">
+    <meta itemprop="description" content="In this article, I’ll share an introduction on how to perform unit tests on Apple Pay implementation.">
+    <meta itemprop="datePublished" content="2020-10-17T00:00:00+01:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Improving the Testability of Apple Pay With Dependency Injection
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>We all know the importance of writing unit tests. But we also have seen many people who say that they take time to write, some things do not need to be tested, and all sorts of things that divide developer’s opinions as much as the endless debate ‘storyboards vs. programmatic views’.</p>
+
+<p>But leaving personal preferences aside, I believe people develop some resistance to determined things because they might not understand or take time to understand those things. And it happens with me regarding automated testing.</p>
+
+<p>The tests are useful to get fast confirmation that the code written works as expected and that when adding new features, nothing has been broken. Also, when working in a team, many different people might modify the project. So, once again, tests ensure the project’s integrity is maintained.</p>
+
+<p>In the matter of unit tests, I am always intrigued, by testing the implementation of my code that makes use of third party dependencies. That’s the case of integrating Apple Pay, for example. That’s what I would like to talk about today.</p>
+
+<p>The use cases for Apple Pay are pretty obvious. They very often involve the purchase of a product or service. And a wide range of apps are supporting it nowadays.</p>
+
+<hr />
+
+<p>In order to make a payment using Apple Pay, there are some requirements. One of them is the creation of a <code class="highlighter-rouge">PKPaymentRequest</code> (part of <code class="highlighter-rouge">PassKit</code> framework), and the presentation of either a <code class="highlighter-rouge">PKPaymentAuthorizationController</code> or a <code class="highlighter-rouge">PKPaymentAuthorizationViewController</code>.</p>
+
+<p>As <a href="https://developer.apple.com/documentation/passkit/pkpaymentauthorizationcontroller">Apple docs</a> state:</p>
+
+<blockquote>
+  <p>The <code class="highlighter-rouge">PKPaymentAuthorizationController</code> class performs the same role as the <code class="highlighter-rouge">PKPaymentAuthorizationViewController</code> class, but it does not depend on the <code class="highlighter-rouge">UIKit</code> framework. This means that the authorization controller can be used in places where a view controller cannot (for example, in <code class="highlighter-rouge">watchOS</code> apps or in <code class="highlighter-rouge">SiriKit</code> extensions).</p>
+</blockquote>
+
+<p>In this example I’ll use <code class="highlighter-rouge">PKPaymentAuthorizationViewController</code>, since the project will only use it with <code class="highlighter-rouge">UIKit</code> for now. In the case of the example, the app will present the authorization view controller only if the user can make payments with one of the specified networks, provided by the method <code class="highlighter-rouge">class func canMakePayments(usingNetworks: [PKPaymentNetwork]) -&gt; Bool</code>.</p>
+
+<p>Following this idea, we can then create a <code class="highlighter-rouge">PaymentAuthorizationHandler</code> class, that creates the payment request, and completes with failure in case the networks are not supported. Like so:</p>
+
+<script src="https://gist.github.com/viniciusml/b424529a91d065448c87e03086bb66cd.js"></script>
+
+<p>When I try to unit test this behavior, I stumble upon the class function, which could be a barrier in the tests.</p>
+
+<h2 id="dependency-injection-to-the-rescue">Dependency injection to the rescue</h2>
+
+<p>One way overcome this limitation, is to use dependency injection to determine the possibility to make the payments that the specific test needs. I could either:</p>
+
+<ul>
+  <li>Use constructor injection and set it in the initializer.</li>
+  <li>Use property injection.</li>
+</ul>
+
+<p>When possible, I prefer to use constructor injection. So this is how this is how the <code class="highlighter-rouge">PaymentAuthorizationHandler</code> would be:</p>
+
+<script src="https://gist.github.com/viniciusml/d2e6a50291e37f7945214d85bc2eb64e.js"></script>
+
+<p>The typealias is nothing more than a closure representing  the <code class="highlighter-rouge">class func canMakePayments(usingNetworks:)</code> signature. But with this change, it’s possible to pass, in production, the real method, and for test use, the value required for the test case can be provided by injecting it during the test setup. This also makes the test deterministic.</p>
+
+<p>A test is deterministic, or repeatable, if it produces the very same output when given the same input no matter how many times it is run.</p>
+
+<p>Now, in the test, the <strong>SUT</strong> (System Under Test) will have the value injected upon creation. This is how the test for the failure scenario looks like:</p>
+
+<script src="https://gist.github.com/viniciusml/b6c8f54a114893fb2c79fe8ac50748e0.js"></script>
+
+<p>Breaking it down:</p>
+
+<p>1 - The test needs to simulate a scenario where networks are not supported, so the <code class="highlighter-rouge">sut</code> is injected with a closure that returns <code class="highlighter-rouge">false</code>.</p>
+
+<p>2 - An optional error is declared, so it can be captured in the <code class="highlighter-rouge">requestAuthorization</code> method.</p>
+
+<p>3 - The <code class="highlighter-rouge">receivedError</code> is captured. In case an unexpected success message is received, the test simply fails with a message.</p>
+
+<p>The next scenario to be covered is the case when the networks are supported, but the <code class="highlighter-rouge">PKPaymentAuthorizationViewController</code> fails to be initialized.</p>
+
+<p>The same approach will be used, but this time with the view controller initializer being injected via constructor injection. In case the initialization succeeds, the <code class="highlighter-rouge">requestAuthorization</code> completes with success. This is the finished <code class="highlighter-rouge">PaymentAuthorizationHandler</code>:</p>
+
+<script src="https://gist.github.com/viniciusml/7eac0ca781eba52ff251dfaaeda46030.js"></script>
+
+<p>Now, the following is happening:</p>
+
+<p>1 - The initializer signature is extracted into the typealias <code class="highlighter-rouge">ApplePayControllerFactory</code>.</p>
+
+<p>2 - An error case is declared to identify the cause of failure.</p>
+
+<p>3 - The initializer now accepts a new parameter, which is the <code class="highlighter-rouge">ApplePayControllerFactory</code>. In the case of production code, <code class="highlighter-rouge">PKPaymentAuthorizationViewController.init</code> is used as default value.</p>
+
+<p>4 - <code class="highlighter-rouge">requestAuthorization</code> completes with the new error case failure, when the controller fails to be initialized.</p>
+
+<p>5 - Finally the success case, the method completes with the initialized <code class="highlighter-rouge">PKPaymentAuthorizationViewController</code>.</p>
+
+<p>And the tests follow the same style of the first one. Except that this time, to trigger an initialization failure, an empty (invalid) instance of <code class="highlighter-rouge">PKRequest</code> was injected, rather than a valid request, that was injected for the success case test.</p>
+
+<script src="https://gist.github.com/viniciusml/fbf11b2627156e7e0c407af628edfa66.js"></script>
+
+<p>So, let’s break it down.</p>
+
+<p>1 - An invalid request is passed to the authorization controller.</p>
+
+<p>2 - The request can be processed by the networks, by passing a closure that returns <code class="highlighter-rouge">true</code>.</p>
+
+<p>3 - There’s the assertion that when these conditions are presented, the failure output is <code class="highlighter-rouge">.unableToInitialize</code> error.</p>
+
+<p>4 - In the success scenario, a valid request is passed.</p>
+
+<p>5 - The request can be processed by the networks, by passing a closure that returns <code class="highlighter-rouge">true</code>.</p>
+
+<p>6 - The test asserts that the receivedController is not <code class="highlighter-rouge">nil</code>, as expected by the success case in the Result declared in <code class="highlighter-rouge">PaymentAuthorizationHandler</code>’s <code class="highlighter-rouge">ApplePayCompletionHandler</code> typealias.</p>
+
+<p>There it goes. This is a small example of how it is possible to manipulate the input for the tests, for implementing Apple Pay. Of course, there’s much more to it. There’s the display of <code class="highlighter-rouge">PKPaymentButton</code>,</p>
+
+<p>the received messages from <code class="highlighter-rouge">PKPaymentAuthorizationViewControllerDelegate</code>, the communication with a <a href="https://developer.apple.com/apple-pay/payment-platforms/">payment provider</a>, and other specifications, depending on the use case.</p>
+
+<p>And of course, there must be countless ways of achieving similar results, but this was the one I got to, and wanted to share. If you have seen something different, or thought of a different approach, you are welcome to share with me on <a href="https://twitter.com/Vini__leal">twitter</a>. 😄</p>
+
+<p>The full project, with a sample UIViewController, displaying the button and performing the <code class="highlighter-rouge">PKPaymentAuthorizationViewController</code> can be found on <a href="https://github.com/viniciusml/Articles-Vinileal.com">this repository</a>.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://developer.apple.com/apple-pay/payment-platforms/">Payment Service Provider - Apple</a></p>
+
+<p><a href="https://www.raywenderlich.com/2113-apple-pay-tutorial-getting-started">Apple Pay Tutorial - Getting Started - Ray Wenderlich</a></p>
+
+<p><a href="https://developer.apple.com/documentation/passkit/apple_pay/offering_apple_pay_in_your_app">Offering Apple Pay in Your App - Apple</a></p>
+
+<p><a href="https://martinfowler.com/articles/nonDeterminism.html">Eradicating Non-Determinism in Tests - Martin Fowler</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#apple-pay" class="page__taxonomy-item" rel="tag">Apple Pay</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#passkit" class="page__taxonomy-item" rel="tag">PassKit</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tdd" class="page__taxonomy-item" rel="tag">tdd</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#unit-tests" class="page__taxonomy-item" rel="tag">unit tests</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#tutorial" class="page__taxonomy-item" rel="tag">Tutorial</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#unit-test" class="page__taxonomy-item" rel="tag">Unit Test</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-10-17T00:00:00+01:00">October 17, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=Vini__leal&text=Improving+the+Testability+of+Apple+Pay+With+Dependency+Injection%20https%3A%2F%2Fvinileal.com%2Ftutorial%2Funit%2520test%2Funit-test-apple-pay%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvinileal.com%2Ftutorial%2Funit%2520test%2Funit-test-apple-pay%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvinileal.com%2Ftutorial%2Funit%2520test%2Funit-test-apple-pay%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/open%20source/open-source-how-to-contribute/" class="pagination--pager" title="What is Open Sorce and How to Start Contributing
+">Previous</a>
+    
+    
+      <a href="/design%20patterns/design-patterns-swift-decorator/" class="pagination--pager" title="Design Patterns in Swift - Decorator
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Vini Leal. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142201491-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142201491-1', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

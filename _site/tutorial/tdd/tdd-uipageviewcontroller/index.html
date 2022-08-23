@@ -1,0 +1,770 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Test Driving UIPageViewController implementation | Vini Leal</title>
+<meta name="description" content="In this article, I’ll show you a way to implement an UIPageViewController using a Test Driven Development approach. ">
+
+
+  <meta name="author" content="Vini Leal">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Vini Leal">
+<meta property="og:title" content="Test Driving UIPageViewController implementation">
+<meta property="og:url" content="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/">
+
+
+  <meta property="og:description" content="In this article, I’ll show you a way to implement an UIPageViewController using a Test Driven Development approach. ">
+
+
+
+  <meta property="og:image" content="https://vinileal.com/assets/images/uipagecontroller-header.png">
+
+
+
+  <meta name="twitter:site" content="@Vini__leal">
+  <meta name="twitter:title" content="Test Driving UIPageViewController implementation">
+  <meta name="twitter:description" content="In this article, I’ll show you a way to implement an UIPageViewController using a Test Driven Development approach. ">
+  <meta name="twitter:url" content="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://vinileal.com/assets/images/uipagecontroller-header.png">
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-04-04T00:00:00+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://vinileal.com/tutorial/tdd/tdd-uipageviewcontroller/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Vini Leal",
+      "url": "https://vinileal.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Vini Leal Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Vini Leal
+          <span class="site-subtitle">iOS Dev</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" background-image: url('');"
+>
+  
+    <img src="/assets/images/uipagecontroller-header.png" alt="Test Driving UIPageViewController implementation" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/vini-avatar.png" alt="Vini Leal" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Vini Leal</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Brighton - UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:viniciusmoreiraleal+blog@gmail.com">
+            <meta itemprop="email" content="viniciusmoreiraleal+blog@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Test Driving UIPageViewController implementation">
+    <meta itemprop="description" content="In this article, I’ll show you a way to implement an UIPageViewController using a Test Driven Development approach.">
+    <meta itemprop="datePublished" content="2020-04-04T00:00:00+01:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Test Driving UIPageViewController implementation
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>A UIPageViewController is a very popular element in iOS Projects. It’s commonly seen in onboarding screens, but it has a ton of other uses.</p>
+
+<p>Me and my friend <a href="https://www.linkedin.com/in/mauro-marques-89910913b/">Mauro Marques</a> are using one for the onboarding screen of our app Hira, and while I was developing the beautiful screens desgined by him, I decided to register the proccess of implementing it using a <strong>Test Driven Development</strong> approach.</p>
+
+<p>Just like the name suggests, the entire development is driven by tests. The cycle consists of four steps:</p>
+
+<ul>
+  <li>Write a test that is going to fail - (Red)</li>
+  <li>Make the test pass - (Green)</li>
+  <li>Refactor the code</li>
+  <li>Repeat</li>
+</ul>
+
+<p>We’ll begin with an empty project, with an unit test target. I am not going to use storyboards, so I’ll just set the basic configuration to my project by deleting the storyboard. In case you need some help, there’s a quick video, in which Sean Allen demonstrates how to do it <a href="https://www.youtube.com/watch?v=Htn4h51BQsk">here</a>.</p>
+
+<p>Now, off to our test driven development. The first and simplest assertion we can make is that the PageViewController is initialised with no controllers (pages).</p>
+
+<p>Since <strong>UIPageViewController</strong> has a <code class="highlighter-rouge">viewControllers: Array&lt;UIViewController&gt;</code> property, we can assert that this property is empty.</p>
+
+<script src="https://gist.github.com/viniciusml/22294a14ce4913124f3beddabba00b6f.js"></script>
+
+<p>Soon enough, the compiler warns us, because we still don’t have a PageViewController. This means we are in the red state (tests not passing or code not compiling), which means we can write production code.</p>
+
+<p>Let’s satisfy the compiler by adding the simplest piece of code.</p>
+
+<script src="https://gist.github.com/viniciusml/3067b05ab3e314d0858a9caf1deaa8be.js"></script>
+
+<p>The errors are gone, and when we run our tests they pass, because by default this property is empty.</p>
+
+<p>Since we don’t have anything to refactor, let’s move on to the next test. According to my use case, I need the <code class="highlighter-rouge">.transitionStyle</code> to be of .<code class="highlighter-rouge">scroll</code> type. So, let’s test it. Add the following code to PageViewControllerTests.</p>
+
+<script src="https://gist.github.com/viniciusml/b44e1f515abf431cf008cba3d8b2a74a.js"></script>
+
+<p>If we run the tests now, they will not pass, because we still need to set this property. Add the following code to PageViewController.</p>
+
+<script src="https://gist.github.com/viniciusml/34e108a0f76435e209b5ec0aaaf18004.js"></script>
+
+<p>We are using the initialiser to set the property. If we run the tests they will pass.</p>
+
+<p>Alright, moving on with the <code class="highlighter-rouge">.navigationOrientation</code>. In this case I’ll need it <code class="highlighter-rouge">.horizontal</code>. Add the following code to PageViewControllerTests.</p>
+
+<script src="https://gist.github.com/viniciusml/a373c29f7ba0e0ce8a23a072c7132743.js"></script>
+
+<p>If we run it now, it won’t pass, because in the initialiser we added previously was setting the property to <code class="highlighter-rouge">.vertical</code>. So let’s change it to <code class="highlighter-rouge">.horizontal</code>. Now the tests are passing.</p>
+
+<p>As a refactoring measure, we can create a helper method in PageViewControllerTests in order to create the SUT, or the <em>system under test</em>. By using a helper method, we concentrate the SUT generation to one single place, and if we need to change or add something in the future, we just need to do it in that single place.</p>
+
+<script src="https://gist.github.com/viniciusml/9fab826abdf8db3c38b940de0366c6db.js"></script>
+
+<p>Now, replace <code class="highlighter-rouge">PageViewController()</code> by <code class="highlighter-rouge">makeSUT()</code> in the previous tests.</p>
+
+<p>Moving on, we need to assert that when the view loads, the method <code class="highlighter-rouge">setViewControllers(_:direction:animated:completion:)</code> is set with the initial view controller. Add this code to PageViewControllerTests</p>
+
+<script src="https://gist.github.com/viniciusml/ccb865bf41079d5f53776572a7d11269.js"></script>
+
+<p>Here we are testing that <strong>given</strong> at least one controller, <strong>when</strong> the view is loaded, the array of viewControllers is equal to the first item of this array.</p>
+
+<p>The code will not compile because we need to make some changes to the <code class="highlighter-rouge">makeSUT()</code> method. Replace the existing method by this following one:</p>
+
+<script src="https://gist.github.com/viniciusml/29a4769d69d4410e6efd25e1e4e8942b.js"></script>
+
+<p>Here we are passing the controllers to be used as pages into the PageViewController initialiser.</p>
+
+<p>So, we also need to change the <code class="highlighter-rouge">init()</code> in PageViewController to:</p>
+
+<script src="https://gist.github.com/viniciusml/bb74df4e68d284065e6d8b8965a22836.js"></script>
+
+<p>Also, we need to declare the property:</p>
+
+<script src="https://gist.github.com/viniciusml/1cd0ec383bb5be11bfbfa41254159ab5.js"></script>
+
+<p>Now the code compiles, but the tests are not passing. And that is because we did not implement the method yet. So, add this code to PageViewController.</p>
+
+<script src="https://gist.github.com/viniciusml/0cbcd0d9fcdc041f0d98514303753f4e.js"></script>
+
+<p>Here, in <code class="highlighter-rouge">viewDidLoad()</code> we check if there’s a first item in the pages array. If so, we call <code class="highlighter-rouge">setViewControllers(_:direction:animated:completion:)</code> with it. Let’s run the tests, and they pass!</p>
+
+<p>We can make some refactoring to make our code easier to read, so let’s do it. Replace the <code class="highlighter-rouge">init()</code> and <code class="highlighter-rouge">requiredInit()</code> by this code:</p>
+
+<script src="https://gist.github.com/viniciusml/fe8ef01445abaae85275debcb7a8df38.js"></script>
+
+<p>We simplified it a bit using a convenience <a href="http://vinileal.com/initialization/basics/swift-initializers/">initialiser</a>. Now, moving on, let’s test the dataSource.</p>
+
+<p>We need to make sure that when the user swipes right, the next view controller is called and presented. There is a <code class="highlighter-rouge">UIPageViewDataSource</code> method that handles this, called <code class="highlighter-rouge">pageViewController(_:viewControllerAfter:)</code>.</p>
+
+<p>Let’s add the following test:</p>
+
+<script src="https://gist.github.com/viniciusml/90bdad7c7dc4688a86f9babe36c3dd54.js"></script>
+
+<p>So, given two controllers, when our pageViewController is swiped (which triggers the data source method), we expect that the controller resulting from the <code class="highlighter-rouge">pageViewController(_:viewControllerAfter:)</code> controller1 is the controller2.</p>
+
+<p>The tests will not compile yet, because we didn’t implement the dataSource in our production side.</p>
+
+<p>Let’s add the <code class="highlighter-rouge">dataSource = self</code> to <code class="highlighter-rouge">viewDidLoad()</code> in PageViewController class.</p>
+
+<p>Now we can make an extension to conform to the <code class="highlighter-rouge">UIPageViewControllerDataSource</code>, like so:</p>
+
+<script src="https://gist.github.com/viniciusml/9727c7f2bfac7d3ed836f1fd321ea2d9.js"></script>
+
+<p>The simplest thing to make the tests pass is to return the second item in the array. But it won’t cover all cases, and let’s see why by adding the next test.</p>
+
+<p>Add this to PageViewControllerTests:</p>
+
+<script src="https://gist.github.com/viniciusml/b6a6a6462c81451e3d6b6623c28039b5.js"></script>
+
+<p>So it’s basic the same setup, but this time we are adding one more controller, and making sure that when <code class="highlighter-rouge">pageViewController(_:viewControllerAfter:)</code> is triggered two times in a row, we get the third controller. The test fails because we hardcoded a value in our production side. Let’s fix this!</p>
+
+<p>Add the following code to <code class="highlighter-rouge">PageViewController.pageViewController(_:viewControllerAfter:)</code>:</p>
+
+<script src="https://gist.github.com/viniciusml/394718563e164eeb069f96bfc97f70ce.js"></script>
+
+<p>Here we are getting the index of current the view controller, adding one to it and return the controller for the new index. Cool, if we run the tests, they pass. Can you spot something to refactor?</p>
+
+<p>Yes, let’s do it. We are going to add an <code class="highlighter-rouge">UIPageViewController</code> extension to the same file as PageViewControllerTests, with the following code:</p>
+
+<script src="https://gist.github.com/viniciusml/28d673da52277f6cf6da495e9f105606.js"></script>
+
+<p>This way, replace occurrences of <code class="highlighter-rouge">sut.dataSource?.pageViewController(sut, viewControllerAfter: controller1)</code> by <code class="highlighter-rouge">sut.controllerAfter(controller1)</code>.</p>
+
+<p>Alright, we covered the situation of getting the next index, but we are still missing a scenario. When the maximum number of pages is reached, what should happen?</p>
+
+<p>According to my use case, when the last controller is reached, if the user swipes right, nothing should happen, so let’s test it.</p>
+
+<p>Add this to PageViewControllerTests class:</p>
+
+<script src="https://gist.github.com/viniciusml/c7b9e5a9ac0ad4964839f8fb6db87b75.js"></script>
+
+<p>So we are asserting that when the maximum number of pages is reached, if an attempt to swipe is made, the method returns <code class="highlighter-rouge">nil</code>, otherwise we could have a runtime <em>index out of range error.</em></p>
+
+<p>By running the tests, we see that this one doesn’t pass. But to make it pass its simple, we add the following code just before the return in <code class="highlighter-rouge">pageViewController(_:viewControllerAfter:)</code>:</p>
+
+<script src="https://gist.github.com/viniciusml/fb7a4f6fddb1d5c78678c5ee518c3b32.js"></script>
+
+<p>Alright, tests are passing again. Moving on!</p>
+
+<p>We are going to test the opposite scenario now, which is the swipe left in this case. We’ll start by adding this test:</p>
+
+<script src="https://gist.github.com/viniciusml/a5acebf87244fb9a7789a0bd5b2fab05.js"></script>
+
+<p>And let’s also add the extension for the controllerBefore helper method:</p>
+
+<script src="https://gist.github.com/viniciusml/aadb7f285a87f0c1e6ced28a046891e4.js"></script>
+
+<p>So, when the page controller is displaying the first page, if a left swipe is attempted, the method should return <code class="highlighter-rouge">nil</code>. If we run, it passes, because of the hardcoded <code class="highlighter-rouge">nil</code> we returned when we implemented the <code class="highlighter-rouge">UIPageViewControllerDataSource</code> protocol.</p>
+
+<p>Let’s move on to the next test.</p>
+
+<script src="https://gist.github.com/viniciusml/fd081fce83a95f784045d1966328f31d.js"></script>
+
+<p>It’s pretty much the same situation we tested with <code class="highlighter-rouge">pageViewController(_:viewControllerAfter:)</code>, but this time, we are expecting to have the previous controller. If we run the tests, this one fails, so let’s implement our code.</p>
+
+<p>In <code class="highlighter-rouge">PageViewController.pageViewController(_:viewControllerBefore:)</code>, replace the return <code class="highlighter-rouge">nil</code> by the following:</p>
+
+<script src="https://gist.github.com/viniciusml/5b8692b1e8d32e9b329d3cb355b2f5ac.js"></script>
+
+<p>Again, we get the index of current controller, subtract one, check if it’s not smaller then zero, and return the corresponding controller to the index. Let’s run the tests and see that they pass!</p>
+
+<p>Now, just to make sure we have the correct behaviour, let’s add the following test:</p>
+
+<script src="https://gist.github.com/viniciusml/183dac213e14d8d026f2227267b646b9.js"></script>
+
+<p>So, if we are in the third controller, and perform swipe left twice, we should get the first controller, correct? Yes, and our tests are showing us that!</p>
+
+<p>Now we tested the basic structure, we’ll move on to the <code class="highlighter-rouge">UIPageControl</code>. We need a page control, and we can get it for ‘free’.</p>
+
+<h3 id="apples-documentation-says">Apple’s documentation says:</h3>
+
+<blockquote>
+  <p>If both of the methods in ‘Supporting a Page Indicator’ are implemented and the page view controller’s transition style is UIPageViewController.TransitionStyle.scroll, a page indicator is visible.</p>
+</blockquote>
+
+<p>Right, our transition style is <code class="highlighter-rouge">.scroll</code>, so we need to implement the methods:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">presentationCount(for:)</code></li>
+  <li><code class="highlighter-rouge">presentationIndex(for:)</code></li>
+</ul>
+
+<p>Let’s test that we are setting the correct presentation count.</p>
+
+<script src="https://gist.github.com/viniciusml/76ce953b0e0d44d37bb08cbfa0abf8ef.js"></script>
+
+<p>So when we initialise the PageViewController with a certain number of pages, we expect the <code class="highlighter-rouge">presentationCount</code> to be equal to the number of pages. And we check that by calling a dataSource method <code class="highlighter-rouge">presentationCount(for:)</code>.</p>
+
+<p>If we run it, it fails. Because we didn’t implement it yet. So let’s fix this by adding it to our <code class="highlighter-rouge">UIPageViewControllerDataSource</code> extension:</p>
+
+<script src="https://gist.github.com/viniciusml/8dcc9009ebd0535fece594bdcba6ac1a.js"></script>
+
+<p>We are returning the number of items in pages array, because we want the number of indicators in <code class="highlighter-rouge">UIPageControl</code> to be the same as the number of pages. We run the tests, and they pass. Nice!</p>
+
+<p>Now, the other required method for setting the <code class="highlighter-rouge">UIPageControl</code> is <code class="highlighter-rouge">presentationIndex(for:)</code>. Let’s add the following test:</p>
+
+<script src="https://gist.github.com/viniciusml/cdd0bb02ace23b92401b116e20e15e5d.js"></script>
+
+<p>Now we expect that when we initialise PageViewController, that <code class="highlighter-rouge">presentationIndex</code> is set to zero, i.e. the first page. We run the tests and this one fails, because we don’t have that method yet. Add this to the dataSource extension:</p>
+
+<script src="https://gist.github.com/viniciusml/8a0b19c78eceb5f14ca251691d763894.js"></script>
+
+<p>So, when we run the tests, they pass. Great!</p>
+
+<p>We added a hardcoded ‘0’ there, but it may be better to replace it by a variable, just in case we may need to use set a value in the future. Go on and declare the variable at the top of the file:</p>
+
+<script src="https://gist.github.com/viniciusml/a5e5bacde7ecf3eeab546234e42d7754.js"></script>
+
+<p>And replace the ‘0’ by <code class="highlighter-rouge">pageControlIndex</code>.</p>
+
+<p>Great, we implemented the tests, they are passing, now it’s time to see our pageViewController in action. Add the following method to your SceneDelegate class:</p>
+
+<script src="https://gist.github.com/viniciusml/f9988a9a47e74e59c36405aac9b1940a.js"></script>
+
+<p>And add this to <code class="highlighter-rouge">scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions)</code>:</p>
+
+<script src="https://gist.github.com/viniciusml/da3f717fdff81f0edd2bd3f45ef1b75d.js"></script>
+
+<p>Since we are not using storyboards, this code prepares the window, and set’s a <code class="highlighter-rouge">rootViewController</code> to it. Our <code class="highlighter-rouge">rootViewController</code>, in this case, is our PageViewController, with 6 pages, each one with a different background color.</p>
+
+<p>Hit <strong>command + R</strong> and let’s see it in action!</p>
+
+<p><img src="/assets/images/uipagecontroller-example.gif" alt="" class="full" /></p>
+
+<p>Very nice, isn’t it? Now that the behaviour is covered, it’s just a matter of setting a nice UI and some cool animations and deliver a nice page control.</p>
+
+<p>If you want you can check the full code <a href="https://github.com/viniciusml/blog-Source.git">here</a>.</p>
+
+<p>This was a glimpse of TDD. It’s a really powerful methodology to write maintainable and reliable code.</p>
+
+<p>Thanks for reading, if you have any questions leave it in the comments below!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#tdd" class="page__taxonomy-item" rel="tag">tdd</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#uikit" class="page__taxonomy-item" rel="tag">UIKit</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#uipageviewcontroller" class="page__taxonomy-item" rel="tag">UIPageViewController</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#unit-tests" class="page__taxonomy-item" rel="tag">unit tests</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#tdd" class="page__taxonomy-item" rel="tag">TDD</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#tutorial" class="page__taxonomy-item" rel="tag">Tutorial</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-04-04T00:00:00+01:00">April 4, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=Vini__leal&text=Test+Driving+UIPageViewController+implementation%20https%3A%2F%2Fvinileal.com%2Ftutorial%2Ftdd%2Ftdd-uipageviewcontroller%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvinileal.com%2Ftutorial%2Ftdd%2Ftdd-uipageviewcontroller%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvinileal.com%2Ftutorial%2Ftdd%2Ftdd-uipageviewcontroller%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/productivity/basics/code-reviews/" class="pagination--pager" title="Code Reviews
+">Previous</a>
+    
+    
+      <a href="/tutorial/swiftui/microinteraction/animation/menu-button-swiftui/" class="pagination--pager" title="Microinteractions in SwiftUI - Menu Button Animation
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Vini Leal. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142201491-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142201491-1', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

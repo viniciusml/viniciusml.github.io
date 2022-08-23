@@ -1,0 +1,657 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Tech Debt | Vini Leal</title>
+<meta name="description" content="Sometimes the expression Tech Debt is used to reference lousy code. For example: code badly written or with no test coverage. But it is much more than that. ">
+
+
+  <meta name="author" content="Vini Leal">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Vini Leal">
+<meta property="og:title" content="Tech Debt">
+<meta property="og:url" content="https://vinileal.com/agile/tech-debt/">
+
+
+  <meta property="og:description" content="Sometimes the expression Tech Debt is used to reference lousy code. For example: code badly written or with no test coverage. But it is much more than that. ">
+
+
+
+  <meta property="og:image" content="https://vinileal.com/assets/images/blossom-present.png">
+
+
+
+  <meta name="twitter:site" content="@Vini__leal">
+  <meta name="twitter:title" content="Tech Debt">
+  <meta name="twitter:description" content="Sometimes the expression Tech Debt is used to reference lousy code. For example: code badly written or with no test coverage. But it is much more than that. ">
+  <meta name="twitter:url" content="https://vinileal.com/agile/tech-debt/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="https://vinileal.com/assets/images/blossom-present.png">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2022-08-22T00:00:00+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://vinileal.com/agile/tech-debt/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Vini Leal",
+      "url": "https://vinileal.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Vini Leal Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Vini Leal
+          <span class="site-subtitle">iOS Dev</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/vini-avatar.png" alt="Vini Leal" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Vini Leal</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I am an iOS app developer with experience developing, testing, and deploying iPhone apps. In addition to publishing 2 apps to the App Store, I was awarded a WWDC 2019 scholarship.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Brighton - UK</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:viniciusmoreiraleal+blog@gmail.com">
+            <meta itemprop="email" content="viniciusmoreiraleal+blog@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Tech Debt">
+    <meta itemprop="description" content="Sometimes the expression Tech Debt is used to reference lousy code. For example: code badly written or with no test coverage. But it is much more than that.">
+    <meta itemprop="datePublished" content="2022-08-22T00:00:00+01:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Tech Debt
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>It is a well known fact that time is a driving force in multiple industries. For software development, it is a constant challenge, to be able to reconcile the fulfilment of stipulated deadlines with other needs of the project (or product).</p>
+
+<p>In this battle against time, often we are faced with the tough decision on making sacrifices in order to meet the deadlines. Sacrifices such as taking small shortcuts, implementing suboptimal solutions, and others.</p>
+
+<p>Although it is natural to think of quick solutions that are not always ideal, it bears to the developer (or team) to ponder and understand the boundaries between speed and quality. We need to take a pragmatic look at how we manage the quality of the project so that we don’t lose speed in the long run, after all, if we always take shortcuts, the code tends to become increasingly difficult to maintain over time, which, in consequence, slows down the team.</p>
+
+<p>In this article, I’ll discuss about the theory and application of the technical debt: a technique created so that software development teams can have this pragmatic strategy of managing the quality of the code.</p>
+
+<h2 id="what-is-technical-debt">What is technical debt</h2>
+
+<p>Tech debt is a software development concept that represents the implicit cost of an implementation or solution that is suitable for the present moment, not considering an approach that might take more time but could be more sustainable for the project.</p>
+
+<p>This concept can be compared to a financial debt (hence the name), which, by not being cleared, generates interest over time, making it harder to be paid.</p>
+
+<p>Besides that, on a software level, this debt generates difficulties to maintain the code and to add new functionalities, leading to delays and possible alterations on the final product.</p>
+
+<p>So in practical terms, let’s illustrate a scenario where a developer makes a decision to go with an approach that solves the problem, but it’s not <em>optimal</em>. Therefore, they are left with an obligation to repay it sometime in the future (coming back to that piece of code and fixing it). It’s a conscious decision made with the awareness of the need to come back to it.</p>
+
+<hr />
+
+<h2 id="why-does-tech-debt-happen">Why does tech debt happen</h2>
+
+<p>There are different <em>types</em> of tech debt, and a wide range of reasons behind their occurrence.</p>
+
+<div class="notice--info">
+💡 Sometimes the expression <b>Tech Debt</b> is used to reference <i>lousy code</i>. For example: code badly written or with no test coverage. But it is much more than that.
+
+</div>
+
+<p>Classifying the different kinds of tech debt is helpful to address the identified problems, come up with solutions for them, and to communicate these thoughts. Also, having them well defined is very handy for communicating to non-technical people. According to Martin Fowler, these are the types of tech debt one can encounter when developing software:</p>
+
+<ul>
+  <li>
+    <p><strong>Inadvertent - Prudent:</strong></p>
+
+    <p>A wrong choice regarding technology was made or there was a lack of iterative development methodology.</p>
+  </li>
+  <li>
+    <p><strong>Inadvertent - Reckless:</strong></p>
+
+    <p>There is a lack of technical knowledge to perform a given task or design a project.</p>
+  </li>
+  <li>
+    <p><strong>Deliberate - Prudent:</strong></p>
+
+    <p>There was not enough time to consider a proper approach to solve a problem, and the developers are aware of the need to deal with consequences.</p>
+  </li>
+  <li>
+    <p><strong>Deliberate - Reckless:</strong></p>
+
+    <p>There was a lack of time and a choice to ignore proper design choices was made.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="how-to-eliminate-tech-debt">How to eliminate tech debt</h2>
+
+<p>Believe it or not, eliminating tech debt <em>completely</em> is just not possible. Tech debt is unavoidable, which means it will always exist, but it does not mean it cannot be managed. It is up to us to control it and make sure it doesn’t grow.</p>
+
+<p>It is so unavoidable that even if you can make the perfect decision on a project today, down the road, eventually the code will become suboptimal. There will be changes to the operating system, or the framework, for example. So your perfect decision may last for a while, but eventually there will be some work required to make sure these choices continue to work, or to add a new feature to this project.</p>
+
+<p>Eventually, the time to address the tech debt accumulated over time comes, and then, the developer either has to fix the old code before adding new code, or they have to fix it because a feature stops working due to system/framework/language changes.</p>
+
+<blockquote>
+  <p>You <strong>owe</strong> the software you’ve written in the past a little bit of attention.</p>
+
+</blockquote>
+
+<p>Software development is, among many other things, making trade-offs between choices. Tech debt, will come in the future, and it is directly based on the choices made today. And these choices can be anything from frameworks you chose, to UI design choices, to architectural choices.</p>
+
+<p>Since there’s no ultimate way to eliminate it completely (as far as I know), let’s think about minimising it. There are a few tips to help:</p>
+
+<ul>
+  <li>Don’t write spaghetti code</li>
+  <li>Well defined architecture</li>
+  <li>Take some time to evaluate/fix current code</li>
+  <li>DRY, clean coding</li>
+  <li>Have someone else look at your code (code reviews)</li>
+</ul>
+
+<hr />
+
+<h3 id="identifying-tech-debt">Identifying tech debt</h3>
+
+<p>Tech debt presents itself in multiple shapes and sizes. It could be a poorly designed architecture, or just a method or class that does too much, for example. Due to its broad scope, sometimes, identifying tech debt might be a bit subjective, but by no means impossible.</p>
+
+<p>One important thing to have in mind is that shortcuts can lead to tech debt, so it is important to take note of why the decision to take this shortcut is being made and register somewhere that this needs to be addressed in a future moment.</p>
+
+<p>At other moments, tech debt might appear in response to a lack of technical knowledge on the developer side. In these scenarios, a more adequate decision could be made by asking the colleagues in the team what approach they would recommend.</p>
+
+<p>Apart from these mentioned ways, there are other cases where the code is already written. Then, identifying tech debt can be done by observing some traces. Those traces are often called <em>code smells</em>, and they symbolise how a piece of code could ‘smell bad’, because it is hard to understand or modify, for example.</p>
+
+<blockquote>
+  <p>A code smell is a surface indication that usually corresponds to a deeper problem in the system. — Martin Fowler</p>
+
+</blockquote>
+
+<p>Here are some examples of tech debt in iOS Development:</p>
+
+<ul>
+  <li>Massive View Controller</li>
+  <li>Pyramid of doom</li>
+  <li>Chain of calls</li>
+  <li>Untested components</li>
+  <li>Global mutable state</li>
+  <li>Methods with many parameters</li>
+  <li>Long methods or methods that do too much</li>
+</ul>
+
+<hr />
+
+<h2 id="why-should-you-care-about-it">Why should you care about it</h2>
+
+<p>Even if we recognise tech debt as unavoidable and not inherently bad, it is hard for us to ignore the disadvantages it could bring to a product or a team, especially if neglected. This is because choosing the easier option, going for the quick fix leads to weaker software. And a weak software might not be able to support the business as it should, and, in a worse scenario, harm the business.</p>
+
+<p>In the words of Ward Cunningham, who popularised the metaphor:</p>
+
+<blockquote>
+  <p>The danger occurs when the debt is not repaid. Every minute spent on not-quite-right code counts as interest on that debt. Entire engineering organisations can be brought to a stand-still under the debt load of an unconsolidated implementation, object-oriented or otherwise.</p>
+
+</blockquote>
+
+<p>A well known example of the impact of technical debt is the Y2K crisis. The decision to define years only by their last two digits (e.g., 1998 as “98”) was a remarkable space-saver in the early decades of computer processing when the price of digital storage was still astronomical. But when the world reached the new century, programs were still unable to distinguish between 1948 and 2048. Over $300 billion was spent worldwide to fix the problem before it was too late. By many estimates, that cost would have been significantly lower if the software had been updated over time. There was ample opportunity, as a man named Bob Bemer first called attention to the problem back in the ’50s.</p>
+
+<p>If not handled, tech debt can bring other undesired consequences to the business, apart from the financial consequences such as the example cited above. It could cause low team moral, because dealing with a messy code base can be really stressful and frustrating. Also, tech debt can accumulate in such a drastic way that it reaches a point where a rework is necessary in some parts of the code, or even a complete rewrite of the whole software.</p>
+
+<h2 id="wrapping-it-up">Wrapping it up</h2>
+
+<p>As we discussed, there’s no escape from it. From the very first line of code written, tech debt can appear. What will make a difference, however, is how it is managed. Accepting it is the first step, and recognising that eventually it will need to be settled, is equally important.</p>
+
+<p>For this, it is essential to discuss with the team and the management, quantify and prioritise it, and draw a plan to deal with it.</p>
+
+<p>From then on, we can be more demanding in terms of the quality of our code, set standards, write even more tests, and do our best to guarantee a high level of code quality.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://youtu.be/29pbPv0fLZA">Tech Debt: Low short-term risk with High long-term rewards - iOS Lead Essentials Podcast #008</a></p>
+
+<p><a href="https://www.firesideswift.com/episodes/2020/2/27/ep-119-thats-aggressive">Fireside Swift - That’s aggressive - Tech debt</a></p>
+
+<p><a href="https://martinfowler.com/bliki/TechnicalDebtQuadrant.html">Martin Fowler - Technical Debt Quadrant</a></p>
+
+<p><a href="https://martinfowler.com/bliki/CodeSmell.html">Martin Fowler - Code Smells</a></p>
+
+<p><a href="https://praxent.com/blog/brief-history-technical-debt">What is Technical Debt? A Definition and Brief History</a></p>
+
+<p><a href="http://c2.com/doc/oopsla92.html">The WyCash Portfolio Management System</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#tech-debt" class="page__taxonomy-item" rel="tag">tech debt</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#agile" class="page__taxonomy-item" rel="tag">Agile</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-08-22T00:00:00+01:00">August 22, 2022</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=Vini__leal&text=Tech+Debt%20https%3A%2F%2Fvinileal.com%2Fagile%2Ftech-debt%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvinileal.com%2Fagile%2Ftech-debt%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fvinileal.com%2Fagile%2Ftech-debt%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/design%20patterns/design-patterns-swift-decorator/" class="pagination--pager" title="Design Patterns in Swift - Decorator
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/Vini__leal" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/viniciusml" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.instagram.com/viniciusmleal/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Vini Leal. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142201491-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142201491-1', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
