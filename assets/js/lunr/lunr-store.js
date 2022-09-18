@@ -64,4 +64,28 @@ var store = [{
         "tags": ["git workflows","git"],
         "url": "https://vinileal.com/git/common-git-workflows/",
         "teaser": "https://vinileal.com/assets/images/git-flow-header.png"
+      },{
+        "title": "What is Open Sorce and How to Start Contributing",
+        "excerpt":"The world today is more democratic for those who want or need to use computers, more precisely those who need to make use of computer programs. But this was not always the case, and in part what made access to the computer world something a little simpler or less expensive...","categories": ["Open Source"],
+        "tags": ["open source","pull request","git","hacktoberfest"],
+        "url": "https://vinileal.com/open%20source/open-source-how-to-contribute/",
+        "teaser": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
+      },{
+        "title": "Improving the Testability of Apple Pay With Dependency Injection",
+        "excerpt":"We all know the importance of writing unit tests. But we also have seen many people who say that they take time to write, some things do not need to be tested, and all sorts of things that divide developer’s opinions as much as the endless debate ‘storyboards vs. programmatic...","categories": ["Tutorial","Unit Test"],
+        "tags": ["unit tests","tdd","Apple Pay","PassKit"],
+        "url": "https://vinileal.com/tutorial/unit%20test/unit-test-apple-pay/",
+        "teaser": "https://vinileal.com/assets/images/unit-test-apple-pay-header.png"
+      },{
+        "title": "Design Patterns in Swift - Decorator",
+        "excerpt":"As I mentioned in the first article of this series, Design patterns are solutions to problems that someone once had and solved by applying a model that has been documented and that you can adapt entirely or according to the need for your solution. The original idea of Design Patterns...","categories": ["Design Patterns"],
+        "tags": ["decorator","design patterns"],
+        "url": "https://vinileal.com/design%20patterns/design-patterns-swift-decorator/",
+        "teaser": "https://vinileal.com/assets/images/design-patterns-decorator-header.png"
+      },{
+        "title": "Tech Debt",
+        "excerpt":"It is a well known fact that time is a driving force in multiple industries. For software development, it is a constant challenge, to be able to reconcile the fulfilment of stipulated deadlines with other needs of the project (or product). In this battle against time, often we are faced...","categories": ["Agile"],
+        "tags": ["tech debt"],
+        "url": "https://vinileal.com/agile/tech-debt/",
+        "teaser": null
       }]
